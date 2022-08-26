@@ -1,0 +1,48 @@
+barbijo_mas_caro = 0
+cantidad_mayor = 0
+jabones_totales = 0
+
+for i in range(5):
+
+    while True:
+        tipo = input("Indicar tipo (barbijo, jabón o alcohol):")
+        if (tipo == "barbijo" or tipo == "jabón" or tipo == "alcohol"):
+            break
+
+    while True:
+        precio = input("Precio:")
+        if (precio.isdecimal()):
+            precio = int(precio)
+            if (precio >= 100 and precio <= 300):
+                break
+
+    while True:
+        cantidad = input("Cantidad de unidades:")
+        if(cantidad.isdecimal()):
+            cantidad = int(cantidad)
+            if (cantidad > 0 and cantidad <= 100):
+                break
+
+    marca = input("Marca:")
+
+    fabricante = input("Fabricante:")
+
+    if (tipo == "barbijo"):
+        if (precio > barbijo_mas_caro):
+            barbijo_mas_caro = precio
+            cantidad_mas_caro = cantidad
+            fabricante_mas_caro = fabricante
+
+    if (cantidad > cantidad_mayor):
+        cantidad_mayor = cantidad
+        fabricante_mayor = fabricante
+
+    if (tipo == "jabón"):
+        jabones_totales = jabones_totales + cantidad
+
+print("El mas caro de los barbijos tiene una cantidad de:", cantidad_mas_caro, "unidades", end='')
+print(" y es fabricado por:", fabricante_mas_caro)
+print("El item con más unidades es:", fabricante_mayor, end='')
+print(" y es:", cantidad_mayor)
+print("La cantidad de jabones es:", jabones_totales)
+print("Gracias por usar el programa")
