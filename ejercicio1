@@ -46,3 +46,5 @@ print("El item con más unidades es:", fabricante_mayor, end='')
 print(" y es:", cantidad_mayor)
 print("La cantidad de jabones es:", jabones_totales)
 print("Gracias por usar el programa")
+
+# Santiago Collazo - santiago.collazo7@gmail.com

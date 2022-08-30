@@ -1,0 +1,96 @@
+controlador = True
+bandera_uno = True
+bandera_dos = True
+contador_heroinas = 0
+contador_heroinas_fuma = 0
+edad_total_heroinas = 0
+contador_heroes_fu = 0
+edad_total_heroes_fu = 0
+
+while controlador:
+    while True:
+        nombre = input("Nombre de Heroína/Héroe:")
+        if not (nombre.isdecimal()):
+            break
+
+    while True:
+        edad = input("Edad (mayores a 18 años):")
+        if (edad.isdecimal()):
+            edad = int(edad)
+            if (edad >= 18):
+                break
+
+    while True:
+        sexo = input("Sexo (m / f / nb):")
+        sexo = sexo.lower()
+        if (sexo == "m" or sexo == "f" or sexo == "nb"):
+            break
+
+    while True:
+        habilidad = input("Habilidad (fuerza / magia / inteligencia)")
+        habilidad = habilidad.lower()
+        if (habilidad == "fuerza" or habilidad == "magia" or habilidad == "inteligencia"):
+            break
+
+    if (habilidad == "fuerza"):
+        if (bandera_uno == True):
+            fuerza_mas_joven = nombre
+            edad_mas_joven = edad
+            bandera_uno = False
+        elif (edad_mas_joven > edad):
+            fuerza_mas_joven = nombre
+            edad_mas_joven = edad
+
+    if (bandera_dos == True):
+        nombre_mas_viejo = nombre
+        edad_mas_viejo = edad
+        sexo_mas_viejo = sexo
+        bandera_dos = False
+    elif (edad_mas_viejo < edad):
+        nombre_mas_viejo = nombre
+        edad_mas_viejo = edad
+        sexo_mas_viejo = sexo
+
+    if (sexo == "f"):
+        contador_heroinas += 1
+        edad_total_heroinas = edad_total_heroinas + edad
+        if (habilidad == "fuerza" or habilidad == "magia"):
+            contador_heroinas_fuma += 1
+
+    if (sexo == "m" and habilidad == "fuerza"):
+        contador_heroes_fu += 1
+        edad_total_heroes_fu = edad_total_heroes_fu + edad
+
+    while True:
+        confirmacion = input("¿Seguir agregando héroes/heroínas? (s/n)")
+        confirmacion.lower
+        if (confirmacion == "n"):
+            controlador = False
+            break
+        if (confirmacion == "s"):
+            break
+
+if (sexo_mas_viejo == "m"):
+    sexo_mas_viejo_texto = "Masculino"
+elif (sexo_mas_viejo == "f"):
+    sexo_mas_viejo_texto = "Femenino"
+else:
+    sexo_mas_viejo_texto = "No Binario"
+
+if (contador_heroinas > 0):
+    promedio_heroinas = edad_total_heroinas / contador_heroinas
+
+if (contador_heroes_fu > 0):
+    promedio_heroes_fu = edad_total_heroes_fu / contador_heroes_fu
+
+print("El nombre del Héroe/Heróina de Fuerza más joven es:", fuerza_mas_joven, end='')
+print(" con", edad_mas_joven, "años")
+print("El sexo y nombre del Héroe/Heróina de mayor edad es:", sexo_mas_viejo_texto, nombre_mas_viejo, end='')
+print(" con", edad_mas_viejo, "años")
+print("La cantidad de Heroínas que tienen Habilidades de Fuerza o Magia es:", contador_heroinas_fuma)
+if (contador_heroinas > 0):
+    print("El promedio de edad entre Heroínas es:", "%.1f" % promedio_heroinas)
+if (contador_heroes_fu > 0):
+    print("El promedio de edad entre Héroes de fuerza es:", "%.1f" % promedio_heroes_fu)
+
+# Santiago Collazo - santiago.collazo7@gmail.com

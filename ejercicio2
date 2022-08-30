@@ -1,0 +1,67 @@
+bandera = True
+peso_total = 0
+precio_bruto = 0
+precio_mas_caro = 0
+descuento = 0
+
+while bandera:
+    while True:
+        peso = input("Peso (entre 10 y 100 kilos):")
+        if (peso.isdecimal()):
+            peso = int(peso)
+            if (peso >= 10 and peso <= 100):
+                break
+
+    while True:
+        precio = input("Precio por kilo:")
+        if (precio.isdecimal()):
+            precio = int(precio)
+            if (precio > 0):
+                break
+
+    while True:
+        tipo = input("Tipo validad (v / a / m):")
+        tipo = tipo.lower()
+        if (tipo == "v" or tipo == "a" or tipo == "m"):
+            break
+
+    peso_total = peso_total + peso
+
+    precio_unidad = precio * peso
+    precio_bruto = precio_bruto + precio_unidad
+
+    if (precio_unidad > precio_mas_caro):
+        precio_mas_caro = precio_unidad
+        if (tipo == "v"):
+            tipo_mas_caro = "Vegetal"
+        elif (tipo == "a"):
+            tipo_mas_caro = "Animal"
+        else:
+            tipo_mas_caro = "Mezcla"
+
+    while True:
+        confirmacion = input("¿Seguir agregando compras? (s/n)")
+        confirmacion = confirmacion.lower()
+        if (confirmacion == "n"):
+            bandera = False
+            break
+        if (confirmacion == "s"):
+            break
+
+if (peso_total > 100):
+    descuento = 15
+    if (peso_total > 300):
+        descuento = 25
+
+precio_descontado = precio_bruto - (precio_bruto * descuento / 100)
+
+promedio = precio_bruto / peso_total
+
+print("El importe bruto es $", precio_bruto, sep='')
+if (descuento > 0):
+    print("El descuento es del ", "%.1f" % descuento, "%", sep='')
+print("El importe con descuento es $", "%.1f" % precio_descontado, sep='')
+print("El tipo de alimento más caro es:", tipo_mas_caro)
+print("El promedio de peso por kilo es: $", "%.1f" % promedio, sep='')
+
+# Santiago Collazo - santiago.collazo7@gmail.com
