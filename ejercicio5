@@ -1,0 +1,43 @@
+habilidades = [
+    {
+        "Nombre": "Vision-X",
+        "Poder": 64
+    },
+    {
+        "Nombre": "Vuelo",
+        "Poder": 32
+    },
+    {
+        "Nombre": "Inteligencia",
+        "Poder": 256
+    },
+    {
+        "Nombre": "Metamorfosis",
+        "Poder": 1024
+    },
+    {
+        "Nombre": "Super Velocidad",
+        "Poder": 128
+    },
+    {
+        "Nombre": "Magia",
+        "Poder": 512
+    }
+]
+
+habilidades_UTN = []
+
+for i in range(len(habilidades)):
+    tupla_habilidades = (habilidades[i]['Nombre'], habilidades[i]['Poder'])
+    habilidades_UTN.append(tupla_habilidades)
+    dict_habilidades = {"habilidades_UTN": habilidades_UTN}
+
+habilidades_UTN.sort(key=lambda x: x[1])
+
+for key, value in dict_habilidades.items():
+    print(key, ":", sep='')
+for n in range(len(habilidades_UTN)):
+    print("Habilidad ", n+1, ": ", habilidades_UTN[n][0], sep='', end='')
+    print(" | Poder: ", habilidades_UTN[n][1], sep='')
+
+# Santiago Collazo - santiago.collazo7@gmail.com
