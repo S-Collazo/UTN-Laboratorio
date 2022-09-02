@@ -1,0 +1,121 @@
+from data_stark import lista_personajes
+
+# Analizar detenidamente el set de datos:
+"""
+print(lista_personajes)
+print(type(lista_personajes))
+print(len(lista_personajes))
+"""
+
+# 1 - Recorrer la lista imprimiendo por consola el nombre de cada superhéroe
+def imprimir_nombres():
+    for nombre in lista_personajes:
+        print(nombre["nombre"])
+
+# 2 - Recorrer la lista imprimiendo por consola nombre de cada superhéroe junto a la altura del mismo:
+def imprimir_nombres_y_alturas():
+    for nombre_y_altura in lista_personajes:
+        altura = float(nombre_y_altura["altura"])
+        print("{0} ({1}cm)".format(nombre_y_altura["nombre"], altura))
+
+# 3 - Recorrer la lista y determinar cuál es el superhéroe más alto (MÁXIMO):
+def determinar_altura_maxima():
+    altura_maxima = lista_personajes[0]
+
+    for altura in lista_personajes:
+        altura_comparada = float(altura["altura"])
+        altura_maxima_comparada = float(altura_maxima["altura"])
+        if (altura_comparada > altura_maxima_comparada):
+            altura_maxima = altura
+
+    nombre_altura_maxima = altura_maxima["nombre"]
+    numero_altura_maxima = float(altura_maxima["altura"])
+
+    print("El héroe más alto es {0} con {1}cm de altura.".format(nombre_altura_maxima, numero_altura_maxima))
+
+# 4 - Recorrer la lista y determinar cuál es el superhéroe más bajo (MÍNIMO):
+def determinar_altura_minima():
+    altura_minima = lista_personajes[0]
+
+    for altura in lista_personajes:
+        altura_comparada = float(altura["altura"])
+        altura_minima_comparada = float(altura_minima["altura"])
+        if (altura_comparada < altura_minima_comparada):
+            altura_minima = altura
+
+    nombre_altura_minima = altura_minima["nombre"]
+    numero_altura_minima = float(altura_minima["altura"])
+
+    print("El héroe más bajo es {0} con {1}cm de altura.".format(nombre_altura_minima, numero_altura_minima))
+
+# 5 - Recorrer la lista y determinar la altura promedio de los  superhéroes (PROMEDIO):
+def determinar_altura_promedio():
+    acumulador_altura = 0
+    contador_altura = len(lista_personajes)
+
+    for heroe in lista_personajes:
+        altura = float(heroe["altura"])
+        acumulador_altura += altura
+
+    altura_promedio = acumulador_altura / contador_altura
+
+    print("La altura promedio de los héroes es {0}".format("%.2f" % altura_promedio))
+
+# 6 - Calcular e informar cual es el superhéroe más y menos pesado:
+def determinar_peso_maximo_y_minimo():
+    peso_minimo = lista_personajes[0]
+    peso_maximo = lista_personajes[0]
+
+    for peso in lista_personajes:
+        peso_comparado = float(peso["peso"])
+        peso_minimo_comparado = float(peso_minimo["peso"])
+        peso_maximo_comparado = float(peso_maximo["peso"])
+        if (peso_comparado < peso_minimo_comparado):
+            peso_minimo = peso
+        if (peso_comparado > peso_maximo_comparado):
+            peso_maximo = peso
+
+    nombre_peso_minimo = peso_minimo["nombre"]
+    numero_peso_minimo = float(peso_minimo["peso"])
+
+    nombre_peso_maximo = peso_maximo["nombre"]
+    numero_peso_maximo = float(peso_maximo["peso"])
+
+    print("El héroe más pesado es {0} con {1}kg de peso".format(
+        nombre_peso_maximo, numero_peso_maximo))
+    print("El héroe menos pesado es {0} con {1}kg de peso".format(
+        nombre_peso_minimo, numero_peso_minimo))
+
+# Construir un menú que permita elegir qué dato obtener:
+while True:
+    print("Menu:")
+    print("1 - Nombre de cada superhéroe")
+    print("2 - Nombre y altura de cada superhéroe")
+    print("3 - Superhéroe más alto")
+    print("4 - Superhéroe más bajo")
+    print("5 - Altura promedio de los superhéroes")
+    print("6 - Superhéroe más y menos pesado")
+    print("7 - Cerrar menú")
+    while True:
+        comando = input("Elegir función:")
+        if (comando.isdecimal()):
+            comando = int(comando)
+            if (comando >= 1 and comando <= 7):
+                break
+        
+    if (comando == 1):
+        imprimir_nombres()
+    elif (comando == 2):
+        imprimir_nombres_y_alturas()
+    elif (comando == 3):
+        determinar_altura_maxima()
+    elif (comando == 4):
+        determinar_altura_minima()
+    elif (comando == 5):
+        determinar_altura_promedio()
+    elif (comando == 6):
+        determinar_peso_maximo_y_minimo()
+    else:
+        break
+    
+# Santiago Collazo - santiago.collazo7@gmail.com
