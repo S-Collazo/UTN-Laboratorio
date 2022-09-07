@@ -1,0 +1,414 @@
+from data_stark import lista_personajes
+
+# Analizar detenidamente el set de datos:
+"""
+print(lista_personajes)
+print(type(lista_personajes))
+print(len(lista_personajes))
+"""
+
+# 1 - Recorrer la lista imprimiendo por consola el nombre de cada superhéroe
+def imprimir_nombres():
+    for heroe in lista_personajes:
+        print(heroe["nombre"])
+
+# 2 - Recorrer la lista imprimiendo por consola nombre de cada superhéroe junto a la altura del mismo:
+def imprimir_nombres_y_alturas():
+    for heroe in lista_personajes:
+        altura = float(heroe["altura"])
+        print("{0} ({1}cm)".format(heroe["nombre"], altura))
+
+# 3 - Recorrer la lista y determinar cuál es el superhéroe más alto (MÁXIMO):
+def determinar_altura_maxima():
+    altura_maxima = lista_personajes[0]
+
+    for heroe in lista_personajes:
+        altura_comparada = float(heroe["altura"])
+        altura_maxima_comparada = float(altura_maxima["altura"])
+        if (altura_comparada > altura_maxima_comparada):
+            altura_maxima = heroe
+
+    nombre_altura_maxima = altura_maxima["nombre"]
+    numero_altura_maxima = float(altura_maxima["altura"])
+
+    print("El héroe más alto es {0} con {1}cm de altura.".format(nombre_altura_maxima, numero_altura_maxima))
+
+# 4 - Recorrer la lista y determinar cuál es el superhéroe más bajo (MÍNIMO):
+def determinar_altura_minima():
+    altura_minima = lista_personajes[0]
+
+    for heroe in lista_personajes:
+        altura_comparada = float(heroe["altura"])
+        altura_minima_comparada = float(altura_minima["altura"])
+        if (altura_comparada < altura_minima_comparada):
+            altura_minima = heroe
+
+    nombre_altura_minima = altura_minima["nombre"]
+    numero_altura_minima = float(altura_minima["altura"])
+
+    print("El héroe más bajo es {0} con {1}cm de altura.".format(nombre_altura_minima, numero_altura_minima))
+
+# 5 - Recorrer la lista y determinar la altura promedio de los  superhéroes (PROMEDIO):
+def determinar_altura_promedio():
+    acumulador_altura = 0
+    contador_altura = len(lista_personajes)
+
+    for heroe in lista_personajes:
+        altura = float(heroe["altura"])
+        acumulador_altura += altura
+
+    altura_promedio = acumulador_altura / contador_altura
+
+    print("La altura promedio de los héroes es {0}".format("%.2f" % altura_promedio))
+
+# 6 - Calcular e informar cual es el superhéroe más y menos pesado:
+def determinar_peso_maximo_y_minimo():
+    peso_minimo = lista_personajes[0]
+    peso_maximo = lista_personajes[0]
+
+    for heroe in lista_personajes:
+        peso_comparado = float(heroe["peso"])
+        peso_minimo_comparado = float(peso_minimo["peso"])
+        peso_maximo_comparado = float(peso_maximo["peso"])
+        if (peso_comparado < peso_minimo_comparado):
+            peso_minimo = heroe
+        if (peso_comparado > peso_maximo_comparado):
+            peso_maximo = heroe
+
+    nombre_peso_minimo = peso_minimo["nombre"]
+    numero_peso_minimo = float(peso_minimo["peso"])
+
+    nombre_peso_maximo = peso_maximo["nombre"]
+    numero_peso_maximo = float(peso_maximo["peso"])
+
+    print("El héroe más pesado es {0} con {1}kg de peso".format(
+        nombre_peso_maximo, numero_peso_maximo))
+    print("El héroe menos pesado es {0} con {1}kg de peso".format(
+        nombre_peso_minimo, numero_peso_minimo))
+    
+# 7 - Recorrer la lista imprimiendo por consola el nombre de cada superhéroe de género M:
+def imprimir_nombres_masculinos():
+    for heroe in lista_personajes:
+        if (heroe["genero"] == "M"):
+            print(heroe["nombre"])
+
+# 8 - Recorrer la lista imprimiendo por consola el nombre de cada superhéroe de género F:
+def imprimir_nombres_femeninos():
+    for heroina in lista_personajes:
+        if (heroina["genero"] == "F"):
+            print(heroina["nombre"])
+
+# 9 - Recorrer la lista y determinar cuál es el superhéroe más alto de género M:
+def determinar_altura_maxima_masculina():
+    bandera_uno = True
+
+    for heroe in lista_personajes:
+        if (heroe["genero"] == "M"):
+            while bandera_uno:
+                altura_maxima_masc = heroe
+                bandera_uno = False
+            
+            altura_comparada_masc = float(heroe["altura"])                
+            altura_maxima_comparada_masc = float(altura_maxima_masc["altura"])
+            
+            if (altura_comparada_masc > altura_maxima_comparada_masc):
+                altura_maxima_masc = heroe
+
+    nombre_altura_maxima_masc = altura_maxima_masc["nombre"]
+    numero_altura_maxima_masc = float(altura_maxima_masc["altura"])
+    
+    # print("El héroe masculino más alto es {0} con {1}cm de altura.".format(nombre_altura_maxima_masc, "%.2f" % numero_altura_maxima_masc))
+
+    return nombre_altura_maxima_masc
+     
+# 10 - Recorrer la lista y determinar cuál es el superhéroe más alto de género F:
+def determinar_altura_maxima_femenina():
+    bandera_dos = True
+    
+    for heroina in lista_personajes:
+        if (heroina["genero"] == "F"):
+            while bandera_dos:
+                altura_maxima_fem = heroina
+                bandera_dos = False
+                
+            altura_comparada_fem = float(heroina["altura"])
+            altura_maxima_comparada_fem = float(altura_maxima_fem["altura"])
+        
+            if (altura_comparada_fem > altura_maxima_comparada_fem):
+                altura_maxima_fem = heroina
+            
+    nombre_altura_maxima_fem = altura_maxima_fem["nombre"]
+    numero_altura_maxima_fem = float(altura_maxima_fem["altura"])
+
+    # print("El héroe femenino más alto es {0} con {1}cm de altura.".format(nombre_altura_maxima_fem, "%.2f" % numero_altura_maxima_fem))
+    
+    return nombre_altura_maxima_fem
+
+# 11 - Recorrer la lista y determinar cuál es el superhéroe más bajo  de género M:
+def determinar_altura_minima_masculina():
+    bandera_tres = True
+    
+    for heroe in lista_personajes:
+        if (heroe["genero"] == "M"):
+            while bandera_tres:
+                altura_minima_masc = heroe
+                bandera_tres = False
+                
+            altura_comparada_masc = float(heroe["altura"])
+            altura_minima_comparada_masc = float(altura_minima_masc["altura"])
+            
+            if (altura_comparada_masc < altura_minima_comparada_masc):
+                altura_minima_masc = heroe
+                
+    nombre_altura_minima_masc = altura_minima_masc["nombre"]
+    numero_altura_minima_masc = float(altura_minima_masc["altura"])
+    
+    # print("El héroe masculino más bajo es {0} con {1}cm de altura.".format(nombre_altura_minima_masc, "%.2f" % numero_altura_minima_masc))
+    
+    return nombre_altura_minima_masc
+
+# 12 - Recorrer la lista y determinar cuál es el superhéroe más bajo  de género F:
+def determinar_altura_minima_femenina():
+    bandera_cuatro = True
+    
+    for heroina in lista_personajes:
+        if (heroina["genero"] == "F"):
+            while bandera_cuatro:
+                altura_minima_fem = heroina
+                bandera_cuatro = False
+                
+            altura_comparada_fem = float(heroina["altura"])
+            altura_minima_comparada_fem = float(altura_minima_fem["altura"])
+        
+            if (altura_comparada_fem < altura_minima_comparada_fem):
+                altura_minima_fem = heroina
+
+    nombre_altura_minima_fem = altura_minima_fem["nombre"]
+    numero_altura_minima_fem = float(altura_minima_fem["altura"])
+    
+    # print("El héroe femenino más bajo es {0} con {1}cm de altura.".format(nombre_altura_minima_fem, "%.2f" % numero_altura_minima_fem))
+    
+    return nombre_altura_minima_fem
+    
+# 13 - Recorrer la lista y determinar la altura promedio de los  superhéroes de género M:
+def determinar_altura_promedio_masculina():
+    acumulador_altura_promedio_masc = 0
+    contador_altura_promedio_masc = 0
+    
+    for heroe in lista_personajes:
+        if (heroe["genero"] == "M"):
+            altura_masc_num = float(heroe["altura"])
+            acumulador_altura_promedio_masc = acumulador_altura_promedio_masc + altura_masc_num
+            contador_altura_promedio_masc += 1
+         
+    altura_promedio_masc = acumulador_altura_promedio_masc / contador_altura_promedio_masc
+            
+    # print("La altura promedio de los héroes masculinos es {0}".format("%.2f" % altura_promedio_masc))
+
+# 14 - Recorrer la lista y determinar la altura promedio de los  superhéroes de género F:
+def determinar_altura_promedio_femenina():
+    acumulador_altura_promedio_fem = 0
+    contador_altura_promedio_fem = 0
+    
+    for heroina in lista_personajes:
+        if (heroina["genero"] == "F"):
+            altura_fem_num = float(heroina["altura"])
+            acumulador_altura_promedio_fem = acumulador_altura_promedio_fem + altura_fem_num
+            contador_altura_promedio_fem += 1
+            
+    altura_promedio_fem = acumulador_altura_promedio_fem / contador_altura_promedio_fem
+    
+ #   print("La altura promedio de los héroes femeninos es {0}".format("%.2f" % altura_promedio_fem))
+
+# 15 - Informar cual es el Nombre del superhéroe asociado a cada uno de los indicadores anteriores (ítems 9 a 12):
+def informar_datos():
+    heroe_mas_alto_masc = determinar_altura_maxima_masculina()
+    heroe_mas_alto_fem = determinar_altura_maxima_femenina()
+    heroe_mas_bajo_masc = determinar_altura_minima_masculina()
+    hero_mas_bajo_fem = determinar_altura_minima_femenina()
+    
+    print("Héroe masculino más alto: {0}".format(heroe_mas_alto_masc))
+    print("Héroe femenino más alto: {0}".format(heroe_mas_alto_fem))
+    print("Héroe masculino más bajo: {0}".format(heroe_mas_bajo_masc))
+    print("Héroe femenino más bajo: {0}".format(hero_mas_bajo_fem))
+        
+# 16 - Determinar cuántos superhéroes tienen cada tipo de color de ojos:
+def determinar_color_ojos():
+    dict_color_ojos = {}
+    
+    for heroe in lista_personajes:
+        ojos = heroe["color_ojos"]
+        dict_color_ojos[ojos] = 0
+    
+    for heroe in lista_personajes:
+        ojos = heroe["color_ojos"]
+        dict_color_ojos[ojos] += 1
+   
+    print(dict_color_ojos)
+        
+# 17 - Determinar cuántos superhéroes tienen cada tipo de color de pelo:
+def determinar_color_pelo():
+    dict_color_pelo = {}
+    
+    for heroe in lista_personajes:
+        pelo = heroe["color_pelo"]
+        dict_color_pelo[pelo] = 0
+        
+    for heroe in lista_personajes:
+        pelo = heroe["color_pelo"]
+        dict_color_pelo[pelo] += 1
+        
+    print(dict_color_pelo)
+
+# 18 - Determinar cuántos superhéroes tienen cada tipo de inteligencia (En caso de no tener, Inicializarlo con ‘No Tiene’):
+def determinar_tipo_inteligencia():
+    dict_tipo_inteligencia = {}
+    no_inteligencia = "No tiene"
+    
+    for heroe in lista_personajes:
+        inteligencia = heroe["inteligencia"]
+        if (inteligencia == ""):
+            dict_tipo_inteligencia[no_inteligencia] = 0
+        else:    
+            dict_tipo_inteligencia[inteligencia] = 0
+        
+    for heroe in lista_personajes:
+        inteligencia = heroe["inteligencia"]
+        if (inteligencia == ""):
+            dict_tipo_inteligencia[no_inteligencia] += 1
+        else:
+            dict_tipo_inteligencia[inteligencia] += 1
+            
+    print(dict_tipo_inteligencia)
+
+# 19 - Listar todos los superhéroes agrupados por color de ojos:
+def listar_por_color_ojos():
+    dict_heroes_por_color_ojos = {}
+    
+    for heroe in lista_personajes:
+        ojos = heroe["color_ojos"]
+        dict_heroes_por_color_ojos[ojos] = []
+        
+    for heroe in lista_personajes:
+        ojos = heroe["color_ojos"]
+        nombre = heroe["nombre"]
+        for color in dict_heroes_por_color_ojos:
+            if (ojos == color):
+                dict_heroes_por_color_ojos[color].append(nombre)
+
+    print(dict_heroes_por_color_ojos)
+
+# 20 - Listar todos los superhéroes agrupados por color de pelo:
+def listar_por_color_pelo():
+    dict_heroes_por_color_pelo = {}
+    
+    for heroe in lista_personajes:
+        pelo = heroe["color_pelo"]
+        dict_heroes_por_color_pelo[pelo] = []
+        
+    for heroe in lista_personajes:
+        pelo = heroe["color_pelo"]
+        nombre = heroe["nombre"]
+        for color in dict_heroes_por_color_pelo:
+            if (pelo == color):
+                dict_heroes_por_color_pelo[color].append(nombre)
+                
+    print(dict_heroes_por_color_pelo)
+
+# 21 - Listar todos los superhéroes agrupados por tipo de inteligencia:
+def listar_por_inteligencia():
+    dict_heroes_por_inteligencia = {}
+    
+    for heroe in lista_personajes:
+        inteligencia = heroe["inteligencia"]
+        dict_heroes_por_inteligencia[inteligencia] = []
+               
+    for heroe in lista_personajes:
+        inteligencia = heroe["inteligencia"]
+        nombre = heroe["nombre"]
+        for tipo in dict_heroes_por_inteligencia:
+            if (inteligencia == tipo):
+                dict_heroes_por_inteligencia[tipo].append(nombre)
+                
+    dict_heroes_por_inteligencia["No tiene"] = dict_heroes_por_inteligencia.pop("")
+                     
+    print(dict_heroes_por_inteligencia)
+
+# Construir un menú que permita elegir qué dato obtener:
+while True:
+    print("Menu:")
+    print("1 - Nombre de cada superhéroe")
+    print("2 - Nombre y altura de cada superhéroe")
+    print("3 - Superhéroe más alto")
+    print("4 - Superhéroe más bajo")
+    print("5 - Altura promedio de los superhéroes")
+    print("6 - Superhéroe más y menos pesado")
+    print("7 - Nombre de cada superhéroe masculino")
+    print("8 - Nombre de cada superhéroe femenino")
+    print("9 - Superhéroe masculino más alto")
+    print("10 - Superhéroe femenino más alto")
+    print("11 - Superhéroe masculino más bajo")
+    print("12 - Superhéroe femenino más bajo")
+    print("13 - Altura promedio de los superhéroes masculinos")
+    print("14 - Altura promedio de los superhéroes femeninos")
+    print("15 - Nombre de los superhéroes asociados a los items 9 a 12")
+    print("16 - Cantidad de héroes con un tipo de color de ojos")
+    print("17 - Cantidad de héroes con un tipo de color de pelo")
+    print("18 - Cantidad de héroes con un tipo de inteligencia")
+    print("19 - Superhéroes ordenados por color de ojos")
+    print("20 - Superhéroes ordenados por color de pelo")
+    print("21 - Superhéroes ordenados por tipo de inteligencia")
+    print("22 - Cerrar menú")
+    while True:
+        comando = input("Elegir función:")
+        if (comando.isdecimal()):
+            comando = int(comando)
+            if (comando >= 1 and comando <= 22):
+                break
+        
+    if (comando == 1):
+        imprimir_nombres()
+    elif (comando == 2):
+        imprimir_nombres_y_alturas()
+    elif (comando == 3):
+        determinar_altura_maxima()
+    elif (comando == 4):
+        determinar_altura_minima()
+    elif (comando == 5):
+        determinar_altura_promedio()
+    elif (comando == 6):
+        determinar_peso_maximo_y_minimo()
+    elif (comando == 7):
+        imprimir_nombres_masculinos()
+    elif (comando == 8):
+        imprimir_nombres_femeninos()
+    elif (comando == 9):
+        determinar_altura_maxima_masculina()
+    elif (comando == 10):
+        determinar_altura_maxima_femenina()
+    elif (comando == 11):
+        determinar_altura_minima_masculina()
+    elif (comando == 12):
+        determinar_altura_minima_femenina()
+    elif (comando == 13):
+        determinar_altura_promedio_masculina()
+    elif (comando == 14):
+        determinar_altura_promedio_femenina()
+    elif (comando == 15):
+        informar_datos()
+    elif (comando == 16):
+        determinar_color_ojos()
+    elif (comando == 17):
+        determinar_color_pelo()
+    elif (comando == 18):        
+        determinar_tipo_inteligencia()
+    elif (comando == 19):          
+        listar_por_color_ojos()
+    elif (comando == 20):           
+        listar_por_color_pelo()
+    elif (comando == 21):           
+        listar_por_inteligencia()
+    else:
+        break
+    
+# Santiago Collazo - santiago.collazo7@gmail.com

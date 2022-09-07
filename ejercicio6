@@ -113,8 +113,10 @@ while True:
         determinar_altura_minima()
     elif (comando == 5):
         determinar_altura_promedio()
+        
     elif (comando == 6):
         determinar_peso_maximo_y_minimo()
+        
     else:
         break
     
