@@ -1,0 +1,336 @@
+from data_stark import lista_personajes
+import re
+
+
+def extraer_iniciales(nombre_heroe: str) -> str:
+    """
+    1.1
+    Recibe nombre del héroe (string) como parámetro.
+    Extrae la iniciales, removiendo "the" y "-" donde corresponda.
+    Devuelve iniciales del nombre en forma "N.A.".
+    En caso de que se ingrese un string vacío, devuelve "N/A".
+    """
+
+    if(len(nombre_heroe) > 0):
+        if(nombre_heroe.count("the") > 0):
+            nombre_heroe = nombre_heroe.replace("the", "")
+        if(nombre_heroe.count("-") > 0):
+            nombre_heroe = nombre_heroe.replace("-", " ")
+        nombre_heroe = nombre_heroe.strip()
+        lista_iniciales_heroe = nombre_heroe.split(" ")
+
+        iniciales_nombre = lista_iniciales_heroe[0]
+        iniciales_nombre = iniciales_nombre[:1]
+
+        if(len(lista_iniciales_heroe) > 1):
+            iniciales_apellido = lista_iniciales_heroe[-1]
+            iniciales_apellido = iniciales_apellido[:1]
+
+        iniciales_heroe = "."
+        if(len(lista_iniciales_heroe) > 1):
+            iniciales_heroe = iniciales_heroe.join(
+                [iniciales_nombre, iniciales_apellido, ""])
+        else:
+            iniciales_heroe = iniciales_heroe.join([iniciales_nombre, ""])
+        iniciales_heroe = iniciales_heroe.strip()
+
+        texto = iniciales_heroe
+    else:
+        texto = "N/A"
+
+    return texto
+
+
+def definir_iniciales_nombre(heroe: dict) -> bool:
+    """
+    1.2
+    Recibe un diccionario con todos los datos de un héroe.
+    Ejecuta la funcion extraer_iniciales y agrega una key "iniciales" al diccionario con el resultado.
+    Devuelve True si el diccionario tiene la key "nombre" y False de no ser el caso.
+    """
+
+    if "nombre" in heroe:
+        nombre_heroe = heroe["nombre"]
+        iniciales_heroe = extraer_iniciales(nombre_heroe)
+
+        heroe["iniciales"] = iniciales_heroe
+
+        definir_iniciales = True
+    else:
+        definir_iniciales = False
+
+    return definir_iniciales
+
+
+def agregar_iniciales_nombre(lista_heroes: list) -> bool:
+    """
+    1.3
+    Recibe una lista con todos los héroes.
+    Ejecuta la funcion definir_iniciales_nombre para cada héroe en la lista.
+    Devuelve True si el proceso finaliza con éxito y False si ocurre un error.
+    """
+
+    if(len(lista_heroes) > 0):
+        for heroe in lista_heroes:
+            iniciales = definir_iniciales_nombre(heroe)
+            if (iniciales == False):
+                print("El origen de datos no contiene el formato correcto")
+                valor_iniciales = False
+                break
+            else:
+                valor_iniciales = True
+    else:
+        valor_iniciales = False
+
+    return valor_iniciales
+
+
+def stark_imprimir_nombres_con_iniciales(lista_heroes: list):
+    """
+    1.4
+    Recibe una lista con todos los héroes.
+    Ejecuta la funcion agregar_iniciales_nombre para la lista.
+    Imprime el nombre y las iniciales de cada héroe en formato "* Nombre (Iniciales)".
+    En caso de que la lista este vacía, informa un error.
+    No devuelve nada.
+    """
+
+    if(len(lista_heroes) > 0):
+        agregar_iniciales_nombre(lista_heroes)
+        for heroe in lista_heroes:
+            nombre = heroe["nombre"]
+            iniciales = heroe["iniciales"]
+            nombre_e_iniciales = "* {0} ({1})".format(nombre, iniciales)
+            print(nombre_e_iniciales)
+    else:
+        print("Error en stark_imprimir_nombres_con_iniciales")
+
+
+def generar_codigo_heroe(id_heroe: int, genero_heroe: str) -> str:
+    """
+    2.1
+    Recibe un entero como identificador y un string como género del héroe.
+    Genera un string con el formato "GENERO-000…000ID" y una extensión máxima de 10 carácteres.
+    Valida que el género no esté vacío y sea M,F o NB.
+    Devuelve el string si todo está correcto. De otra forma, vuelve "N/A".
+    """
+
+    genero_heroe = genero_heroe.upper()
+    if(genero_heroe == "M" or genero_heroe == "F" or genero_heroe == "NB"):
+        largo = len(genero_heroe) + 1
+        id_heroe = str(id_heroe).zfill(10 - largo)
+        codigo_heroe = "-"
+        codigo_heroe = codigo_heroe.join([genero_heroe, id_heroe])
+    else:
+        codigo_heroe = "N/A"
+
+    return codigo_heroe
+
+
+def agregar_codigo_heroe(heroe: dict, id_heroe: int) -> bool:
+    """
+    2.2
+    Recibe un diccionario y un entero como identificador.
+    Ejecuta la funcion generar_codigo_heroe y agrega una key "codigo_heroe" al diccionario con el resultado.
+    Valida que el diccionario no esté vacío y que el código generado tenga exactamente 10 cáracteres.
+    Devuelve True si todo es correcto y False si falla la validación.
+    """
+
+    if (len(heroe) > 0):
+        genero = heroe["genero"]
+        codigo = generar_codigo_heroe(id_heroe, genero)
+        if (len(codigo) == 10):
+            heroe["codigo_heroe"] = codigo
+            valor_codigo = True
+        else:
+            valor_codigo = False
+    else:
+        valor_codigo = False
+
+    return valor_codigo
+
+
+def stark_generar_codigos_heroes(lista_heroes: list):
+    """
+    2.3
+    Recibe una lista con todos los héroes.
+    Itera la lista y ejecuta la función agregart_codigo_heroe.
+    Valida que la lista no esté vacía y que todos sus elementos sean diccionarios con la key "genero".
+    Imprime un texto indicando cantidad de códigos, código del primer elemento y código del último.
+    Si falla la validación, imprime en cambio un texto informando el problema.
+    No retorna nada.
+    """
+
+    if(len(lista_heroes) > 0):
+        contador = 0
+        for heroe in lista_heroes:
+            if isinstance(heroe, dict) and "genero" in heroe:
+                id = lista_heroes.index(heroe) + 1
+                agregar_codigo_heroe(heroe, id)
+                contador += 1
+
+        if(contador > 0):
+            codigo_primer_heroe = lista_heroes[0]["codigo_heroe"]
+            codigo_ultimo_heroe = lista_heroes[-1]["codigo_heroe"]
+
+            texto = "Se asignaron {0} códigos \n".format(contador)
+            texto += "* El código del primer héroe es:  {0} \n".format(
+                codigo_primer_heroe)
+            texto += "* El código del del último héroe es:  {0}".format(
+                codigo_ultimo_heroe)
+            print(texto)
+        else:
+            texto = "El origen de datos no contiene el formato correcto"
+            print(texto)
+    else:
+        texto = "El origen de datos no contiene el formato correcto"
+        print(texto)
+
+
+def sanitizar_entero(numero_str: str) -> int:
+    """
+    3.1
+    Recibe un string.
+    Intenta convertirlo a entero y validad si es positivo o negativo.
+    Si el string contiene carácteres no numéricos, retorna -1.
+    Si el string convertido en entero es negativo, retorna -2.
+    Si ocurre otro error y no puede convertirse a entero, retorna -3.
+    Si consigue convertirlo en un entero positivo, retorna ese entero.
+    """
+
+    if(numero_str.isalpha() == True):
+        valor_sanitizado_entero = -1
+    else:
+        try:
+            numero_int = int(numero_str)
+            if(numero_int < 0):
+                valor_sanitizado_entero = -2
+            else:
+                valor_sanitizado_entero = numero_int
+        except:
+            valor_sanitizado_entero = -3
+
+    return valor_sanitizado_entero
+
+
+def sanitizar_flotante(numero_str: str) -> float:
+    """
+    3.2
+    Recibe un string y elimina los espacios delante y atrás del mismo (de tenerlos).
+    Intenta convertirlo a flotante y valida si es positivo o negativo.
+    Si el string contiene carácteres no numéricos, retorna -1.
+    Si el string convertido en flotante es negativo, retorna -2.
+    Si ocurre otro error y no puede convertirse a flotante, retorna -3.
+    Si consigue convertirlo en un flotante positivo, retorna ese flotante.
+    """
+
+    numero_str = numero_str.strip()
+    if(numero_str.isalpha() == True):
+        valor_sanitizado_flotante = -1
+    else:
+        try:
+            numero_float = float(numero_str)
+            if(numero_float < 0):
+                valor_sanitizado_flotante = -2
+            else:
+                valor_sanitizado_flotante = numero_float
+        except:
+            valor_sanitizado_flotante = -3
+
+    return valor_sanitizado_flotante
+
+
+def sanitizar_string(valor_str: str, valor_por_defecto: str = "-") -> str:
+    """
+    3.3
+    Recibe un string a validar y otro string como valor por defecto opcional.
+    Valida que el string a validar no esté vacío. Si es el caso, retorna el valor por defecto.
+    Valida que el string a validar no contenga números. Si es el caso, retorna "N/A".
+    Si el string a validar contiene valores no númericos, reemplaza "/" por un espacio (de ser el caso).
+    Remueve los espacios al principio y final del string validado, lo transforma a minúscula y lo retorna.
+    """
+
+    if (len(valor_str) == 0):
+        valor_por_defecto = valor_por_defecto.strip()
+        valor_por_defecto = valor_por_defecto.lower()
+        valor_sanitizado_string = valor_por_defecto
+    else:
+        verificar_numeros = bool(re.search('[0-9]+', valor_str))
+        if(verificar_numeros == True):
+            valor_sanitizado_string = "N/A"
+        else:
+            valor_str = re.sub('/', ' ', valor_str)
+            valor_str = valor_str.strip()
+            valor_str = valor_str.lower()
+            valor_sanitizado_string = valor_str
+
+    return valor_sanitizado_string
+
+
+def sanitizar_dato(heroe: dict, clave: str, tipo_dato: str) -> bool:
+    """
+    3.4
+    Recibe un diccionario con datos de un héroe, un string como clave de diciconario y un string como tipo de dato (string, flotante o entero).
+    Valida que la clave indicada en el string exista en el diccionario. Si no es el caso, informa error y retorna False.
+    Valida que el tipo de dato indicado sea el correcto. Si no es el caso, informa error y retorna False.
+    Si la validación es exitosa, ejecuta la función sanitizar_string, sanitizar_entero o sanitizar_flotante (segùn el tipo de dato).
+    Valida si la función apropiada consiguió sanitizar el dato. De ser el caso, retorna True. Si no es el caso, retorna False.
+    """
+
+    tipo_dato = tipo_dato.lower()
+    if (clave in heroe):
+        if (tipo_dato == "string" or tipo_dato == "entero" or tipo_dato == "flotante"):
+            valor = heroe[clave]
+
+            if (tipo_dato == "string"):
+                resultado_sanit_str = sanitizar_string(valor)
+                if not (resultado_sanit_str == "N/A"):
+                    valor_sanitizado_dato = True
+                else:
+                    valor_sanitizado_dato = False
+
+            elif (tipo_dato == "entero"):
+                resultado_sanit_int = sanitizar_entero(valor)
+                if not (resultado_sanit_int < 0):
+                    valor_sanitizado_dato = True
+                else:
+                    valor_sanitizado_dato = False
+
+            elif (tipo_dato == "flotante"):
+                resultado_sanit_float = sanitizar_flotante(valor)
+                if not (resultado_sanit_float < 0):
+                    valor_sanitizado_dato = True
+                else:
+                    valor_sanitizado_dato = False
+
+        else:
+            print("Tipo de dato no reconocido.")
+            valor_sanitizado_dato = False
+    else:
+        print("La clave especificada no existe en el héroe.")
+        valor_sanitizado_dato = False
+
+    return valor_sanitizado_dato
+
+def stark_normalizar_datos(lista_heroes:list):
+    """
+    3.5
+    Recibe una lista con los datos de los héroes.
+    Valida que la lista no esté vacía. Si está vacía, informa de error.
+    Itera la lista y ejecuta la función sanitizar_datos para las key "altura", "peso", "color_ojos", "color_pelo", "fuerza" e "inteligencia".
+    Una vez sanitizados los datos, informa esto mediante un print.
+    No retorna nada.
+    """
+    if (len(lista_heroes) > 0):
+        for heroe in lista_heroes:
+            sanitizar_dato(heroe, "altura", "flotante")
+            sanitizar_dato(heroe, "peso", "flotante")
+            sanitizar_dato(heroe, "color_ojos", "string")
+            sanitizar_dato(heroe, "color_pelo", "string")
+            sanitizar_dato(heroe, "fuerza", "entero")
+            sanitizar_dato(heroe, "inteligencia", "string")
+        print("Datos normalizados")
+    else:
+        print("Error: Lista de héroes vacía")
+
+# Santiago Collazo - santiago.collazo7@gmail.com

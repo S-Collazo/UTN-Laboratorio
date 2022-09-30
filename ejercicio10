@@ -1,0 +1,203 @@
+import json
+import re
+
+url_archivo = r"C:\Users\Santiago\Documents\UTN\Laboratorio\UTN-Laboratorio\data_stark.json"
+
+def imprimir_dato(dato:str):
+    """
+    Recibe un string como parámetro.
+    Imprime el string.
+    No retorna nada.
+    """
+    print(dato)
+
+def imprimir_menu_desafio_5():
+    """
+    1.1
+    Imprime el menú de opciones.
+    No retorna nada.
+    """
+    menu_texto = "Menu:"
+    menu_texto += "\n A - Nombre de cada superhéroe masculino"
+    menu_texto += "\n B - Nombre de cada superhéroe femenino"
+    menu_texto += "\n C - Superhéroe masculino más alto"
+    menu_texto += "\n D - Superhéroe femenino más alto"
+    menu_texto += "\n E - Superhéroe masculino más bajo"
+    menu_texto += "\n F - Superhéroe femenino más bajo"
+    menu_texto += "\n G - Altura promedio de los superhéroes masculinos"
+    menu_texto += "\n H - Altura promedio de los superhéroes femeninos"
+    menu_texto += "\n I - Nombre de los superhéroes asociados a los items 9 a 12"
+    menu_texto += "\n J - Cantidad de héroes con un tipo de color de ojos"
+    menu_texto += "\n K - Cantidad de héroes con un tipo de color de pelo"
+    menu_texto += "\n L - Cantidad de héroes con un tipo de inteligencia"
+    menu_texto += "\n M - Superhéroes ordenados por color de ojos"
+    menu_texto += "\n N - Superhéroes ordenados por color de pelo"
+    menu_texto += "\n O - Superhéroes ordenados por tipo de inteligencia"
+    menu_texto += "\n Z - Cerrar menú"
+    
+    imprimir_dato(menu_texto)
+
+def stark_menu_principal_desafio_5():
+    """
+    1.2
+    Ejecuta la función imprimir_menu_desafio_5.
+    Pide al usuario que ingrese una letra correspondiente a las opciones del menú.
+    Valida que sea una letra que vaya de la A a la P (puede ser minúscula o mayúscula).
+    Si la validación es exitosa, retorna la letra.
+    Si la validación no es exitosa, retorna -1.
+    """
+    imprimir_menu_desafio_5()
+        
+    while True:
+        menu_comando = input("Elegir función:")
+        menu_validacion = bool(re.search('[a-oA-OzZ]', menu_comando))
+        if (menu_validacion == True):
+            dato = menu_comando
+            break
+        else:
+            dato = -1
+            break
+         
+    return dato
+
+def stark_marvel_app_5(lista_heroes:list):
+    """
+    1.3
+    Recibe como parámetro una lista con todos los héroes.
+    Ejecuta stark_menu_principal_desafio_5.
+    Ejecuta la función asociada a la letra ingresada o cierra el menú si la letra es "Z".
+    No retorna nada.
+    """ 
+    comando = stark_menu_principal_desafio_5()
+    
+    while True:
+        if (comando == "A"):
+            funcion()
+            break
+        elif (comando == "B"):
+            funcion()
+            break
+        elif (comando == "C"):
+            funcion()
+            break
+        elif (comando == "D"):
+            funcion()
+            break
+        elif (comando == "E"):
+            funcion()
+            break
+        elif (comando == "F"):
+            funcion()
+            break
+        elif (comando == "G"):
+            funcion()
+            break
+        elif (comando == "H"):
+            funcion()
+            break
+        elif (comando == "I"):
+            funcion()
+            break
+        elif (comando == "J"):
+            funcion()
+            break
+        elif (comando == "K"):
+            funcion()
+            break
+        elif (comando == "L"):
+            funcion()
+            break
+        elif (comando == "M"):
+            funcion()
+            break
+        elif (comando == "N"):
+            funcion()
+            break
+        elif (comando == "O"):
+            funcion()
+            break
+        elif (comando == "Z"):
+            break
+        
+def leer_archivo(url_archivo:str) -> list:
+    """
+    1.4
+    Recibe un string como dirección de archivo.
+    Abre el archivo y convierte los datos en diccionarios.
+    Agrega los diccionarios a una lista.
+    Retorna la lista.
+    """ 
+    dict_heroes = {}
+    lista_heroes = []
+
+    with open(url_archivo, "r") as archivo:
+        dict_heroes = json.load(archivo)
+        lista_heroes.append(dict_heroes)
+
+        return lista_heroes
+    
+def guardar_archivo(nombre_archivo:str, contenido:str):
+    
+    try:  
+        with open(nombre_archivo, "w+") as archivo:
+            archivo.write(contenido)
+            print("Se creó el archivo: {0}".format(nombre_archivo))
+            validador = True
+    except:
+        print("Error al crear el archivo: {0}".format(nombre_archivo))
+        validador = False
+        
+    return validador
+
+test = leer_archivo(url_archivo)
+print(test)   
+ 
+            
+"""          
+        if (comando == 1):
+            imprimir_nombres()
+        elif (comando == 2):
+            imprimir_nombres_y_alturas()
+        elif (comando == 3):
+            determinar_altura_maxima()
+        elif (comando == 4):
+            determinar_altura_minima()
+        elif (comando == 5):
+            determinar_altura_promedio()
+        elif (comando == 6):
+            determinar_peso_maximo_y_minimo()
+        elif (comando == 7):
+            imprimir_nombres_masculinos()
+        elif (comando == 8):
+            imprimir_nombres_femeninos()
+        elif (comando == 9):
+            determinar_altura_maxima_masculina()
+        elif (comando == 10):
+            determinar_altura_maxima_femenina()
+        elif (comando == 11):
+            determinar_altura_minima_masculina()
+        elif (comando == 12):
+            determinar_altura_minima_femenina()
+        elif (comando == 13):
+            determinar_altura_promedio_masculina()
+        elif (comando == 14):
+            determinar_altura_promedio_femenina()
+        elif (comando == 15):
+            informar_datos()
+        elif (comando == 16):
+            determinar_color_ojos()
+        elif (comando == 17):
+            determinar_color_pelo()
+        elif (comando == 18):        
+            determinar_tipo_inteligencia()
+        elif (comando == 19):          
+            listar_por_color_ojos()
+        elif (comando == 20):           
+            listar_por_color_pelo()
+        elif (comando == 21):           
+            listar_por_inteligencia()
+        else:
+            break
+"""  
+
+# Santiago Collazo - santiago.collazo7@gmail.com

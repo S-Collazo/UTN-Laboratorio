@@ -1,0 +1,256 @@
+import json
+import re
+
+url_archivo = r"C:\Users\Santiago\Documents\UTN\Laboratorio\UTN-Laboratorio\data_stark_p.json"
+global lista_exportable
+
+def leer_archivo(url_archivo:str) -> list:
+    dict_archivo = {}
+    lista_archivo = []
+
+    with open(url_archivo, "r") as archivo:
+        dict_archivo = json.load(archivo)
+        lista_archivo.append(dict_archivo)
+
+    lista_heroes = lista_archivo[0]["heroes"]
+    
+    lista_exportable = lista_heroes
+        
+    return lista_heroes
+
+def exportar_lista(lista_heroes:list):
+    lista_exportable = lista_heroes[:]
+    
+    with open("lista_ordenada.csv", "w+") as archivo:
+        for heroe in lista_exportable:
+            texto = "{0},{1},{2},{3},{4},{5}\n"
+            texto = texto.format(heroe["nombre"], heroe["identidad"], heroe["altura"], heroe["peso"], heroe["fuerza"], heroe["inteligencia"])
+        
+            archivo.write(texto)
+        
+def listar_heroes(lista_heroes:list, num_listado:int) -> list:
+    """
+    1. Listar los primeros N héroes. El valor de N será ingresado por el usuario  (Validar que no supere max. de lista).
+    """
+    
+    heroes = lista_heroes[:]
+    lista_heroes_n = []
+    
+    if (num_listado <= len(heroes)):
+        for i in range(num_listado):
+            personaje = heroes[i]["nombre"]
+            lista_heroes_n.append(personaje)
+                 
+    return lista_heroes_n
+
+def qsort(lista_heroes:list, parametro:str, modo:str) -> list:
+    """
+    2. Ordenar y Listar héroes por altura. Preguntar al usuario si lo quiere ordenar de manera ascendente ('asc') o descendente ('desc').
+    3. Ordenar y Listar héroes por fuerza. Preguntar al usuario si lo quiere ordenar de manera ascendente ('asc') o descendente ('desc').
+    """
+    
+    heroes = lista_heroes[:]
+    heroes_iz = []
+    heroes_de = []
+    
+    if(len(heroes) <= 1):
+        heroes_ordenados = heroes
+    else:
+        pivot = heroes[0]
+        if (modo == "asc"):
+            for personaje in heroes[1:]:
+                valor = personaje[parametro]
+                if (valor > pivot[parametro]):
+                    heroes_de.append(personaje)
+                else:
+                    heroes_iz.append(personaje)
+                        
+            heroes_iz = qsort(heroes_iz,parametro,"asc")
+            heroes_iz.append(pivot)
+            heroes_de = qsort(heroes_de,parametro,"asc")
+            
+            heroes_ordenados = heroes_iz + heroes_de
+            
+        else:
+            for personaje in heroes[1:]:
+                valor = personaje[parametro]
+                if (valor < pivot[parametro]):
+                    heroes_de.append(personaje)
+                else:
+                    heroes_iz.append(personaje)
+                        
+            heroes_iz = qsort(heroes_iz,parametro,"desc")
+            heroes_iz.append(pivot)
+            heroes_de = qsort(heroes_de,parametro,"desc")
+            
+            heroes_ordenados = heroes_iz + heroes_de
+    
+    return heroes_ordenados
+
+def listar_por_promedio(lista_heroes:list, key:str, modo:str) -> list:
+    """
+    4. Calcular promedio de cualquier key numérica, filtrar los que cumplan con la condición de superar o no el promedio.
+    Preguntar al usuario la condición: 'menor' o 'mayor') se deberá listar en consola aquellos que cumplan con ser mayores o menores según corresponda.
+    """
+    
+    heroes = lista_heroes[:]
+    lista_promedio = []
+    validador = type(heroes[0][key])
+    
+    if(validador == int or validador == float):
+        contador = 0
+        valor_total_key = 0
+        for personaje in heroes:
+            valor_total_key = valor_total_key + personaje[key]
+            contador += 1
+            
+        promedio_key = valor_total_key / contador
+        
+        for personaje in heroes:
+            if (modo == "mayor"):
+                if(personaje[key] > promedio_key):
+                    lista_promedio.append(personaje)
+            else:
+                if(personaje[key] < promedio_key):
+                    lista_promedio.append(personaje)
+    
+    return lista_promedio
+
+def buscar_por_inteligencia(lista_heroes:list, tipo_inteligencia:str) -> list:
+    """
+    5. Buscar héroes por inteligencia [good, average, high] y listar en consola los que cumplan dicha búsqueda.
+    """
+    
+    heroes = lista_heroes[:]
+    lista_inteligencia = []
+    
+    for personaje in heroes:
+        heroes_inteligencia = personaje["inteligencia"]
+        validador = bool(re.search(tipo_inteligencia, heroes_inteligencia))
+        
+        if (validador == True):
+            lista_inteligencia.append(personaje)
+    
+    return lista_inteligencia
+
+def menu():
+    
+    lista_heroes = leer_archivo(url_archivo)
+
+    while True:
+        texto = "1. Listar los primeros N héroes."
+        texto += "\n2. Ordenar y Listar héroes por altura (ascendente o descendente)."
+        texto += "\n3. Ordenar y Listar héroes por fuerza (ascendente o descendente)."
+        texto += "\n4. Filtrar y listar héroes por promedio de key ingresada (mayor o menor)."
+        texto += "\n5. Buscar héroes por inteligencia (good, average, high)"
+        texto += "\n6. Exportar a CSV la lista de héroes ordenada según opción elegida anteriormente."
+        texto += "\n7. Cerrar menú."
+        
+        print(texto)
+        opcion = input("Elegir opción:")
+        opcion = int(opcion)
+                
+        if (opcion == 1):
+            while True:
+                num_listado = input("Indicar cantidad de héroes:")
+                validador_opcion_1 = bool(re.search('[0-9]+', num_listado))
+                
+                if(validador_opcion_1 == True):
+                    num_listado = int(num_listado)
+                    lista_nombres = listar_heroes(lista_heroes, num_listado)
+                    print(lista_nombres)
+                    
+                    lista_exportable = lista_nombres
+                    
+                    break
+                else:
+                    print("Error. El valor debe ser un número.")
+                    
+        elif (opcion == 2):
+            while True:
+                modo = input("Indicar si el orden es ascendente (asc) o descendente (desc):")
+                validador_opcion_2 = bool(re.search('asc|desc', modo, re.IGNORECASE))
+                
+                if (validador_opcion_2 == True):
+                    lista_alturas = qsort(lista_heroes,"altura",modo)
+                    print(lista_alturas)
+                    
+                    lista_exportable = lista_alturas
+                    
+                    break
+                else:
+                    print("Error. El orden debe ser 'asc' o 'desc'.")
+                    
+        elif (opcion == 3):
+            while True:
+                modo = input("Indicar si el orden es ascendente (asc) o descendente (desc):")
+                validador_opcion_3 = bool(re.search('asc|desc', modo, re.IGNORECASE))
+                
+                if (validador_opcion_3 == True):
+                    lista_fuerza = qsort(lista_heroes,"fuerza",modo)
+                    print(lista_fuerza)
+                    
+                    lista_exportable = lista_fuerza
+                    
+                    break
+                else:
+                    print("Error. El orden debe ser 'asc' o 'desc'.")
+                
+        elif (opcion == 4):
+             while True:
+                key = input("Indicar la key numérica a promediar:")
+                validador_opcion_4_a = bool(re.search('[a-z]+', key, re.IGNORECASE))
+                
+                if (validador_opcion_4_a == True):
+                    modo = input("Indicar criterio para filtrar (mayor o menor):")
+                    validador_opcion_4_b = bool(re.search('mayor|menor', modo, re.IGNORECASE))
+                    
+                    if (validador_opcion_4_b == True):
+                        if (modo == "mayor"):
+                            lista_promedio = listar_por_promedio(lista_heroes,key,"asc")
+                            print(lista_promedio)
+                            
+                            lista_exportable = lista_promedio
+                            
+                            break
+                        if (modo == "menor"):
+                            lista_promedio = listar_por_promedio(lista_heroes,key,"desc")
+                            print(lista_promedio)
+                            
+                            lista_exportable = lista_promedio
+                            
+                            break
+                        else:
+                            print("Error. El criterio debe ser 'mayor' o 'menor'")
+                else:
+                    print("Error. Key no válida.")
+                    
+        elif (opcion == 5):
+            while True:
+                tipo_inteligencia = input("Indicar tipo de inteligencia (good, average o high):")
+                tipo_inteligencia = tipo_inteligencia.lower()
+                validador_opcion_5 = bool(re.search('good|average|high', tipo_inteligencia))
+                
+                if (validador_opcion_5 == True):
+                    lista_inteligencia = buscar_por_inteligencia(lista_heroes,tipo_inteligencia)
+                    print(lista_inteligencia)
+                    
+                    lista_exportable = lista_inteligencia
+                    
+                    break
+                else:
+                    print("Error. El tipo de inteligencia debe ser 'good', 'average' o 'high'.")
+                        
+        elif (opcion == 6):
+            try:
+                exportar_lista(lista_exportable)
+            except:
+                print("Error. Elegir una de las opciones anteriores antes de exportar lista.")
+        elif (opcion == 7):
+            break
+        else:
+            print("Opción inválida")
+
+menu()
+
+# Santiago Collazo - santiago.collazo7@gmail.com
