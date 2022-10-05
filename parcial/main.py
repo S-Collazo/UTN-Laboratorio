@@ -33,11 +33,10 @@ def starwars_app():
         elif(respuesta=="4"):
             while True:
                 personaje_buscado = input("Indicar personaje a buscar:")
-                verificador = re.search('[a-z]+', personaje_buscado, re.IGNORECASE)
+                verificador = re.search('[a-z0-9-]+', personaje_buscado, re.IGNORECASE)
                 
                 if not (verificador == None):
-                    personaje = funciones.buscar_personaje(lista_personajes, personaje_buscado)
-                    print(personaje)
+                    funciones.buscar_personaje(lista_personajes, personaje_buscado)
                     break
                 
         elif(respuesta=="5"):
