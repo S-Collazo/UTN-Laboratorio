@@ -159,7 +159,3 @@ def buscar_personaje(lista_personaje:list, personaje_buscado:str):
             
     if(verificador == False):
         print("No se encontró el personaje.")
-
-
-test = cargar_json("parcial\data.json")
-test_2 = print(listar_por_peso(test))
