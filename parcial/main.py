@@ -23,7 +23,7 @@ def starwars_app():
             print(lista_altura)
             
         elif(respuesta=="2"):
-            mayor_altura = funciones.altura_por_genero(lista_personajes)
+            funciones.altura_por_genero(lista_personajes)
             
         elif(respuesta=="3"):
             lista_peso = funciones.listar_por_peso(lista_personajes)
