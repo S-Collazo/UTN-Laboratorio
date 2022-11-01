@@ -1,4 +1,3 @@
-from tkinter import Y
 import pygame
 from constantes import *
 from auxiliar import Auxiliar
