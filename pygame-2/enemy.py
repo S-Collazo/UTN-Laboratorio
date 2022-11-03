@@ -3,7 +3,7 @@ from constantes import *
 from auxiliar import Auxiliar
 from player import Player
 
-class Enemigo(Player):
+class Enemy(Player):
     def __init__ (self,x,y,speed_walk,speed_run,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_L) -> None:
         self.walk_r = Auxiliar.getSurfaceFromSpriteSheet(PATH_RECURSOS + "\\images\\caracters\\green_hat\\walk.png",15,1)[:12]
         self.walk_l = Auxiliar.getSurfaceFromSpriteSheet(PATH_RECURSOS + "\\images\\caracters\\green_hat\\walk.png",15,1,True)[:12]

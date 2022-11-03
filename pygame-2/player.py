@@ -3,7 +3,7 @@ from constantes import *
 from auxiliar import Auxiliar
 
 class Player:
-    def __init__ (self,x,y,speed_walk,speed_run,gravity,jump_power,jump_height,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_R) -> None:
+    def __init__ (self,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_R) -> None:
         self.walk_r = Auxiliar.getSurfaceFromSpriteSheet(PATH_RECURSOS + "\\images\\caracters\\stink\\walk.png",15,1)[:12]
         self.walk_l = Auxiliar.getSurfaceFromSpriteSheet(PATH_RECURSOS + "\\images\\caracters\\stink\\walk.png",15,1,True)[:12]
         self.stay_r = Auxiliar.getSurfaceFromSpriteSheet(PATH_RECURSOS + "\\images\\caracters\\stink\\idle.png",16,1)
@@ -21,11 +21,11 @@ class Player:
         
         self.move_x = 0
         self.move_y = 0
-        self.speed_walk = speed_walk
-        self.speed_run = speed_run
+        self.speed_walk = int(ANCHO_VENTANA / 200)
+        self.speed_run = int(ANCHO_VENTANA / 100)
         self.gravity = gravity
-        self.jump_power = jump_power
-        self.jump_height = jump_height
+        self.jump_power = int((ALTO_VENTANA * 4) / 100)
+        self.jump_height = int(ALTO_VENTANA / 5)
         self.is_jump = False
         self.y_start_jump = y
         
@@ -114,15 +114,15 @@ class Player:
         screen.blit(self.image, self.rect)
         
     def events(self,delta_ms,keys):
-        if(keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT]):
+        if(keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT] and not keys[pygame.K_SPACE]):
             self.walk(DIRECTION_L)
-        if(not keys[pygame.K_LEFT] and keys[pygame.K_RIGHT]):
+        if(not keys[pygame.K_LEFT] and keys[pygame.K_RIGHT] and not keys[pygame.K_SPACE]):
             self.walk(DIRECTION_R)
         if(not keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT] and not keys[pygame.K_SPACE]):
             self.stay()
         if(keys[pygame.K_LEFT] and keys[pygame.K_RIGHT] and not keys[pygame.K_SPACE]):
             self.stay()   
-        if(keys[pygame.K_SPACE]):
+        if(keys[pygame.K_SPACE] or keys[pygame.K_LEFT] and keys[pygame.K_RIGHT] and keys[pygame.K_SPACE]):
             self.jump(True)
 
         
