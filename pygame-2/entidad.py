@@ -1,9 +1,10 @@
 import pygame
+import re
 from constantes import *
 from auxiliar import Auxiliar
 
 class Entity:
-    def __init__ (self,asset_folder,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_R,p_scale=1,interval_time_jump=100) -> None:  
+    def __init__ (self,asset_folder,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_R,p_scale=1,interval_time_jump=50) -> None:  
         self.stay_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\Idle ({0}).png",10,flip=False,scale=p_scale)
         self.stay_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\Idle ({0}).png",10,flip=True,scale=p_scale)
         self.jump_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\Jump ({0}).png",10,flip=False,scale=p_scale)
@@ -27,11 +28,11 @@ class Entity:
         
         self.move_x = 0
         self.move_y = 0
-        self.speed_walk = int(ANCHO_VENTANA / 200)
-        self.speed_run = int(ANCHO_VENTANA / 100)
+        self.speed_walk = int((ANCHO_VENTANA / 50) * p_scale)
+        self.speed_run = self.speed_walk * 2
         self.gravity = gravity
-        self.jump_power = int((ALTO_VENTANA * 4) / 100)
-        self.jump_height = int(ALTO_VENTANA / 4)
+        self.jump_height = int((ALTO_VENTANA / 1.4) * p_scale)
+        self.jump_power = self.jump_height / 4
         self.y_start_jump = y
         self.is_jump = False
         self.is_fall = False
@@ -45,22 +46,17 @@ class Entity:
         self.rect.y = y
         
         self.direction = direction_inicial
-        self.direction_change = False
                 
         self.rect_collition = pygame.Rect(x+self.rect.width / 3,y,self.rect.width / 3,self.rect.height)
         self.rect_ground_collition = pygame.Rect(self.rect_collition)
         self.rect_ground_collition.height = GROUND_COLLIDE_H
         self.rect_ground_collition.y = y + self.rect.height - GROUND_COLLIDE_H
-        
+                
         self.rect_body_collition = pygame.Rect(x,y,self.rect.width/2,self.rect.height)
         self.rect_body_collition_front = pygame.Rect(self.rect_body_collition)
-        self.rect_body_collition_front.x = self.rect_body_collition.x + (self.rect_body_collition.width)
         self.rect_body_collition_back = pygame.Rect(self.rect_body_collition)
-    
-    def walk (self,direction_walk,direction_switch=False):
-        if self.direction != direction_walk or direction_switch:
-            self.direction_change = True
-        
+            
+    def walk (self,direction_walk):        
         if(self.is_jump == False and self.is_fall == False):
             if self.direction != direction_walk or (self.animation != self.walk_r and self.animation != self.walk_l):
                 self.frame = 0
@@ -127,26 +123,25 @@ class Entity:
             retorno = True
         else:
             for plataforma in lista_plataformas:
-                if(self.rect_ground_collition.colliderect(plataforma.rect_ground_collition)):
+                if(plataforma.collition_enabled and self.rect_ground_collition.colliderect(plataforma.rect_ground_collition)):
                     retorno = True
                     break   
         return retorno
                 
-    def add_x(self,delta_x):
-        self.rect.x += delta_x
-        self.rect_collition.x += delta_x
-        self.rect_ground_collition.x += delta_x
-        self.rect_body_collition_front.x += delta_x
-        self.rect_body_collition_back.x += delta_x
+    def add_x(self,delta_x):        
+        if((self.rect.x + delta_x) >= 0 and (self.rect.x + self.rect.w + delta_x) <= ANCHO_VENTANA):
+            self.rect.x += delta_x
+            self.rect_collition.x += delta_x
+            self.rect_ground_collition.x += delta_x
+            self.rect_body_collition.x += delta_x
         
-        if(self.direction_change):
-            if (self.direction == DIRECTION_R):
-                self.rect_body_collition_front.x += self.rect_body_collition.width
-                self.rect_body_collition_back.x -= self.rect_body_collition.width
-            if (self.direction == DIRECTION_L):
-                self.rect_body_collition_front.x -= self.rect_body_collition.width
-                self.rect_body_collition_back.x += self.rect_body_collition.width
-            self.direction_change = False
+        if(self.direction == DIRECTION_R):
+            self.rect_body_collition_front.x = self.rect_body_collition.x + (self.rect_body_collition.width)
+            self.rect_body_collition_back.x = self.rect_body_collition.x
+        else:
+            self.rect_body_collition_front.x = self.rect_body_collition.x
+            self.rect_body_collition_back.x = self.rect_body_collition.x + (self.rect_body_collition.width)
+        
                 
     def add_y(self,delta_y):
         self.rect.y += delta_y
@@ -174,7 +169,7 @@ class Entity:
             else:
                 if(self.is_jump):
                     self.jump(False)
-                self.is_fall = False    
+                self.is_fall = False
                 
     def do_animation (self,delta_ms,frame_rate_ms):
         self.tiempo_transcurrido_anim += delta_ms
@@ -194,15 +189,15 @@ class Entity:
                 if(self.rect_body_collition_back.colliderect(oponente.rect_body_collition_front)):
                     self.lives -= 1
                               
-                if(self.entity_type == PLAYER):
+                if(self.entity_type == PLAYER and oponente.lives > 0):
                     if(self.rect_body_collition_front.colliderect(oponente.rect_body_collition_front)):
                         self.lives -= 1
                         
-                    if(self.rect.x <= oponente.rect.x):
-                        self.add_x(-100)
-                    else:
-                        self.add_x(100)
-                    self.jump(True)
+                        if(self.rect.x <= oponente.rect.x):
+                            self.add_x(-100)
+                        else:
+                            self.add_x(100)
+                        self.jump(True)
                                     
                 break
                                              

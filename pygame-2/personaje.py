@@ -4,10 +4,10 @@ from auxiliar import Auxiliar
 from entidad import Entity
 
 class Player(Entity):
-    def __init__ (self,asset,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_R) -> None:
+    def __init__ (self,asset,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_R,p_scale=0.2) -> None:
         self.asset_folder = "\\players\\{0}".format(asset)
         
-        super().__init__(self.asset_folder,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial,0.2)
+        super().__init__(self.asset_folder,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial,p_scale)
                 
         self.lives = 5
         self.score = 0
@@ -31,7 +31,7 @@ class Player(Entity):
         if(keys[pygame.K_LEFT] and keys[pygame.K_RIGHT] and not keys[pygame.K_SPACE]):
             super().stay()   
         if(keys[pygame.K_SPACE] or keys[pygame.K_LEFT] and keys[pygame.K_RIGHT] and keys[pygame.K_SPACE]):
-            if((self.tiempo_transcurrido - self.tiempo_last_jump) > self.interval_time_jump):
+            if((self.tiempo_transcurrido - self.tiempo_last_jump) > (self.interval_time_jump * FPS)):
                 super().jump(True)
                 self.tiempo_last_jump = self.tiempo_transcurrido
                    

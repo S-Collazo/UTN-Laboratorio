@@ -1,4 +1,5 @@
 import pygame
+from constantes import *
 
 class Auxiliar:
     @staticmethod
@@ -25,7 +26,7 @@ class Auxiliar:
     @staticmethod
     def getSurfaceFromSeparateFiles(path_format,quantity,flip=False,step = 1,scale=1,w=0,h=0,repeat_frame=1):
         lista = []
-        for i in range(1,quantity+1):
+        for i in range(step,quantity+1):
             path = path_format.format(i)
             surface_fotograma = pygame.image.load(path)
             fotograma_ancho_scaled = int(surface_fotograma.get_rect().w * scale)
@@ -40,3 +41,10 @@ class Auxiliar:
             for i in range(repeat_frame):
                 lista.append(surface_fotograma)
         return lista
+    
+    @staticmethod
+    def drawGrid(screen,block_size=10):
+        for x in range(0, ANCHO_VENTANA, block_size):
+            for y in range(0, ALTO_VENTANA, block_size):
+                rect = pygame.Rect(x, y, block_size, block_size)
+                pygame.draw.rect(screen, WHITE, rect, 1)

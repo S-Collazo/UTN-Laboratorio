@@ -5,6 +5,8 @@ from constantes import *
 from personaje import Player
 from enemigo import Enemy
 from plataforma import Platform
+from nivel import Level
+from auxiliar import Auxiliar
 
 flags = DOUBLEBUF
 
@@ -15,12 +17,12 @@ pygame.init()
 clock = pygame.time.Clock()
 delta_ms = clock.tick(FPS)
 
-imagen_fondo = pygame.image.load(PATH_RECURSOS + "\\images\\locations\\set_bg_01\\city\\all.png")
+imagen_fondo = pygame.image.load(PATH_RECURSOS + "\\images\\locations\\set_bg_06\\creepy_forest.png")
 imagen_fondo = pygame.transform.scale(imagen_fondo,(ANCHO_VENTANA,ALTO_VENTANA))
 
-player_1 = Player(asset="cowgirl",x=400,y=0,gravity=10,frame_rate_ms=80,move_rate_ms=40)
+player_1 = Player(asset="cowgirl",x=400,y=GROUND_LEVEL-100,gravity=10,frame_rate_ms=60,move_rate_ms=40)
 
-enemy_1 = Enemy(asset="cowgirl",x=800,y=0,gravity=10,frame_rate_ms=80,move_rate_ms=40)
+enemy_1 = Enemy(asset="cowgirl",x=800,y=0,gravity=10,frame_rate_ms=60,move_rate_ms=30)
 
 lista_personajes = []
 lista_personajes.append(player_1)
@@ -29,16 +31,10 @@ lista_enemigos = []
 lista_enemigos.append(enemy_1)
 
 lista_plataformas = []
-lista_plataformas.append(Platform(0,GROUND_LEVEL,ANCHO_VENTANA,GROUND_RECT_H,1))
-lista_plataformas.append(Platform(x=400,y=500,w=50,h=50,type=0))
-lista_plataformas.append(Platform(x=450,y=500,w=50,h=50,type=1))
-lista_plataformas.append(Platform(x=500,y=500,w=50,h=50,type=2))   
-lista_plataformas.append(Platform(x=600,y=430,w=50,h=50,type=12))
-lista_plataformas.append(Platform(x=650,y=430,w=50,h=50,type=14))
-lista_plataformas.append(Platform(x=750,y=360,w=50,h=50,type=12))
-lista_plataformas.append(Platform(x=800,y=360,w=50,h=50,type=13))
-lista_plataformas.append(Platform(x=850,y=360,w=50,h=50,type=13))
-lista_plataformas.append(Platform(x=900,y=360,w=50,h=50,type=14))
+lista_plataformas.append(Platform(x=0,y=GROUND_LEVEL,w=ANCHO_VENTANA,h=GROUND_RECT_H,type=1))
+Level.createPlaforms(lista_plataformas,x=350,y=550,w=50,h=50,tile_total=5,p_scale=0.4,collition_enabled=True,add_bottom=True)
+Level.createPlaforms(lista_plataformas,x=600,y=450,w=50,h=50,tile_total=4,p_scale=0.4,collition_enabled=True,add_bottom=True)
+Level.createPlaforms(lista_plataformas,x=800,y=350,w=50,h=50,tile_total=4,p_scale=0.4,collition_enabled=True,add_bottom=True)
 
 while True:
     for event in pygame.event.get():
@@ -49,7 +45,10 @@ while True:
     keys = pygame.key.get_pressed()
         
     screen.blit(imagen_fondo,imagen_fondo.get_rect())
-        
+    
+    for plataforma in lista_plataformas:
+        Platform.draw(plataforma,screen)
+       
     player_1.events(delta_ms,keys)   
     player_1.update(delta_ms,lista_plataformas,lista_enemigos)
     player_1.draw(screen)
@@ -57,8 +56,10 @@ while True:
     if(enemy_1.lives > 0):
         enemy_1.update(delta_ms,lista_plataformas,lista_personajes)
         enemy_1.draw(screen)
-        
-    for plataforma in lista_plataformas:
-        Platform.draw(plataforma,screen)
+                
+    if(DEBUG):
+        Auxiliar.drawGrid(screen,100)
+   
+    # screen.fill(FILTER_PURPLE,imagen_fondo.get_rect(),BLEND_RGBA_ADD)
          
     pygame.display.flip()
