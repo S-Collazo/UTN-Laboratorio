@@ -5,16 +5,16 @@ from auxiliar import Auxiliar
 
 class Entity:
     def __init__ (self,asset_folder,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_R,p_scale=1,interval_time_jump=50) -> None:  
-        self.stay_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\Idle ({0}).png",10,flip=False,scale=p_scale)
-        self.stay_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\Idle ({0}).png",10,flip=True,scale=p_scale)
-        self.jump_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\Jump ({0}).png",10,flip=False,scale=p_scale)
-        self.jump_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\Jump ({0}).png",10,flip=True,scale=p_scale)
-        self.walk_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\Run ({0}).png",8,flip=False,scale=p_scale)
-        self.walk_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\Run ({0}).png",8,flip=True,scale=p_scale)
-        self.shoot_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\Shoot ({0}).png",3,flip=False,scale=p_scale,repeat_frame=2)
-        self.shoot_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\Shoot ({0}).png",3,flip=True,scale=p_scale,repeat_frame=2)
-        self.knife_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\Melee ({0}).png",7,flip=False,scale=p_scale,repeat_frame=1)
-        self.knife_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\Melee ({0}).png",7,flip=True,scale=p_scale,repeat_frame=1)
+        self.stay_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_IDLE\\_IDLE_00{0}.png",1,flip=False,step = 0,scale=p_scale)
+        self.stay_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_IDLE\\_IDLE_00{0}.png",1,flip=True,step = 0,scale=p_scale)
+        self.jump_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_JUMP\\_JUMP_00{0}.png",9,flip=False,step = 0,scale=p_scale)
+        self.jump_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_JUMP\\_JUMP_00{0}.png",9,flip=True,step = 0,scale=p_scale)
+        self.walk_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_RUN\\_RUN_00{0}.png",2,flip=False,step = 0,scale=p_scale)
+        self.walk_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_RUN\\_RUN_00{0}.png",2,flip=True,step = 0,scale=p_scale)
+        #self.shoot_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\Shoot ({0}).png",3,flip=False,scale=p_scale,repeat_frame=2)
+        #self.shoot_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\Shoot ({0}).png",3,flip=True,scale=p_scale,repeat_frame=2)
+        self.knife_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_ATTACK\\_ATTACK_00{0}.png",9,flip=False,step = 0,scale=p_scale,repeat_frame=1)
+        self.knife_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_ATTACK\\_ATTACK_00{0}.png",9,flip=True,step = 0,scale=p_scale,repeat_frame=1)
         self.frame = 0
                 
         self.tiempo_transcurrido = 0
@@ -31,7 +31,7 @@ class Entity:
         self.speed_walk = int((ANCHO_VENTANA / 50) * p_scale)
         self.speed_run = self.speed_walk * 2
         self.gravity = gravity
-        self.jump_height = int((ALTO_VENTANA / 1.4) * p_scale)
+        self.jump_height = int((ALTO_VENTANA / 0.7) * p_scale)
         self.jump_power = self.jump_height / 4
         self.y_start_jump = y
         self.is_jump = False
@@ -123,7 +123,7 @@ class Entity:
             retorno = True
         else:
             for plataforma in lista_plataformas:
-                if(plataforma.collition_enabled and self.rect_ground_collition.colliderect(plataforma.rect_ground_collition)):
+                if(plataforma.collition_enabled and self.rect_ground_collition.colliderect(plataforma.rect_collition)):
                     retorno = True
                     break   
         return retorno

@@ -20,9 +20,9 @@ delta_ms = clock.tick(FPS)
 imagen_fondo = pygame.image.load(PATH_RECURSOS + "\\images\\locations\\set_bg_06\\creepy_forest.png")
 imagen_fondo = pygame.transform.scale(imagen_fondo,(ANCHO_VENTANA,ALTO_VENTANA))
 
-player_1 = Player(asset="cowgirl",x=400,y=GROUND_LEVEL-100,gravity=10,frame_rate_ms=60,move_rate_ms=40)
+player_1 = Player(asset="knight_main",x=400,y=GROUND_LEVEL-100,gravity=10,frame_rate_ms=80,move_rate_ms=60)
 
-enemy_1 = Enemy(asset="cowgirl",x=800,y=0,gravity=10,frame_rate_ms=60,move_rate_ms=30)
+enemy_1 = Enemy(asset="knight_main",x=800,y=0,gravity=10,frame_rate_ms=80,move_rate_ms=60)
 
 lista_personajes = []
 lista_personajes.append(player_1)

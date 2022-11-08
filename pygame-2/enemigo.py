@@ -4,7 +4,7 @@ from auxiliar import Auxiliar
 from entidad import Entity
 
 class Enemy(Entity):
-    def __init__ (self,asset,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_L,p_scale=0.2) -> None:
+    def __init__ (self,asset,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_L,p_scale=0.1) -> None:
         self.asset_folder = "\\players\\{0}".format(asset)
         
         super().__init__(self.asset_folder,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial,p_scale)        
