@@ -21,7 +21,6 @@ class Platform:
     def draw (self,screen):        
         if(DEBUG):
             if(self.collition_enabled):
-                pygame.draw.rect(screen,RED,self.rect_collition)
-                pygame.draw.rect(screen,GREEN,self.rect_ground_collition)
+                pygame.draw.rect(screen,ORANGE,self.rect_collition)
             
         screen.blit(self.image,self.rect)

@@ -1,13 +1,13 @@
 import pygame
 
-DEBUG = False
+DEBUG = True
 
 ANCHO_VENTANA = 1000
 ALTO_VENTANA = 700
 GROUND_LEVEL = ALTO_VENTANA - 50
 GROUND_RECT_H = 50
 GROUND_COLLIDE_H = 8
-FPS = 60
+FPS = 100
 
 PATH_RECURSOS = r"C:\\Users\\Santiago\\Documents\\UTN\\Laboratorio\\UTN-Laboratorio\\pygame-2\\recursos"
 DIRECTION_R = 0

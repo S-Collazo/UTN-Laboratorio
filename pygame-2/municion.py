@@ -1,0 +1,23 @@
+import pygame
+from constantes import *
+from auxiliar import Auxiliar
+from bala import Bullet
+
+class Ammo:
+    def __init__(self,lista_balas,x,y,frame_rate_ms,move_rate_ms,direction,p_scale=1):
+        if(direction == DIRECTION_R):
+            self.pos_x = x + 100
+        else:
+            self.pos_x = x
+        self.pos_y = y + 50
+        self.direction = direction
+        
+        lista_balas.append(Bullet(x=self.pos_x,y=self.pos_y,frame_rate_ms=frame_rate_ms,move_rate_ms=move_rate_ms,move=50,direction_inicial=self.direction,p_scale=p_scale,interval_bullet=FPS*2,distance=ANCHO_VENTANA))
+        
+    def is_shooting(lista_balas):
+        retorno = False
+        for bala in lista_balas:
+            if(bala.is_shooting):
+                retorno = True
+                break   
+        return retorno

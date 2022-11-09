@@ -2,19 +2,20 @@ import pygame
 import re
 from constantes import *
 from auxiliar import Auxiliar
+from municion import Ammo
 
 class Entity:
-    def __init__ (self,asset_folder,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_R,p_scale=1,interval_time_jump=50) -> None:  
-        self.stay_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_IDLE\\_IDLE_00{0}.png",1,flip=False,step = 0,scale=p_scale)
-        self.stay_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_IDLE\\_IDLE_00{0}.png",1,flip=True,step = 0,scale=p_scale)
-        self.jump_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_JUMP\\_JUMP_00{0}.png",9,flip=False,step = 0,scale=p_scale)
-        self.jump_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_JUMP\\_JUMP_00{0}.png",9,flip=True,step = 0,scale=p_scale)
-        self.walk_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_RUN\\_RUN_00{0}.png",2,flip=False,step = 0,scale=p_scale)
-        self.walk_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_RUN\\_RUN_00{0}.png",2,flip=True,step = 0,scale=p_scale)
-        #self.shoot_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\Shoot ({0}).png",3,flip=False,scale=p_scale,repeat_frame=2)
-        #self.shoot_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\Shoot ({0}).png",3,flip=True,scale=p_scale,repeat_frame=2)
-        self.knife_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_ATTACK\\_ATTACK_00{0}.png",9,flip=False,step = 0,scale=p_scale,repeat_frame=1)
-        self.knife_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_ATTACK\\_ATTACK_00{0}.png",9,flip=True,step = 0,scale=p_scale,repeat_frame=1)
+    def __init__ (self,asset_folder,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_R,p_scale=1,interval_time_jump=FPS) -> None:  
+        self.stay_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_IDLE\\_IDLE_{:03d}.png",1,flip=False,step = 0,scale=p_scale)
+        self.stay_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_IDLE\\_IDLE_{:03d}.png",1,flip=True,step = 0,scale=p_scale)
+        self.jump_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_JUMP\\_JUMP_{:03d}.png",1,flip=False,step = 0,scale=p_scale)
+        self.jump_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_JUMP\\_JUMP_{:03d}.png",1,flip=True,step = 0,scale=p_scale)
+        self.walk_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_RUN\\_RUN_{:03d}.png",1,flip=False,step = 0,scale=p_scale)
+        self.walk_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_RUN\\_RUN_{:03d}.png",1,flip=True,step = 0,scale=p_scale)
+        self.shoot_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_THROW\\_THROW_{:03d}.png",1,flip=False,step = 0,scale=p_scale,repeat_frame=1)
+        self.shoot_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_THROW\\_THROW_{:03d}.png",1,flip=True,step = 0,scale=p_scale,repeat_frame=1)
+        self.attack_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_ATTACK\\_ATTACK_{:03d}.png",1,flip=False,step = 0,scale=p_scale,repeat_frame=1)
+        self.attack_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_ATTACK\\_ATTACK_{:03d}.png",1,flip=True,step = 0,scale=p_scale,repeat_frame=1)
         self.frame = 0
                 
         self.tiempo_transcurrido = 0
@@ -37,14 +38,14 @@ class Entity:
         self.is_jump = False
         self.is_fall = False
         self.is_shoot = False
-        self.is_knife = False
+        self.is_attack = False
         
         self.animation = self.stay_r
         self.image = self.animation[self.frame]
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-        
+            
         self.direction = direction_inicial
                 
         self.rect_collition = pygame.Rect(x+self.rect.width / 3,y,self.rect.width / 3,self.rect.height)
@@ -53,12 +54,12 @@ class Entity:
         self.rect_ground_collition.y = y + self.rect.height - GROUND_COLLIDE_H
                 
         self.rect_body_collition = pygame.Rect(x,y,self.rect.width/2,self.rect.height)
-        self.rect_body_collition_front = pygame.Rect(self.rect_body_collition)
-        self.rect_body_collition_back = pygame.Rect(self.rect_body_collition)
+        
+        self.p_scale = p_scale
             
     def walk (self,direction_walk):        
         if(self.is_jump == False and self.is_fall == False):
-            if self.direction != direction_walk or (self.animation != self.walk_r and self.animation != self.walk_l):
+            if (self.direction != direction_walk or (self.animation != self.walk_r and self.animation != self.walk_l)):
                 self.frame = 0
                 self.direction = direction_walk
                 if (direction_walk == DIRECTION_R):
@@ -87,7 +88,7 @@ class Entity:
             self.stay()
     
     def stay(self):  
-        if not self.animation == self.stay_r and not self.animation == self.stay_l:
+        if not (self.animation == self.stay_r and not self.animation == self.stay_l):
             if (self.direction == DIRECTION_R):
                 self.animation = self.stay_r
             else:
@@ -96,7 +97,7 @@ class Entity:
             self.move_y = 0
             self.frame = 0 
             
-    def shoot(self,on_off = True):
+    def shoot(self,lista_balas,on_off = True):
         self.is_shoot = on_off
         if(on_off == True and self.is_jump == False and self.is_fall == False):
             if(self.animation != self.shoot_r and self.animation != self.shoot_l):
@@ -105,17 +106,19 @@ class Entity:
                 if(self.direction == DIRECTION_R):
                     self.animation = self.shoot_r
                 else:
-                    self.animation = self.shoot_l   
+                    self.animation = self.shoot_l
                     
-    def knife(self,on_off = True):
-        self.is_knife = on_off
+            Ammo(lista_balas=lista_balas,x=self.rect.x,y=self.rect.y,frame_rate_ms=self.frame_rate_ms,move_rate_ms=self.move_rate_ms,direction=self.direction,p_scale=self.p_scale)
+                    
+    def attack(self,on_off = True):
+        self.is_attack = on_off
         if(on_off == True and self.is_jump == False and self.is_fall == False):
-            if(self.animation != self.knife_r and self.animation != self.knife_l):
+            if(self.animation != self.attack_r and self.animation != self.attack_l):
                 self.frame = 0
                 if(self.direction == DIRECTION_R):
-                    self.animation = self.knife_r
+                    self.animation = self.attack_r
                 else:
-                    self.animation = self.knife_l
+                    self.animation = self.attack_l
                                                     
     def is_on_platform(self,lista_plataformas):
         retorno = False
@@ -123,7 +126,7 @@ class Entity:
             retorno = True
         else:
             for plataforma in lista_plataformas:
-                if(plataforma.collition_enabled and self.rect_ground_collition.colliderect(plataforma.rect_collition)):
+                if(plataforma.collition_enabled and self.rect_ground_collition.colliderect(plataforma.rect_ground_collition)):
                     retorno = True
                     break   
         return retorno
@@ -136,20 +139,32 @@ class Entity:
             self.rect_body_collition.x += delta_x
         
         if(self.direction == DIRECTION_R):
-            self.rect_body_collition_front.x = self.rect_body_collition.x + (self.rect_body_collition.width)
-            self.rect_body_collition_back.x = self.rect_body_collition.x
+            self.rect_body_collition.x = self.rect.x + 5 + (self.rect_body_collition.width)
         else:
-            self.rect_body_collition_front.x = self.rect_body_collition.x
-            self.rect_body_collition_back.x = self.rect_body_collition.x + (self.rect_body_collition.width)
+            self.rect_body_collition.x = self.rect.x - 5
         
                 
     def add_y(self,delta_y):
-        self.rect.y += delta_y
-        self.rect_collition.y += delta_y
-        self.rect_ground_collition.y += delta_y
-        self.rect_body_collition_front.y += delta_y
-        self.rect_body_collition_back.y += delta_y
-        
+         if((self.rect.y + delta_y) >= 0 and (self.rect.y + self.rect.h + delta_y) <= ALTO_VENTANA):
+            self.rect.y += delta_y
+            self.rect_collition.y += delta_y
+            self.rect_ground_collition.y += delta_y
+            self.rect_body_collition.y += delta_y
+    
+    def damage(self,lista_oponente):
+        if(self.lives > 0 and self.is_attack):
+            for oponente in lista_oponente:
+                if(self.rect_body_collition.colliderect(oponente.rect) or self.rect_body_collition.colliderect(oponente.rect_body_collition)):
+                        oponente.lives -= 1
+                                
+                        if(self.rect.x <= oponente.rect.x):
+                            oponente.add_x(100)
+                        else:
+                            oponente.add_x(-100)
+                            oponente.jump(True)
+                                        
+                break
+                      
     def do_movement(self,delta_ms,lista_plataformas):
         self.tiempo_transcurrido_move += delta_ms
         
@@ -182,25 +197,7 @@ class Entity:
                 self.frame += 1
             else:
                  self.frame = 0
-                 
-    def damage(self,lista_oponente):
-        for oponente in lista_oponente:
-            if(self.rect_body_collition_back.colliderect(oponente.rect_body_collition_front) or self.rect_body_collition_front.colliderect(oponente.rect_body_collition_front)):
-                if(self.rect_body_collition_back.colliderect(oponente.rect_body_collition_front)):
-                    self.lives -= 1
-                              
-                if(self.entity_type == PLAYER and oponente.lives > 0):
-                    if(self.rect_body_collition_front.colliderect(oponente.rect_body_collition_front)):
-                        self.lives -= 1
-                        
-                        if(self.rect.x <= oponente.rect.x):
-                            self.add_x(-100)
-                        else:
-                            self.add_x(100)
-                        self.jump(True)
-                                    
-                break
-                                             
+                                           
     def update(self,delta_ms,lista_plataformas,lista_oponente):
         if(DEBUG):
             if(self.lives > 0):
@@ -213,9 +210,9 @@ class Entity:
     def draw (self,screen):
         if(DEBUG):
             pygame.draw.rect(screen,RED,self.rect)
-            pygame.draw.rect(screen,PURPLE,self.rect_body_collition_front)
-            pygame.draw.rect(screen,ORANGE,self.rect_body_collition_back)
             pygame.draw.rect(screen,GREEN,self.rect_ground_collition)
+            if(self.animation == self.attack_l or self.animation == self.attack_r):
+                pygame.draw.rect(screen,PURPLE,self.rect_body_collition)
     
         self.image = self.animation[self.frame]
         screen.blit(self.image, self.rect)
