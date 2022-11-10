@@ -8,6 +8,7 @@ GROUND_LEVEL = ALTO_VENTANA - 50
 GROUND_RECT_H = 50
 GROUND_COLLIDE_H = 8
 FPS = 100
+GLOBAL_SCALE = 0.8
 
 PATH_RECURSOS = r"C:\\Users\\Santiago\\Documents\\UTN\\Laboratorio\\UTN-Laboratorio\\pygame-2\\recursos"
 DIRECTION_R = 0

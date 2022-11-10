@@ -24,7 +24,7 @@ class Auxiliar:
         return lista_sprite
     
     @staticmethod
-    def getSurfaceFromSeparateFiles(path_format,quantity,flip=False,step = 1,scale=1,w=0,h=0,repeat_frame=1):
+    def getSurfaceFromSeparateFiles(path_format,quantity,flip=False,step = 1,scale=1,w=0,h=0,repeat_frame=1):     
         lista = []
         for i in range(step,quantity+1):
             path = path_format.format(i)

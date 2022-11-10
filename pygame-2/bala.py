@@ -4,7 +4,9 @@ from auxiliar import Auxiliar
 
 class Bullet:
     def __init__ (self,x,y,move_rate_ms,frame_rate_ms,move=50,direction_inicial=DIRECTION_R,p_scale=1,interval_bullet=FPS*2,distance=ANCHO_VENTANA,type=0):
-        self.image_list= Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\elements\\shield\\knight_shield_{0}.png",1,flip=False,step=0,scale=p_scale,w=100,h=100)
+        self.p_scale = p_scale * GLOBAL_SCALE
+        
+        self.image_list= Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\elements\\shield\\knight_shield_{0}.png",1,flip=False,step=0,scale=self.p_scale,w=100,h=100)
         self.frame = 0
         self.animation = self.image_list
         self.image = self.animation[self.frame]
@@ -32,8 +34,9 @@ class Bullet:
         if(self.is_shooting):    
             for oponente in lista_oponente:
                 if(self.rect_collition.colliderect(oponente.rect)):
-                        oponente.lives -= 1
                         self.is_shooting = False
+                        if not (oponente.is_block):
+                            oponente.lives -= 1
                                 
                         if(self.rect.x <= oponente.rect.x):
                             oponente.add_x(100)

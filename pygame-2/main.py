@@ -20,9 +20,9 @@ clock = pygame.time.Clock()
 imagen_fondo = pygame.image.load(PATH_RECURSOS + "\\images\\locations\\set_bg_06\\creepy_forest.png")
 imagen_fondo = pygame.transform.scale(imagen_fondo,(ANCHO_VENTANA,ALTO_VENTANA))
 
-player_1 = Player(asset="knight_main",x=400,y=GROUND_LEVEL-100,gravity=10,frame_rate_ms=100,move_rate_ms=5)
+player_1 = Player(asset="knight_main",x=400,y=GROUND_LEVEL-100,gravity=10,frame_rate_ms=80,move_rate_ms=10)
 
-enemy_1 = Enemy(asset="bronze_knight",x=800,y=0,gravity=10,frame_rate_ms=100,move_rate_ms=10)
+enemy_1 = Enemy(asset="bronze_knight",x=800,y=0,gravity=10,frame_rate_ms=80,move_rate_ms=10)
 
 lista_personajes = []
 lista_personajes.append(player_1)
@@ -32,11 +32,11 @@ lista_enemigos.append(enemy_1)
 
 lista_plataformas = []
 lista_plataformas.append(Platform(x=0,y=GROUND_LEVEL,w=ANCHO_VENTANA,h=GROUND_RECT_H,type=1))
-Level.create_plaforms(lista_plataformas,x=350,y=550,w=50,h=50,tile_total=5,p_scale=0.4,collition_enabled=True)
-Level.create_plaforms(lista_plataformas,x=600,y=450,w=50,h=50,tile_total=4,p_scale=0.4,collition_enabled=True)
-Level.create_plaforms(lista_plataformas,x=800,y=350,w=50,h=50,tile_total=4,p_scale=0.4,collition_enabled=True)
-Level.create_plaforms(lista_plataformas,x=400,y=250,w=50,h=50,tile_total=5,p_scale=0.4,collition_enabled=True)
-Level.create_plaforms(lista_plataformas,x=200,y=150,w=50,h=50,tile_total=4,p_scale=0.4,collition_enabled=True)
+Level.create_plaforms(lista_plataformas,x=350,y=550,w=100,h=100,tile_total=4,p_scale=0.4,collition_enabled=True)
+Level.create_plaforms(lista_plataformas,x=600,y=450,w=100,h=100,tile_total=4,p_scale=0.4,collition_enabled=True)
+Level.create_plaforms(lista_plataformas,x=800,y=350,w=100,h=100,tile_total=4,p_scale=0.4,collition_enabled=True)
+Level.create_plaforms(lista_plataformas,x=400,y=250,w=100,h=100,tile_total=4,p_scale=0.4,collition_enabled=True)
+Level.create_plaforms(lista_plataformas,x=200,y=150,w=100,h=100,tile_total=4,p_scale=0.4,collition_enabled=True)
 
 lista_balas = []
 
@@ -64,11 +64,11 @@ while True:
         Bullet.update(bala,delta_ms,lista_enemigos)
 
     if(enemy_1.lives > 0):
-        enemy_1.update(delta_ms,lista_plataformas,lista_personajes)
+        enemy_1.update(delta_ms,lista_plataformas,lista_personajes,lista_balas)
         enemy_1.draw(screen)
                         
     if(DEBUG):
-        Auxiliar.drawGrid(screen,100)
+        Auxiliar.drawGrid(screen,50)
    
     # screen.fill(FILTER_PURPLE,imagen_fondo.get_rect(),BLEND_RGBA_ADD)
          
