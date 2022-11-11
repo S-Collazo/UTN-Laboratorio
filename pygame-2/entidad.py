@@ -39,11 +39,11 @@ class Entity:
         
         self.move_x = 0
         self.move_y = 0
-        self.speed_walk = int((ANCHO_VENTANA / 50) * self.p_scale)
+        self.speed_walk = int((ANCHO_VENTANA / 100))
         self.speed_run = self.speed_walk * 2
         self.gravity = gravity
-        self.jump_height = int((ALTO_VENTANA / 0.5) * self.p_scale)
-        self.jump_power = self.jump_height / 4
+        self.jump_height = int((ALTO_VENTANA / 14))
+        self.jump_power = self.jump_height / 2
         self.y_start_jump = y
         self.is_jump = False
         self.is_fall = False
@@ -83,11 +83,13 @@ class Entity:
             self.y_start_jump = self.rect.y
             if (self.direction == DIRECTION_R):
                 self.animation = self.jump_r
-                self.move_y = -self.jump_power
+                self.move_y = -self.jump_height
                 self.move_x = self.jump_power
+                if(self.rect.y - self.jump_height >= ALTO_VENTANA):
+                    self.move_x = 0
             else:
                 self.animation = self.jump_l
-                self.move_y = -self.jump_power
+                self.move_y = -self.jump_height
                 self.move_x = -self.jump_power
                 
             self.frame = 0
@@ -164,7 +166,7 @@ class Entity:
         
                 
     def add_y(self,delta_y):
-         if((self.rect.y + delta_y) >= 0 and (self.rect.y + self.rect.h + delta_y) <= ALTO_VENTANA):
+        if((self.rect.y + delta_y) >= 0 and (self.rect.y + self.rect.h + delta_y) <= ALTO_VENTANA):
             self.rect.y += delta_y
             self.rect_collition.y += delta_y
             self.rect_ground_collition.y += delta_y

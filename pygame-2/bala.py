@@ -30,8 +30,8 @@ class Bullet:
         self.is_shooting = True
         self.collition_enabled = True
     
-    def damage(self,lista_oponente):
-        if(self.is_shooting):    
+    def damage(self,lista_oponente,lista_plataformas):
+        if(self.is_shooting):  
             for oponente in lista_oponente:
                 if(self.rect_collition.colliderect(oponente.rect)):
                         self.is_shooting = False
@@ -43,8 +43,14 @@ class Bullet:
                         else:
                             oponente.add_x(-100)
                             oponente.jump(True)
-                                        
                 break
+            
+            for plataforma in lista_plataformas:
+                if(self.rect_collition.colliderect(plataforma.rect)):
+                    self.is_shooting = False
+                    print("HIT!")
+                break                
+
     
     def do_movement(self):
         self.tiempo_transcurrido_move += self.interval_bullet
@@ -73,8 +79,8 @@ class Bullet:
             else:
                  self.frame = 0
                 
-    def update (self,delta_ms,lista_oponente):
-        self.damage(lista_oponente)
+    def update (self,delta_ms,lista_oponente,lista_plataformas):
+        self.damage(lista_oponente,lista_plataformas)
         self.do_movement()
         self.do_animation(delta_ms)
        

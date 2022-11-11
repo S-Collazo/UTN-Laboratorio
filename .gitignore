@@ -12078,3 +12078,627 @@ pygame-2/test/_SCML/5_KNIGHT/4_right arm_.png
 pygame-2/test/_SCML/5_KNIGHT/4_right lag_.png
 pygame-2/test/_SCML/5_KNIGHT/4_shield_.png
 pygame-2/test/_SCML/5_KNIGHT/4_sword_.png
+pygame-2/test/gui_button.py
+pygame-2/test/gui_form_menu_A.py
+pygame-2/test/gui_form_menu_B.py
+pygame-2/test/gui_form.py
+pygame-2/test/gui_main.py
+pygame-2/test/gui_widget.py
+pygame-2/test/_AI/BACKGROUND.ai
+pygame-2/test/_AI/TROLL.ai
+pygame-2/test/_EPS/1_TROLL/1_body_.eps
+pygame-2/test/_EPS/1_TROLL/1_head_.eps
+pygame-2/test/_EPS/1_TROLL/1_left arm_.eps
+pygame-2/test/_EPS/1_TROLL/1_left leg_.eps
+pygame-2/test/_EPS/1_TROLL/1_right arm_.eps
+pygame-2/test/_EPS/1_TROLL/1_right leg_.eps
+pygame-2/test/_EPS/1_TROLL/1_troll_.eps
+pygame-2/test/_EPS/2_TROLL/2_body_.eps
+pygame-2/test/_EPS/2_TROLL/2_head_.eps
+pygame-2/test/_EPS/2_TROLL/2_left arm_.eps
+pygame-2/test/_EPS/2_TROLL/2_left leg_.eps
+pygame-2/test/_EPS/2_TROLL/2_right arm_.eps
+pygame-2/test/_EPS/2_TROLL/2_right leg_.eps
+pygame-2/test/_EPS/2_TROLL/2_troll_.eps
+pygame-2/test/_EPS/3_TROLL/3_body_.eps
+pygame-2/test/_EPS/3_TROLL/3_head_.eps
+pygame-2/test/_EPS/3_TROLL/3_left arm_.eps
+pygame-2/test/_EPS/3_TROLL/3_leg leg_.eps
+pygame-2/test/_EPS/3_TROLL/3_right arm_.eps
+pygame-2/test/_EPS/3_TROLL/3_right leg_.eps
+pygame-2/test/_EPS/3_TROLL/3_troll_.eps
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_ATTACK_000.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_ATTACK_001.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_ATTACK_002.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_ATTACK_003.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_ATTACK_004.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_ATTACK_005.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_ATTACK_006.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_ATTACK_007.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_ATTACK_008.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_ATTACK_009.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_DIE_000.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_DIE_001.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_DIE_002.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_DIE_003.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_DIE_004.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_DIE_005.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_DIE_006.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_DIE_007.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_DIE_008.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_DIE_009.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_HURT_000.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_HURT_001.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_HURT_002.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_HURT_003.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_HURT_004.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_HURT_005.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_HURT_006.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_HURT_007.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_HURT_008.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_HURT_009.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_IDLE_000.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_IDLE_001.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_IDLE_002.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_IDLE_003.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_IDLE_004.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_IDLE_005.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_IDLE_006.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_IDLE_007.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_IDLE_008.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_IDLE_009.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_JUMP_000.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_JUMP_001.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_JUMP_002.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_JUMP_003.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_JUMP_004.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_JUMP_005.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_JUMP_006.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_JUMP_007.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_JUMP_008.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_JUMP_009.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_RUN_000.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_RUN_001.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_RUN_002.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_RUN_003.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_RUN_004.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_RUN_005.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_RUN_006.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_RUN_007.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_RUN_008.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_RUN_009.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_WALK_000.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_WALK_001.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_WALK_002.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_WALK_003.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_WALK_004.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_WALK_005.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_WALK_006.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_WALK_007.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_WALK_008.png
+pygame-2/test/_PNG/1_TROLL/Troll_01_1_WALK_009.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_ATTACK_000.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_ATTACK_001.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_ATTACK_002.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_ATTACK_003.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_ATTACK_004.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_ATTACK_005.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_ATTACK_006.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_ATTACK_007.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_ATTACK_008.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_ATTACK_009.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_DIE_000.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_DIE_001.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_DIE_002.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_DIE_003.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_DIE_004.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_DIE_005.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_DIE_006.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_DIE_007.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_DIE_008.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_DIE_009.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_HURT_000.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_HURT_001.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_HURT_002.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_HURT_003.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_HURT_004.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_HURT_005.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_HURT_006.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_HURT_007.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_HURT_008.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_HURT_009.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_IDLE_000.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_IDLE_001.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_IDLE_002.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_IDLE_003.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_IDLE_004.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_IDLE_005.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_IDLE_006.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_IDLE_007.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_IDLE_008.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_IDLE_009.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_JUMP_000.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_JUMP_001.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_JUMP_002.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_JUMP_003.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_JUMP_004.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_JUMP_005.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_JUMP_006.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_JUMP_007.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_JUMP_008.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_JUMP_009.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_RUN_000.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_RUN_001.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_RUN_002.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_RUN_003.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_RUN_004.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_RUN_005.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_RUN_006.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_RUN_007.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_RUN_008.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_RUN_009.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_WALK_000.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_WALK_001.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_WALK_002.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_WALK_003.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_WALK_004.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_WALK_005.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_WALK_006.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_WALK_007.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_WALK_008.png
+pygame-2/test/_PNG/2_TROLL/Troll_02_1_WALK_009.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_ATTACK_000.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_ATTACK_001.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_ATTACK_002.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_ATTACK_003.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_ATTACK_004.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_ATTACK_005.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_ATTACK_006.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_ATTACK_007.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_ATTACK_008.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_ATTACK_009.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_DIE_000.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_DIE_001.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_DIE_002.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_DIE_003.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_DIE_004.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_DIE_005.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_DIE_006.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_DIE_007.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_DIE_008.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_DIE_009.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_HURT_000.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_HURT_001.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_HURT_002.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_HURT_003.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_HURT_004.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_HURT_005.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_HURT_006.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_HURT_007.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_HURT_008.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_HURT_009.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_IDLE_000.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_IDLE_001.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_IDLE_002.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_IDLE_003.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_IDLE_004.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_IDLE_005.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_IDLE_006.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_IDLE_007.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_IDLE_008.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_IDLE_009.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_JUMP_000.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_JUMP_001.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_JUMP_002.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_JUMP_003.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_JUMP_004.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_JUMP_005.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_JUMP_006.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_JUMP_007.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_JUMP_008.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_JUMP_009.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_RUN_000.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_RUN_001.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_RUN_002.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_RUN_003.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_RUN_004.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_RUN_005.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_RUN_006.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_RUN_007.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_RUN_008.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_RUN_009.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_WALK_000.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_WALK_001.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_WALK_002.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_WALK_003.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_WALK_004.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_WALK_005.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_WALK_006.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_WALK_007.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_WALK_008.png
+pygame-2/test/_PNG/3_TROLL/Troll_03_1_WALK_009.png
+pygame-2/test/_SCML/1_TROLL/1_body_.png
+pygame-2/test/_SCML/1_TROLL/1_head_.png
+pygame-2/test/_SCML/1_TROLL/1_left arm_.png
+pygame-2/test/_SCML/1_TROLL/1_left leg_.png
+pygame-2/test/_SCML/1_TROLL/1_right arm_.png
+pygame-2/test/_SCML/1_TROLL/1_right leg_.png
+pygame-2/test/_SCML/1_TROLL/1_troll_.png
+pygame-2/test/_SCML/1_TROLL/1_TROLL.scml
+pygame-2/test/_SCML/2_TROLL/2_body_.png
+pygame-2/test/_SCML/2_TROLL/2_head_.png
+pygame-2/test/_SCML/2_TROLL/2_left arm_.png
+pygame-2/test/_SCML/2_TROLL/2_left leg_.png
+pygame-2/test/_SCML/2_TROLL/2_right arm_.png
+pygame-2/test/_SCML/2_TROLL/2_right leg_.png
+pygame-2/test/_SCML/2_TROLL/2_troll_.png
+pygame-2/test/_SCML/2_TROLL/2_TROLL.scml
+pygame-2/test/_SCML/3_TROLL/3_body_.png
+pygame-2/test/_SCML/3_TROLL/3_head_.png
+pygame-2/test/_SCML/3_TROLL/3_left arm_.png
+pygame-2/test/_SCML/3_TROLL/3_leg leg_.png
+pygame-2/test/_SCML/3_TROLL/3_right arm_.png
+pygame-2/test/_SCML/3_TROLL/3_right leg_.png
+pygame-2/test/_SCML/3_TROLL/3_TROLL.scml
+pygame-2/test/_SCML/3_TROLL/Asset 90_.png
+pygame-2/test/_TXT/LICENSES(1).txt
+pygame-2/test/_TXT/readme(1).txt
+pygame-2/test/PNG/Animation/Troll1/Attack_000.png
+pygame-2/test/PNG/Animation/Troll1/Attack_001.png
+pygame-2/test/PNG/Animation/Troll1/Attack_002.png
+pygame-2/test/PNG/Animation/Troll1/Attack_003.png
+pygame-2/test/PNG/Animation/Troll1/Attack_004.png
+pygame-2/test/PNG/Animation/Troll1/Attack_005.png
+pygame-2/test/PNG/Animation/Troll1/Attack_006.png
+pygame-2/test/PNG/Animation/Troll1/Attack_007.png
+pygame-2/test/PNG/Animation/Troll1/Attack_008.png
+pygame-2/test/PNG/Animation/Troll1/Attack_009.png
+pygame-2/test/PNG/Animation/Troll1/Dead_000.png
+pygame-2/test/PNG/Animation/Troll1/Dead_001.png
+pygame-2/test/PNG/Animation/Troll1/Dead_002.png
+pygame-2/test/PNG/Animation/Troll1/Dead_003.png
+pygame-2/test/PNG/Animation/Troll1/Dead_004.png
+pygame-2/test/PNG/Animation/Troll1/Dead_005.png
+pygame-2/test/PNG/Animation/Troll1/Dead_006.png
+pygame-2/test/PNG/Animation/Troll1/Dead_007.png
+pygame-2/test/PNG/Animation/Troll1/Dead_008.png
+pygame-2/test/PNG/Animation/Troll1/Dead_009.png
+pygame-2/test/PNG/Animation/Troll1/Hurt_000.png
+pygame-2/test/PNG/Animation/Troll1/Hurt_001.png
+pygame-2/test/PNG/Animation/Troll1/Hurt_002.png
+pygame-2/test/PNG/Animation/Troll1/Hurt_003.png
+pygame-2/test/PNG/Animation/Troll1/Hurt_004.png
+pygame-2/test/PNG/Animation/Troll1/Hurt_005.png
+pygame-2/test/PNG/Animation/Troll1/Hurt_006.png
+pygame-2/test/PNG/Animation/Troll1/Hurt_007.png
+pygame-2/test/PNG/Animation/Troll1/Hurt_008.png
+pygame-2/test/PNG/Animation/Troll1/Hurt_009.png
+pygame-2/test/PNG/Animation/Troll1/Idle_000.png
+pygame-2/test/PNG/Animation/Troll1/Idle_001.png
+pygame-2/test/PNG/Animation/Troll1/Idle_002.png
+pygame-2/test/PNG/Animation/Troll1/Idle_003.png
+pygame-2/test/PNG/Animation/Troll1/Idle_004.png
+pygame-2/test/PNG/Animation/Troll1/Idle_005.png
+pygame-2/test/PNG/Animation/Troll1/Idle_006.png
+pygame-2/test/PNG/Animation/Troll1/Idle_007.png
+pygame-2/test/PNG/Animation/Troll1/Idle_008.png
+pygame-2/test/PNG/Animation/Troll1/Idle_009.png
+pygame-2/test/PNG/Animation/Troll1/Jump_000.png
+pygame-2/test/PNG/Animation/Troll1/Jump_001.png
+pygame-2/test/PNG/Animation/Troll1/Jump_002.png
+pygame-2/test/PNG/Animation/Troll1/Jump_003.png
+pygame-2/test/PNG/Animation/Troll1/Jump_004.png
+pygame-2/test/PNG/Animation/Troll1/Jump_005.png
+pygame-2/test/PNG/Animation/Troll1/Jump_006.png
+pygame-2/test/PNG/Animation/Troll1/Jump_007.png
+pygame-2/test/PNG/Animation/Troll1/Jump_008.png
+pygame-2/test/PNG/Animation/Troll1/Jump_009.png
+pygame-2/test/PNG/Animation/Troll1/Run_000.png
+pygame-2/test/PNG/Animation/Troll1/Run_001.png
+pygame-2/test/PNG/Animation/Troll1/Run_002.png
+pygame-2/test/PNG/Animation/Troll1/Run_003.png
+pygame-2/test/PNG/Animation/Troll1/Run_004.png
+pygame-2/test/PNG/Animation/Troll1/Run_005.png
+pygame-2/test/PNG/Animation/Troll1/Run_006.png
+pygame-2/test/PNG/Animation/Troll1/Run_007.png
+pygame-2/test/PNG/Animation/Troll1/Run_008.png
+pygame-2/test/PNG/Animation/Troll1/Run_009.png
+pygame-2/test/PNG/Animation/Troll1/Walk_000.png
+pygame-2/test/PNG/Animation/Troll1/Walk_001.png
+pygame-2/test/PNG/Animation/Troll1/Walk_002.png
+pygame-2/test/PNG/Animation/Troll1/Walk_003.png
+pygame-2/test/PNG/Animation/Troll1/Walk_004.png
+pygame-2/test/PNG/Animation/Troll1/Walk_005.png
+pygame-2/test/PNG/Animation/Troll1/Walk_006.png
+pygame-2/test/PNG/Animation/Troll1/Walk_007.png
+pygame-2/test/PNG/Animation/Troll1/Walk_008.png
+pygame-2/test/PNG/Animation/Troll1/Walk_009.png
+pygame-2/test/PNG/Animation/Troll2/Attack_000.png
+pygame-2/test/PNG/Animation/Troll2/Attack_001.png
+pygame-2/test/PNG/Animation/Troll2/Attack_002.png
+pygame-2/test/PNG/Animation/Troll2/Attack_003.png
+pygame-2/test/PNG/Animation/Troll2/Attack_004.png
+pygame-2/test/PNG/Animation/Troll2/Attack_005.png
+pygame-2/test/PNG/Animation/Troll2/Attack_006.png
+pygame-2/test/PNG/Animation/Troll2/Attack_007.png
+pygame-2/test/PNG/Animation/Troll2/Attack_008.png
+pygame-2/test/PNG/Animation/Troll2/Attack_009.png
+pygame-2/test/PNG/Animation/Troll2/Dead_000.png
+pygame-2/test/PNG/Animation/Troll2/Dead_001.png
+pygame-2/test/PNG/Animation/Troll2/Dead_002.png
+pygame-2/test/PNG/Animation/Troll2/Dead_003.png
+pygame-2/test/PNG/Animation/Troll2/Dead_004.png
+pygame-2/test/PNG/Animation/Troll2/Dead_005.png
+pygame-2/test/PNG/Animation/Troll2/Dead_006.png
+pygame-2/test/PNG/Animation/Troll2/Dead_007.png
+pygame-2/test/PNG/Animation/Troll2/Dead_008.png
+pygame-2/test/PNG/Animation/Troll2/Dead_009.png
+pygame-2/test/PNG/Animation/Troll2/Hurt_000.png
+pygame-2/test/PNG/Animation/Troll2/Hurt_001.png
+pygame-2/test/PNG/Animation/Troll2/Hurt_002.png
+pygame-2/test/PNG/Animation/Troll2/Hurt_003.png
+pygame-2/test/PNG/Animation/Troll2/Hurt_004.png
+pygame-2/test/PNG/Animation/Troll2/Hurt_005.png
+pygame-2/test/PNG/Animation/Troll2/Hurt_006.png
+pygame-2/test/PNG/Animation/Troll2/Hurt_007.png
+pygame-2/test/PNG/Animation/Troll2/Hurt_008.png
+pygame-2/test/PNG/Animation/Troll2/Hurt_009.png
+pygame-2/test/PNG/Animation/Troll2/Idle_000.png
+pygame-2/test/PNG/Animation/Troll2/Idle_001.png
+pygame-2/test/PNG/Animation/Troll2/Idle_002.png
+pygame-2/test/PNG/Animation/Troll2/Idle_003.png
+pygame-2/test/PNG/Animation/Troll2/Idle_004.png
+pygame-2/test/PNG/Animation/Troll2/Idle_005.png
+pygame-2/test/PNG/Animation/Troll2/Idle_006.png
+pygame-2/test/PNG/Animation/Troll2/Idle_007.png
+pygame-2/test/PNG/Animation/Troll2/Idle_008.png
+pygame-2/test/PNG/Animation/Troll2/Idle_009.png
+pygame-2/test/PNG/Animation/Troll2/Jump_000.png
+pygame-2/test/PNG/Animation/Troll2/Jump_001.png
+pygame-2/test/PNG/Animation/Troll2/Jump_002.png
+pygame-2/test/PNG/Animation/Troll2/Jump_003.png
+pygame-2/test/PNG/Animation/Troll2/Jump_004.png
+pygame-2/test/PNG/Animation/Troll2/Jump_005.png
+pygame-2/test/PNG/Animation/Troll2/Jump_006.png
+pygame-2/test/PNG/Animation/Troll2/Jump_007.png
+pygame-2/test/PNG/Animation/Troll2/Jump_008.png
+pygame-2/test/PNG/Animation/Troll2/Jump_009.png
+pygame-2/test/PNG/Animation/Troll2/Run_000.png
+pygame-2/test/PNG/Animation/Troll2/Run_001.png
+pygame-2/test/PNG/Animation/Troll2/Run_002.png
+pygame-2/test/PNG/Animation/Troll2/Run_003.png
+pygame-2/test/PNG/Animation/Troll2/Run_004.png
+pygame-2/test/PNG/Animation/Troll2/Run_005.png
+pygame-2/test/PNG/Animation/Troll2/Run_006.png
+pygame-2/test/PNG/Animation/Troll2/Run_007.png
+pygame-2/test/PNG/Animation/Troll2/Run_008.png
+pygame-2/test/PNG/Animation/Troll2/Run_009.png
+pygame-2/test/PNG/Animation/Troll2/Walk_000.png
+pygame-2/test/PNG/Animation/Troll2/Walk_001.png
+pygame-2/test/PNG/Animation/Troll2/Walk_002.png
+pygame-2/test/PNG/Animation/Troll2/Walk_003.png
+pygame-2/test/PNG/Animation/Troll2/Walk_004.png
+pygame-2/test/PNG/Animation/Troll2/Walk_005.png
+pygame-2/test/PNG/Animation/Troll2/Walk_006.png
+pygame-2/test/PNG/Animation/Troll2/Walk_007.png
+pygame-2/test/PNG/Animation/Troll2/Walk_008.png
+pygame-2/test/PNG/Animation/Troll2/Walk_009.png
+pygame-2/test/PNG/Animation/Troll3/Attack_000.png
+pygame-2/test/PNG/Animation/Troll3/Attack_001.png
+pygame-2/test/PNG/Animation/Troll3/Attack_002.png
+pygame-2/test/PNG/Animation/Troll3/Attack_003.png
+pygame-2/test/PNG/Animation/Troll3/Attack_004.png
+pygame-2/test/PNG/Animation/Troll3/Attack_005.png
+pygame-2/test/PNG/Animation/Troll3/Attack_006.png
+pygame-2/test/PNG/Animation/Troll3/Attack_007.png
+pygame-2/test/PNG/Animation/Troll3/Attack_008.png
+pygame-2/test/PNG/Animation/Troll3/Attack_009.png
+pygame-2/test/PNG/Animation/Troll3/Dead_000.png
+pygame-2/test/PNG/Animation/Troll3/Dead_001.png
+pygame-2/test/PNG/Animation/Troll3/Dead_002.png
+pygame-2/test/PNG/Animation/Troll3/Dead_003.png
+pygame-2/test/PNG/Animation/Troll3/Dead_004.png
+pygame-2/test/PNG/Animation/Troll3/Dead_005.png
+pygame-2/test/PNG/Animation/Troll3/Dead_006.png
+pygame-2/test/PNG/Animation/Troll3/Dead_007.png
+pygame-2/test/PNG/Animation/Troll3/Dead_008.png
+pygame-2/test/PNG/Animation/Troll3/Dead_009.png
+pygame-2/test/PNG/Animation/Troll3/Hurt_000.png
+pygame-2/test/PNG/Animation/Troll3/Hurt_001.png
+pygame-2/test/PNG/Animation/Troll3/Hurt_002.png
+pygame-2/test/PNG/Animation/Troll3/Hurt_003.png
+pygame-2/test/PNG/Animation/Troll3/Hurt_004.png
+pygame-2/test/PNG/Animation/Troll3/Hurt_005.png
+pygame-2/test/PNG/Animation/Troll3/Hurt_006.png
+pygame-2/test/PNG/Animation/Troll3/Hurt_007.png
+pygame-2/test/PNG/Animation/Troll3/Hurt_008.png
+pygame-2/test/PNG/Animation/Troll3/Hurt_009.png
+pygame-2/test/PNG/Animation/Troll3/Idle_000.png
+pygame-2/test/PNG/Animation/Troll3/Idle_001.png
+pygame-2/test/PNG/Animation/Troll3/Idle_002.png
+pygame-2/test/PNG/Animation/Troll3/Idle_003.png
+pygame-2/test/PNG/Animation/Troll3/Idle_004.png
+pygame-2/test/PNG/Animation/Troll3/Idle_005.png
+pygame-2/test/PNG/Animation/Troll3/Idle_006.png
+pygame-2/test/PNG/Animation/Troll3/Idle_007.png
+pygame-2/test/PNG/Animation/Troll3/Idle_008.png
+pygame-2/test/PNG/Animation/Troll3/Idle_009.png
+pygame-2/test/PNG/Animation/Troll3/Jump_000.png
+pygame-2/test/PNG/Animation/Troll3/Jump_001.png
+pygame-2/test/PNG/Animation/Troll3/Jump_002.png
+pygame-2/test/PNG/Animation/Troll3/Jump_003.png
+pygame-2/test/PNG/Animation/Troll3/Jump_004.png
+pygame-2/test/PNG/Animation/Troll3/Jump_005.png
+pygame-2/test/PNG/Animation/Troll3/Jump_006.png
+pygame-2/test/PNG/Animation/Troll3/Jump_007.png
+pygame-2/test/PNG/Animation/Troll3/Jump_008.png
+pygame-2/test/PNG/Animation/Troll3/Jump_009.png
+pygame-2/test/PNG/Animation/Troll3/Run_000.png
+pygame-2/test/PNG/Animation/Troll3/Run_001.png
+pygame-2/test/PNG/Animation/Troll3/Run_002.png
+pygame-2/test/PNG/Animation/Troll3/Run_003.png
+pygame-2/test/PNG/Animation/Troll3/Run_004.png
+pygame-2/test/PNG/Animation/Troll3/Run_005.png
+pygame-2/test/PNG/Animation/Troll3/Run_006.png
+pygame-2/test/PNG/Animation/Troll3/Run_007.png
+pygame-2/test/PNG/Animation/Troll3/Run_008.png
+pygame-2/test/PNG/Animation/Troll3/Run_009.png
+pygame-2/test/PNG/Animation/Troll3/Walk_000.png
+pygame-2/test/PNG/Animation/Troll3/Walk_001.png
+pygame-2/test/PNG/Animation/Troll3/Walk_003.png
+pygame-2/test/PNG/Animation/Troll3/Walk_004.png
+pygame-2/test/PNG/Animation/Troll3/Walk_005.png
+pygame-2/test/PNG/Animation/Troll3/Walk_006.png
+pygame-2/test/PNG/Animation/Troll3/Walk_007.png
+pygame-2/test/PNG/Animation/Troll3/Walk_008.png
+pygame-2/test/PNG/Animation/Troll3/Walk_009.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0000_feet2left.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0000_right-hand.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0001_feet2right.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0001_left-arm.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0002_left-sholder.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0003_right-brow.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0004_left-brow.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0005_scull.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0006_left-ear.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0007_head.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0008_right-ear.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0009_torso.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0010_left-feet.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0011_left-hip.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0012_left-leg.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0013_pelvis.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0014_left-feet.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0015_left-hip.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0016_left-leg.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0017_left-hand.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0018_weapon.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0019_left-arm.png
+pygame-2/test/PNG/Bodyparts/Troll1/troll_0020_left-sholder.png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0000_feet2left (2).png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0000_right-hand.png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0001_feet2right (2).png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0001_left-arm.png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0002_left-sholder.png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0003_right-brow.png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0004_left-brow.png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0005_scull.png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0006_left-ear.png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0007_head.png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0008_right-ear.png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0009_torso.png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0010_left-feet.png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0011_left-hip.png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0012_left-leg.png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0013_pelvis.png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0014_left-feet.png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0015_left-hip.png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0016_left-leg.png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0017_left-hand.png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0018_weapon.png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0019_left-arm.png
+pygame-2/test/PNG/Bodyparts/Troll2/troll_0020_left-sholder.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0000_feet2left.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0000_right-hand.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0001_feet2right.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0001_left-arm.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0002_left-sholder.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0003_right-brow.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0004_left-brow.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0005_scull.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0006_left-ear.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0007_head.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0008_right-ear.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0009_torso.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0010_left-feet.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0011_left-hip.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0012_left-leg.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0013_pelvis.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0014_left-feet.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0015_left-hip.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0016_left-leg.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0017_left-hand.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0018_weapon.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0019_left-arm.png
+pygame-2/test/PNG/Bodyparts/Troll3/troll_0020_left-sholder.png
+pygame-2/test/PSD/Troll1.psd
+pygame-2/test/PSD/Troll2.psd
+pygame-2/test/PSD/Troll3.psd
+pygame-2/test/Spriter/Troll1/troll_00000_feet2left (3).png
+pygame-2/test/Spriter/Troll1/troll_00000_feet2right (3).png
+pygame-2/test/Spriter/Troll1/troll_0000_right-hand.png
+pygame-2/test/Spriter/Troll1/troll_0001_left-arm.png
+pygame-2/test/Spriter/Troll1/troll_0002_left-sholder.png
+pygame-2/test/Spriter/Troll1/troll_0003_right-brow.png
+pygame-2/test/Spriter/Troll1/troll_0004_left-brow.png
+pygame-2/test/Spriter/Troll1/troll_0005_scull.png
+pygame-2/test/Spriter/Troll1/troll_0006_left-ear.png
+pygame-2/test/Spriter/Troll1/troll_0007_head.png
+pygame-2/test/Spriter/Troll1/troll_0008_right-ear.png
+pygame-2/test/Spriter/Troll1/troll_0009_torso.png
+pygame-2/test/Spriter/Troll1/troll_0010_left-feet (4).png
+pygame-2/test/Spriter/Troll1/troll_0010_left-feet (7).png
+pygame-2/test/Spriter/Troll1/troll_0010_left-feet.png
+pygame-2/test/Spriter/Troll1/troll_0011_left-hip.png
+pygame-2/test/Spriter/Troll1/troll_0012_left-leg.png
+pygame-2/test/Spriter/Troll1/troll_0013_pelvis.png
+pygame-2/test/Spriter/Troll1/troll_0014_left-feet.png
+pygame-2/test/Spriter/Troll1/troll_0015_left-hip.png
+pygame-2/test/Spriter/Troll1/troll_0016_left-leg.png
+pygame-2/test/Spriter/Troll1/troll_0017_left-hand.png
+pygame-2/test/Spriter/Troll1/troll_0018_weapon.png
+pygame-2/test/Spriter/Troll1/troll_0019_left-arm.png
+pygame-2/test/Spriter/Troll1/troll_0020_left-sholder.png
+pygame-2/test/Spriter/Troll1/Troll.scml
+pygame-2/test/Spriter/Troll2/troll_00000_feet2left (2).png
+pygame-2/test/Spriter/Troll2/troll_00000_feet2right (2).png
+pygame-2/test/Spriter/Troll2/troll_0000_right-hand (2).png
+pygame-2/test/Spriter/Troll2/troll_0001_left-arm (2).png
+pygame-2/test/Spriter/Troll2/troll_0002_left-sholder (2).png
+pygame-2/test/Spriter/Troll2/troll_0003_right-brow (2).png
+pygame-2/test/Spriter/Troll2/troll_0004_left-brow (2).png
+pygame-2/test/Spriter/Troll2/troll_0005_scull (2).png
+pygame-2/test/Spriter/Troll2/troll_0006_left-ear (2).png
+pygame-2/test/Spriter/Troll2/troll_0007_head (2).png
+pygame-2/test/Spriter/Troll2/troll_0008_right-ear (2).png
+pygame-2/test/Spriter/Troll2/troll_0009_torso (2).png
+pygame-2/test/Spriter/Troll2/troll_0010_left-feet (2).png
+pygame-2/test/Spriter/Troll2/troll_0010_left-feet (6).png
+pygame-2/test/Spriter/Troll2/troll_0010_left-feet (8).png
+pygame-2/test/Spriter/Troll2/troll_0011_left-hip (2).png
+pygame-2/test/Spriter/Troll2/troll_0012_left-leg (2).png
+pygame-2/test/Spriter/Troll2/troll_0013_pelvis (2).png
+pygame-2/test/Spriter/Troll2/troll_0014_left-feet (2).png
+pygame-2/test/Spriter/Troll2/troll_0015_left-hip (2).png
+pygame-2/test/Spriter/Troll2/troll_0016_left-leg (2).png
+pygame-2/test/Spriter/Troll2/troll_0017_left-hand (2).png
+pygame-2/test/Spriter/Troll2/troll_0018_weapon (2).png
+pygame-2/test/Spriter/Troll2/troll_0019_left-arm (2).png
+pygame-2/test/Spriter/Troll2/troll_0020_left-sholder (2).png
+pygame-2/test/Spriter/Troll2/Troll2.scml
+pygame-2/test/Spriter/Troll3/troll_00000_feet2left.png
+pygame-2/test/Spriter/Troll3/troll_00000_feet2right.png
+pygame-2/test/Spriter/Troll3/troll_0000_right-hand (3).png
+pygame-2/test/Spriter/Troll3/troll_0001_left-arm (3).png
+pygame-2/test/Spriter/Troll3/troll_0002_left-sholder (3).png
+pygame-2/test/Spriter/Troll3/troll_0003_right-brow (3).png
+pygame-2/test/Spriter/Troll3/troll_0004_left-brow (3).png
+pygame-2/test/Spriter/Troll3/troll_0005_scull (3).png
+pygame-2/test/Spriter/Troll3/troll_0006_left-ear (3).png
+pygame-2/test/Spriter/Troll3/troll_0007_head (3).png
+pygame-2/test/Spriter/Troll3/troll_0008_right-ear (3).png
+pygame-2/test/Spriter/Troll3/troll_0009_torso (3).png
+pygame-2/test/Spriter/Troll3/troll_0010_left-feet (3).png
+pygame-2/test/Spriter/Troll3/troll_0010_left-feet (5).png
+pygame-2/test/Spriter/Troll3/troll_0010_left-feet (9).png
+pygame-2/test/Spriter/Troll3/troll_0011_left-hip (3).png
+pygame-2/test/Spriter/Troll3/troll_0012_left-leg (3).png
+pygame-2/test/Spriter/Troll3/troll_0013_pelvis (3).png
+pygame-2/test/Spriter/Troll3/troll_0014_left-feet (3).png
+pygame-2/test/Spriter/Troll3/troll_0015_left-hip (3).png
+pygame-2/test/Spriter/Troll3/troll_0016_left-leg (3).png
+pygame-2/test/Spriter/Troll3/troll_0017_left-hand (3).png
+pygame-2/test/Spriter/Troll3/troll_0018_weapon (3).png
+pygame-2/test/Spriter/Troll3/troll_0019_left-arm (3).png
+pygame-2/test/Spriter/Troll3/troll_0020_left-sholder (3).png
+pygame-2/test/Spriter/Troll3/Troll3.scml
