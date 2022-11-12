@@ -126,7 +126,8 @@ class Entity:
                 else:
                     self.animation = self.block_l    
             
-    def shoot(self,lista_balas,on_off = True):
+    def shoot(self,asset,lista_balas,on_off = True):
+        self.asset = asset
         self.is_shoot = on_off
         if(on_off == True and self.is_jump == False and self.is_fall == False):
             if(self.animation != self.shoot_r and self.animation != self.shoot_l):
@@ -137,7 +138,7 @@ class Entity:
                 else:
                     self.animation = self.shoot_l
                     
-            Ammo(lista_balas=lista_balas,x=self.rect.x,y=self.rect.y,frame_rate_ms=self.frame_rate_ms,move_rate_ms=self.move_rate_ms,direction=self.direction,p_scale=self.p_scale)
+            Ammo(asset=self.asset,lista_balas=lista_balas,x=self.rect.x,y=self.rect.y,frame_rate_ms=self.frame_rate_ms,move_rate_ms=self.move_rate_ms,direction=self.direction,p_scale=self.p_scale)
                                                                         
     def is_on_platform(self,lista_plataformas):
         retorno = False

@@ -3,10 +3,11 @@ from constants import *
 from auxiliar import Auxiliar
 
 class Bullet:
-    def __init__ (self,x,y,move_rate_ms,frame_rate_ms,move=50,direction_inicial=DIRECTION_R,p_scale=1,interval_bullet=FPS*2,distance=ANCHO_VENTANA,type=0):
+    def __init__ (self,asset,x,y,move_rate_ms,frame_rate_ms,move=50,direction_inicial=DIRECTION_R,p_scale=1,interval_bullet=FPS*2,distance=ANCHO_VENTANA,type=0):
         self.p_scale = p_scale * GLOBAL_SCALE
+        self.asset_folder = self.asset
         
-        self.image_list= Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\elements\\shield\\knight_shield_{0}.png",2,flip=False,step=0,scale=self.p_scale,w=100,h=100)
+        self.image_list= Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\elements\\" + self.asset_folder + "\\" + self.asset_folder + "_{0}.png",2,flip=False,step=0,scale=self.p_scale,w=100,h=100)
         self.frame = 0
         self.animation = self.image_list
         self.image = self.animation[self.frame]

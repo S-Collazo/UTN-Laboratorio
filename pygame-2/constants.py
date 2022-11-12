@@ -14,9 +14,6 @@ PATH_RECURSOS = r"C:\\Users\\Santiago\\Documents\\UTN\\Laboratorio\\UTN-Laborato
 DIRECTION_R = 0
 DIRECTION_L = 1
 
-PLAYER = 0
-ENEMY = 1
-
 BLACK = (0,0,0)
 WHITE = (255,255,255)
 RED = (255,0,0)

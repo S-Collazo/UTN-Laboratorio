@@ -5,7 +5,7 @@ from entity import Entity
 
 class Enemy(Entity):
     def __init__ (self,asset,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_L,p_scale=0.1) -> None:
-        self.asset_folder = "\\bosses\\{0}".format(asset)
+        self.asset_folder = "\\enemies\\{0}".format(asset)
         self.p_scale = p_scale * GLOBAL_SCALE
         
         super().__init__(self.asset_folder,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial,self.p_scale)        
@@ -16,16 +16,18 @@ class Enemy(Entity):
         self.posicion_extremo_b = x - (ANCHO_VENTANA / 2)
         self.validador_posicion = False
         
+        self.can_block = True
+        self.can_throw = True
+        
         self.lives = 3
         self.score = 0
-        self.entity_type = ENEMY
                
     def update (self,delta_ms,lista_plataformas,lista_oponente,lista_balas):
-            super().update(delta_ms,lista_plataformas,lista_oponente)
-            self.events(delta_ms,lista_oponente,lista_balas)
+        super().update(delta_ms,lista_plataformas,lista_oponente)
+        self.events(delta_ms,lista_oponente,lista_balas)
         
     def draw (self,screen):
-            super().draw(screen)
+        super().draw(screen)
         
     def events(self,delta_ms,lista_oponente,lista_balas):
         self.tiempo_transcurrido += delta_ms
@@ -54,7 +56,7 @@ class Enemy(Entity):
                 else:
                     super().walk(DIRECTION_R)
                 if(abs(self.distance_difference_x) <= (oponente.rect.w + 50)):
-                    if(oponente.is_attack):
+                    if(oponente.is_attack and self.can_block):
                         if((self.tiempo_transcurrido - self.tiempo_last_block) > (self.interval_time_block)):
                             self.block()
                             self.tiempo_last_block = self.tiempo_transcurrido
@@ -63,7 +65,8 @@ class Enemy(Entity):
                         self.tiempo_last_attack = self.tiempo_transcurrido
                     
                 for bala in lista_balas:
-                    if(abs(self.rect.x - bala.rect.x) <= (self.rect.w + 50)):
-                        if((self.tiempo_transcurrido - self.tiempo_last_block) > (self.interval_time_block)):
-                            self.block()
-                            self.tiempo_last_block = self.tiempo_transcurrido
+                    if(self.can_block):
+                        if(abs(self.rect.x - bala.rect.x) <= (self.rect.w + 50)):
+                            if((self.tiempo_transcurrido - self.tiempo_last_block) > (self.interval_time_block)):
+                                self.block()
+                                self.tiempo_last_block = self.tiempo_transcurrido
