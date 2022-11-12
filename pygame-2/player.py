@@ -1,8 +1,8 @@
 import pygame
-from constantes import *
+from constants import *
 from auxiliar import Auxiliar
-from entidad import Entity
-from municion import Ammo
+from entity import Entity
+from ammo import Ammo
 
 class Player(Entity):
     def __init__ (self,asset,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_R,p_scale=0.1) -> None:

@@ -12702,3 +12702,280 @@ pygame-2/test/Spriter/Troll3/troll_0018_weapon (3).png
 pygame-2/test/Spriter/Troll3/troll_0019_left-arm (3).png
 pygame-2/test/Spriter/Troll3/troll_0020_left-sholder (3).png
 pygame-2/test/Spriter/Troll3/Troll3.scml
+pygame-2/recursos/images/traps/creepy_forest/spikes_00.png
+pygame-2/test/Pixel/Recursos/.DS_Store
+pygame-2/test/Pixel/Recursos/Background/Blue.png
+pygame-2/test/Pixel/Recursos/Background/Brown.png
+pygame-2/test/Pixel/Recursos/Background/Gray.png
+pygame-2/test/Pixel/Recursos/Background/Green.png
+pygame-2/test/Pixel/Recursos/Background/Pink.png
+pygame-2/test/Pixel/Recursos/Background/Purple.png
+pygame-2/test/Pixel/Recursos/Background/Yellow.png
+pygame-2/test/Pixel/Recursos/Enemies/.DS_Store
+pygame-2/test/Pixel/Recursos/Enemies/AngryPig/Hit 1 (36x30).png
+pygame-2/test/Pixel/Recursos/Enemies/AngryPig/Hit 2 (36x30).png
+pygame-2/test/Pixel/Recursos/Enemies/AngryPig/Idle (36x30).png
+pygame-2/test/Pixel/Recursos/Enemies/AngryPig/Run (36x30).png
+pygame-2/test/Pixel/Recursos/Enemies/AngryPig/Walk (36x30).png
+pygame-2/test/Pixel/Recursos/Enemies/Bat/Ceiling In (46x30).png
+pygame-2/test/Pixel/Recursos/Enemies/Bat/Ceiling Out (46x30).png
+pygame-2/test/Pixel/Recursos/Enemies/Bat/Flying (46x30).png
+pygame-2/test/Pixel/Recursos/Enemies/Bat/Hit (46x30).png
+pygame-2/test/Pixel/Recursos/Enemies/Bat/Idle (46x30).png
+pygame-2/test/Pixel/Recursos/Enemies/Bee/Attack (36x34).png
+pygame-2/test/Pixel/Recursos/Enemies/Bee/Bullet Pieces.png
+pygame-2/test/Pixel/Recursos/Enemies/Bee/Bullet.png
+pygame-2/test/Pixel/Recursos/Enemies/Bee/Hit (36x34).png
+pygame-2/test/Pixel/Recursos/Enemies/Bee/Idle (36x34).png
+pygame-2/test/Pixel/Recursos/Enemies/BlueBird/Flying (32x32).png
+pygame-2/test/Pixel/Recursos/Enemies/BlueBird/Hit (32x32).png
+pygame-2/test/Pixel/Recursos/Enemies/Bunny/Fall.png
+pygame-2/test/Pixel/Recursos/Enemies/Bunny/Hit (34x44).png
+pygame-2/test/Pixel/Recursos/Enemies/Bunny/Idle (34x44).png
+pygame-2/test/Pixel/Recursos/Enemies/Bunny/Jump.png
+pygame-2/test/Pixel/Recursos/Enemies/Bunny/Run (34x44).png
+pygame-2/test/Pixel/Recursos/Enemies/Chameleon/Attack (84x38).png
+pygame-2/test/Pixel/Recursos/Enemies/Chameleon/Hit (84x38).png
+pygame-2/test/Pixel/Recursos/Enemies/Chameleon/Idle (84x38).png
+pygame-2/test/Pixel/Recursos/Enemies/Chameleon/Run (84x38).png
+pygame-2/test/Pixel/Recursos/Enemies/Chicken/Hit (32x34).png
+pygame-2/test/Pixel/Recursos/Enemies/Chicken/Idle (32x34).png
+pygame-2/test/Pixel/Recursos/Enemies/Chicken/Run (32x34).png
+pygame-2/test/Pixel/Recursos/Enemies/Duck/Fall (36x36).png
+pygame-2/test/Pixel/Recursos/Enemies/Duck/Hit (36x36).png
+pygame-2/test/Pixel/Recursos/Enemies/Duck/Idle (36x36).png
+pygame-2/test/Pixel/Recursos/Enemies/Duck/Jump (36x36).png
+pygame-2/test/Pixel/Recursos/Enemies/Duck/Jump Anticipation (36x36).png
+pygame-2/test/Pixel/Recursos/Enemies/FatBird/Fall (40x48).png
+pygame-2/test/Pixel/Recursos/Enemies/FatBird/Ground (40x48).png
+pygame-2/test/Pixel/Recursos/Enemies/FatBird/Hit (40x48).png
+pygame-2/test/Pixel/Recursos/Enemies/FatBird/Idle (40x48).png
+pygame-2/test/Pixel/Recursos/Enemies/Ghost/Appear (44x30).png
+pygame-2/test/Pixel/Recursos/Enemies/Ghost/Desappear (44x30).png
+pygame-2/test/Pixel/Recursos/Enemies/Ghost/Gost Particles (48x16).png
+pygame-2/test/Pixel/Recursos/Enemies/Ghost/Hit (44x30).png
+pygame-2/test/Pixel/Recursos/Enemies/Ghost/Idle (44x30).png
+pygame-2/test/Pixel/Recursos/Enemies/Mushroom/Hit.png
+pygame-2/test/Pixel/Recursos/Enemies/Mushroom/Idle (32x32).png
+pygame-2/test/Pixel/Recursos/Enemies/Mushroom/Run (32x32).png
+pygame-2/test/Pixel/Recursos/Enemies/Plant/Attack (44x42).png
+pygame-2/test/Pixel/Recursos/Enemies/Plant/Bullet Pieces.png
+pygame-2/test/Pixel/Recursos/Enemies/Plant/Bullet.png
+pygame-2/test/Pixel/Recursos/Enemies/Plant/Hit (44x42).png
+pygame-2/test/Pixel/Recursos/Enemies/Plant/Idle (44x42).png
+pygame-2/test/Pixel/Recursos/Enemies/Radish/Hit (30x38).png
+pygame-2/test/Pixel/Recursos/Enemies/Radish/Idle 1 (30x38).png
+pygame-2/test/Pixel/Recursos/Enemies/Radish/Idle 2 (30x38).png
+pygame-2/test/Pixel/Recursos/Enemies/Radish/Leafs.png
+pygame-2/test/Pixel/Recursos/Enemies/Radish/Run (30x38).png
+pygame-2/test/Pixel/Recursos/Enemies/Rino/Hit (52x34).png
+pygame-2/test/Pixel/Recursos/Enemies/Rino/Hit Wall (52x34).png
+pygame-2/test/Pixel/Recursos/Enemies/Rino/Idle (52x34).png
+pygame-2/test/Pixel/Recursos/Enemies/Rino/Run (52x34).png
+pygame-2/test/Pixel/Recursos/Enemies/Rocks/Rock1_Hit.png
+pygame-2/test/Pixel/Recursos/Enemies/Rocks/Rock1_Idle (38x34).png
+pygame-2/test/Pixel/Recursos/Enemies/Rocks/Rock1_Run (38x34).png
+pygame-2/test/Pixel/Recursos/Enemies/Rocks/Rock2_Hit (32x28).png
+pygame-2/test/Pixel/Recursos/Enemies/Rocks/Rock2_Idle (32x28).png
+pygame-2/test/Pixel/Recursos/Enemies/Rocks/Rock2_Run (32x28).png
+pygame-2/test/Pixel/Recursos/Enemies/Rocks/Rock3_Hit (22x18).png
+pygame-2/test/Pixel/Recursos/Enemies/Rocks/Rock3_Idle (22x18).png
+pygame-2/test/Pixel/Recursos/Enemies/Rocks/Rock3_Run (22x18).png
+pygame-2/test/Pixel/Recursos/Enemies/Skull/Hit (52x54).png
+pygame-2/test/Pixel/Recursos/Enemies/Skull/Hit Wall 1 (52x54).png
+pygame-2/test/Pixel/Recursos/Enemies/Skull/Hit Wall 2 (52x54).png
+pygame-2/test/Pixel/Recursos/Enemies/Skull/Idle 1 (52x54).png
+pygame-2/test/Pixel/Recursos/Enemies/Skull/Idle 2 (52x54).png
+pygame-2/test/Pixel/Recursos/Enemies/Skull/Orange Particle.png
+pygame-2/test/Pixel/Recursos/Enemies/Skull/Red Particle.png
+pygame-2/test/Pixel/Recursos/Enemies/Slime/Hit (44x30).png
+pygame-2/test/Pixel/Recursos/Enemies/Slime/Idle-Run (44x30).png
+pygame-2/test/Pixel/Recursos/Enemies/Slime/Particles (62x16).png
+pygame-2/test/Pixel/Recursos/Enemies/Snail/Hit (38x24).png
+pygame-2/test/Pixel/Recursos/Enemies/Snail/Idle (38x24).png
+pygame-2/test/Pixel/Recursos/Enemies/Snail/Shell Idle (38x24).png
+pygame-2/test/Pixel/Recursos/Enemies/Snail/Shell Top Hit (38x24).png
+pygame-2/test/Pixel/Recursos/Enemies/Snail/Shell Wall Hit (38x24).png
+pygame-2/test/Pixel/Recursos/Enemies/Snail/Snail without shell.png
+pygame-2/test/Pixel/Recursos/Enemies/Snail/Walk (38x24).png
+pygame-2/test/Pixel/Recursos/Enemies/Trunk/Attack (64x32).png
+pygame-2/test/Pixel/Recursos/Enemies/Trunk/Bullet Pieces.png
+pygame-2/test/Pixel/Recursos/Enemies/Trunk/Bullet.png
+pygame-2/test/Pixel/Recursos/Enemies/Trunk/Hit (64x32).png
+pygame-2/test/Pixel/Recursos/Enemies/Trunk/Idle (64x32).png
+pygame-2/test/Pixel/Recursos/Enemies/Trunk/Run (64x32).png
+pygame-2/test/Pixel/Recursos/Enemies/Turtle/Hit (44x26).png
+pygame-2/test/Pixel/Recursos/Enemies/Turtle/Idle 1 (44x26).png
+pygame-2/test/Pixel/Recursos/Enemies/Turtle/Idle 2 (44x26).png
+pygame-2/test/Pixel/Recursos/Enemies/Turtle/Spikes in (44x26).png
+pygame-2/test/Pixel/Recursos/Enemies/Turtle/Spikes out (44x26).png
+pygame-2/test/Pixel/Recursos/Items/.DS_Store
+pygame-2/test/Pixel/Recursos/Items/Boxes/Box1/Break.png
+pygame-2/test/Pixel/Recursos/Items/Boxes/Box1/Hit (28x24).png
+pygame-2/test/Pixel/Recursos/Items/Boxes/Box1/Idle.png
+pygame-2/test/Pixel/Recursos/Items/Boxes/Box2/Break.png
+pygame-2/test/Pixel/Recursos/Items/Boxes/Box2/Hit (28x24).png
+pygame-2/test/Pixel/Recursos/Items/Boxes/Box2/Idle.png
+pygame-2/test/Pixel/Recursos/Items/Boxes/Box3/Break.png
+pygame-2/test/Pixel/Recursos/Items/Boxes/Box3/Hit (28x24).png
+pygame-2/test/Pixel/Recursos/Items/Boxes/Box3/Idle.png
+pygame-2/test/Pixel/Recursos/Items/Checkpoints/Checkpoint/Checkpoint (Flag Idle)(64x64).png
+pygame-2/test/Pixel/Recursos/Items/Checkpoints/Checkpoint/Checkpoint (Flag Out) (64x64).png
+pygame-2/test/Pixel/Recursos/Items/Checkpoints/Checkpoint/Checkpoint (No Flag).png
+pygame-2/test/Pixel/Recursos/Items/Checkpoints/End/End (Idle).png
+pygame-2/test/Pixel/Recursos/Items/Checkpoints/End/End (Pressed) (64x64).png
+pygame-2/test/Pixel/Recursos/Items/Checkpoints/Start/Start (Idle).png
+pygame-2/test/Pixel/Recursos/Items/Checkpoints/Start/Start (Moving) (64x64).png
+pygame-2/test/Pixel/Recursos/Items/Fruits/Apple.png
+pygame-2/test/Pixel/Recursos/Items/Fruits/Bananas.png
+pygame-2/test/Pixel/Recursos/Items/Fruits/Cherries.png
+pygame-2/test/Pixel/Recursos/Items/Fruits/Collected.png
+pygame-2/test/Pixel/Recursos/Items/Fruits/Kiwi.png
+pygame-2/test/Pixel/Recursos/Items/Fruits/Melon.png
+pygame-2/test/Pixel/Recursos/Items/Fruits/Orange.png
+pygame-2/test/Pixel/Recursos/Items/Fruits/Pineapple.png
+pygame-2/test/Pixel/Recursos/Items/Fruits/Strawberry.png
+pygame-2/test/Pixel/Recursos/Main Characters/.DS_Store
+pygame-2/test/Pixel/Recursos/Main Characters/Appearing (96x96).png
+pygame-2/test/Pixel/Recursos/Main Characters/Desappearing (96x96).png
+pygame-2/test/Pixel/Recursos/Main Characters/Mask Dude/Double Jump (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Mask Dude/Fall (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Mask Dude/Hit (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Mask Dude/Idle (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Mask Dude/Jump (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Mask Dude/Run (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Mask Dude/Wall Jump (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Ninja Frog/Double Jump (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Ninja Frog/Fall (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Ninja Frog/Hit (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Ninja Frog/Idle (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Ninja Frog/Jump (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Ninja Frog/Run (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Ninja Frog/Wall Jump (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Pink Man/Double Jump (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Pink Man/Fall (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Pink Man/Hit (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Pink Man/Idle (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Pink Man/Jump (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Pink Man/Run (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Pink Man/Wall Jump (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Virtual Guy/Double Jump (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Virtual Guy/Fall (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Virtual Guy/Hit (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Virtual Guy/Idle (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Virtual Guy/Jump (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Virtual Guy/Run (32x32).png
+pygame-2/test/Pixel/Recursos/Main Characters/Virtual Guy/Wall Jump (32x32).png
+pygame-2/test/Pixel/Recursos/Menu/.DS_Store
+pygame-2/test/Pixel/Recursos/Menu/Buttons/Achievements.png
+pygame-2/test/Pixel/Recursos/Menu/Buttons/Back.png
+pygame-2/test/Pixel/Recursos/Menu/Buttons/Close.png
+pygame-2/test/Pixel/Recursos/Menu/Buttons/Leaderboard.png
+pygame-2/test/Pixel/Recursos/Menu/Buttons/Levels.png
+pygame-2/test/Pixel/Recursos/Menu/Buttons/Next.png
+pygame-2/test/Pixel/Recursos/Menu/Buttons/Play.png
+pygame-2/test/Pixel/Recursos/Menu/Buttons/Previous.png
+pygame-2/test/Pixel/Recursos/Menu/Buttons/Restart.png
+pygame-2/test/Pixel/Recursos/Menu/Buttons/Settings.png
+pygame-2/test/Pixel/Recursos/Menu/Buttons/Volume.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/01.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/02.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/03.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/04.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/05.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/06.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/07.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/08.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/09.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/10.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/11.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/12.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/13.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/14.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/15.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/16.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/17.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/18.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/19.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/20.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/21.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/22.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/23.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/24.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/25.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/26.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/27.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/28.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/29.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/30.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/31.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/32.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/33.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/34.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/35.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/36.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/37.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/38.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/39.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/40.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/41.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/42.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/43.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/44.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/45.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/46.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/47.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/48.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/49.png
+pygame-2/test/Pixel/Recursos/Menu/Levels/50.png
+pygame-2/test/Pixel/Recursos/Menu/Text/Text (Black) (8x10).png
+pygame-2/test/Pixel/Recursos/Menu/Text/Text (White) (8x10).png
+pygame-2/test/Pixel/Recursos/Other/Confetti (16x16).png
+pygame-2/test/Pixel/Recursos/Other/Dust Particle.png
+pygame-2/test/Pixel/Recursos/Other/Shadow.png
+pygame-2/test/Pixel/Recursos/Other/Transition.png
+pygame-2/test/Pixel/Recursos/Terrain/Terrain (16x16).png
+pygame-2/test/Pixel/Recursos/Traps/.DS_Store
+pygame-2/test/Pixel/Recursos/Traps/Arrow/Hit (18x18).png
+pygame-2/test/Pixel/Recursos/Traps/Arrow/Idle (18x18).png
+pygame-2/test/Pixel/Recursos/Traps/Blocks/HitSide (22x22).png
+pygame-2/test/Pixel/Recursos/Traps/Blocks/HitTop (22x22).png
+pygame-2/test/Pixel/Recursos/Traps/Blocks/Idle.png
+pygame-2/test/Pixel/Recursos/Traps/Blocks/Part 1 (22x22).png
+pygame-2/test/Pixel/Recursos/Traps/Blocks/Part 2 (22x22).png
+pygame-2/test/Pixel/Recursos/Traps/Falling Platforms/Off.png
+pygame-2/test/Pixel/Recursos/Traps/Falling Platforms/On (32x10).png
+pygame-2/test/Pixel/Recursos/Traps/Fan/Off.png
+pygame-2/test/Pixel/Recursos/Traps/Fan/On (24x8).png
+pygame-2/test/Pixel/Recursos/Traps/Fire/Hit (16x32).png
+pygame-2/test/Pixel/Recursos/Traps/Fire/Off.png
+pygame-2/test/Pixel/Recursos/Traps/Fire/On (16x32).png
+pygame-2/test/Pixel/Recursos/Traps/Platforms/Brown Off.png
+pygame-2/test/Pixel/Recursos/Traps/Platforms/Brown On (32x8).png
+pygame-2/test/Pixel/Recursos/Traps/Platforms/Chain.png
+pygame-2/test/Pixel/Recursos/Traps/Platforms/Grey Off.png
+pygame-2/test/Pixel/Recursos/Traps/Platforms/Grey On (32x8).png
+pygame-2/test/Pixel/Recursos/Traps/Rock Head/Blink (42x42).png
+pygame-2/test/Pixel/Recursos/Traps/Rock Head/Bottom Hit (42x42).png
+pygame-2/test/Pixel/Recursos/Traps/Rock Head/Idle.png
+pygame-2/test/Pixel/Recursos/Traps/Rock Head/Left Hit (42x42).png
+pygame-2/test/Pixel/Recursos/Traps/Rock Head/Right Hit (42x42).png
+pygame-2/test/Pixel/Recursos/Traps/Rock Head/Top Hit (42x42).png
+pygame-2/test/Pixel/Recursos/Traps/Sand Mud Ice/Ice Particle.png
+pygame-2/test/Pixel/Recursos/Traps/Sand Mud Ice/Mud Particle.png
+pygame-2/test/Pixel/Recursos/Traps/Sand Mud Ice/Sand Mud Ice (16x6).png
+pygame-2/test/Pixel/Recursos/Traps/Sand Mud Ice/Sand Particle.png
+pygame-2/test/Pixel/Recursos/Traps/Saw/Chain.png
+pygame-2/test/Pixel/Recursos/Traps/Saw/Off.png
+pygame-2/test/Pixel/Recursos/Traps/Saw/On (38x38).png
+pygame-2/test/Pixel/Recursos/Traps/Spike Head/Blink (54x52).png
+pygame-2/test/Pixel/Recursos/Traps/Spike Head/Bottom Hit (54x52).png
+pygame-2/test/Pixel/Recursos/Traps/Spike Head/Idle.png
+pygame-2/test/Pixel/Recursos/Traps/Spike Head/Left Hit (54x52).png
+pygame-2/test/Pixel/Recursos/Traps/Spike Head/Right Hit (54x52).png
+pygame-2/test/Pixel/Recursos/Traps/Spike Head/Top Hit (54x52).png
+pygame-2/test/Pixel/Recursos/Traps/Spiked Ball/Chain.png
+pygame-2/test/Pixel/Recursos/Traps/Spiked Ball/Spiked Ball.png
+pygame-2/test/Pixel/Recursos/Traps/Spikes/Idle.png
+pygame-2/test/Pixel/Recursos/Traps/Trampoline/Idle.png
+pygame-2/test/Pixel/Recursos/Traps/Trampoline/Jump (28x28).png

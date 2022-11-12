@@ -1,12 +1,12 @@
 import pygame
-from constantes import *
+from constants import *
 from auxiliar import Auxiliar
 
 class Bullet:
     def __init__ (self,x,y,move_rate_ms,frame_rate_ms,move=50,direction_inicial=DIRECTION_R,p_scale=1,interval_bullet=FPS*2,distance=ANCHO_VENTANA,type=0):
         self.p_scale = p_scale * GLOBAL_SCALE
         
-        self.image_list= Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\elements\\shield\\knight_shield_{0}.png",1,flip=False,step=0,scale=self.p_scale,w=100,h=100)
+        self.image_list= Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\elements\\shield\\knight_shield_{0}.png",2,flip=False,step=0,scale=self.p_scale,w=100,h=100)
         self.frame = 0
         self.animation = self.image_list
         self.image = self.animation[self.frame]
@@ -30,27 +30,31 @@ class Bullet:
         self.is_shooting = True
         self.collition_enabled = True
     
-    def damage(self,lista_oponente,lista_plataformas):
+    def damage(self,lista_oponente,lista_plataformas,lista_trampas):
         if(self.is_shooting):  
             for oponente in lista_oponente:
                 if(self.rect_collition.colliderect(oponente.rect)):
-                        self.is_shooting = False
-                        if not (oponente.is_block):
-                            oponente.lives -= 1
+                    self.is_shooting = False
+                    if not (oponente.is_block):
+                        oponente.lives -= 1
                                 
-                        if(self.rect.x <= oponente.rect.x):
-                            oponente.add_x(100)
-                        else:
-                            oponente.add_x(-100)
-                            oponente.jump(True)
+                    if(self.rect.x <= oponente.rect.x):
+                        oponente.add_x(100)
+                    else:
+                        oponente.add_x(-100)
+                        oponente.jump(True)
                 break
             
             for plataforma in lista_plataformas:
-                if(self.rect_collition.colliderect(plataforma.rect)):
+                if(self.rect_collition.colliderect(plataforma.rect_collition)):
+                    print("B")
                     self.is_shooting = False
-                    print("HIT!")
                 break                
 
+            for trampa in lista_trampas:
+                if(self.rect_collition.colliderect(trampa.rect_collition)):
+                    self.is_shooting = False
+                break        
     
     def do_movement(self):
         self.tiempo_transcurrido_move += self.interval_bullet
@@ -79,8 +83,8 @@ class Bullet:
             else:
                  self.frame = 0
                 
-    def update (self,delta_ms,lista_oponente,lista_plataformas):
-        self.damage(lista_oponente,lista_plataformas)
+    def update (self,delta_ms,lista_oponente,lista_plataformas,lista_trampas):
+        self.damage(lista_oponente,lista_plataformas,lista_trampas)
         self.do_movement()
         self.do_animation(delta_ms)
        

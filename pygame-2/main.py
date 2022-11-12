@@ -1,12 +1,13 @@
 import pygame
 import sys
 from pygame.locals import *
-from constantes import *
-from personaje import Player
-from enemigo import Enemy
-from plataforma import Platform
-from bala import Bullet
-from nivel import Level
+from constants import *
+from player import Player
+from enemy import Enemy
+from plataform import Platform
+from bullet import Bullet
+from trap import Trap
+from level import Level
 from auxiliar import Auxiliar
 
 flags = DOUBLEBUF
@@ -42,6 +43,10 @@ Level.create_plaforms(lista_plataformas,x=400,y=200,w=100,h=100,tile_total=17,p_
 Level.create_plaforms(lista_plataformas,x=0,y=125,w=100,h=100,tile_total=7,p_scale=0.4,collition_enabled=True)
 Level.create_plaforms(lista_plataformas,x=0,y=450,w=100,h=100,tile_total=3,p_scale=0.4,collition_enabled=True)
 
+lista_trampas = []
+lista_trampas.append(Trap(x=10,y=375,w=50,h=50,p_scale=0.4))
+lista_trampas.append(Trap(x=350,y=325,w=50,h=50,p_scale=0.4))
+
 lista_balas = []
 
 while True:
@@ -58,6 +63,10 @@ while True:
     
     for plataforma in lista_plataformas:
         Platform.draw(plataforma,screen)
+        
+    for trampa in lista_trampas:
+        Trap.draw(trampa,screen)
+        Trap.update(trampa,lista_personajes,lista_enemigos)
        
     player_1.events(delta_ms,keys,lista_balas)
     player_1.update(delta_ms,lista_plataformas,lista_enemigos)
@@ -65,7 +74,7 @@ while True:
     
     for bala in lista_balas:
         Bullet.draw(bala,screen)
-        Bullet.update(bala,delta_ms,lista_enemigos,lista_plataformas)
+        Bullet.update(bala,delta_ms,lista_enemigos,lista_plataformas,lista_trampas)
 
     if(enemy_1.lives > 0):
         enemy_1.update(delta_ms,lista_plataformas,lista_personajes,lista_balas)

@@ -1,6 +1,6 @@
 import pygame
-from constantes import *
-from plataforma import Platform
+from constants import *
+from plataform import Platform
 
 class Level:
     def create_plaforms(lista_plataformas,x,y,w,h,step=1,tile_total=2,p_scale=1,tile_type=0,collition_enabled=True,add_bottom=False):              

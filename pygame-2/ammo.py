@@ -1,7 +1,6 @@
 import pygame
-from constantes import *
-from auxiliar import Auxiliar
-from bala import Bullet
+from constants import *
+from bullet import Bullet
 
 class Ammo:
     def __init__(self,lista_balas,x,y,frame_rate_ms,move_rate_ms,direction,p_scale=1):

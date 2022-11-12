@@ -1,5 +1,5 @@
 import pygame
-from constantes import *
+from constants import *
 
 class Auxiliar:
     @staticmethod
@@ -26,7 +26,7 @@ class Auxiliar:
     @staticmethod
     def getSurfaceFromSeparateFiles(path_format,quantity,flip=False,step = 1,scale=1,w=0,h=0,repeat_frame=1):     
         lista = []
-        for i in range(step,quantity+1):
+        for i in range(step,quantity):
             path = path_format.format(i)
             surface_fotograma = pygame.image.load(path)
             fotograma_ancho_scaled = int(surface_fotograma.get_rect().w * scale)

@@ -1,10 +1,11 @@
 import pygame
-from constantes import *
+from pygame.locals import *
+from constants import *
 from auxiliar import Auxiliar
 
 class Widget:
     def __init__ (self,master_surface,x,y,w,h,background_color=WHITE,border_color=RED):
-        self.master_surface = master_surface
+        self.master_form = master_surface
         self.x = x
         self.y = y
         self.w = w
@@ -15,8 +16,8 @@ class Widget:
     def render (self):
         pass
             
-    def update (self,lista_eventos):
+    def update (self):
         pass
     
     def draw (self):
-        self.master_surface.blit(self.slave_surface,self.slave_rect)
+        self.master_form.surface.blit(self.slave_surface,self.slave_rect)
