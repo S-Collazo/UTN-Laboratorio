@@ -21,14 +21,12 @@ clock = pygame.time.Clock()
 imagen_fondo = pygame.image.load(PATH_RECURSOS + "\\images\\locations\\set_bg_06\\creepy_forest.png")
 imagen_fondo = pygame.transform.scale(imagen_fondo,(ANCHO_VENTANA,ALTO_VENTANA))
 
-player_1 = Player(asset="knight_main",x=400,y=GROUND_LEVEL-100,gravity=10,frame_rate_ms=50,move_rate_ms=20)
-
-enemy_1 = Enemy(asset="bronze_knight",x=800,y=0,gravity=10,frame_rate_ms=50,move_rate_ms=20)
-
 lista_personajes = []
+player_1 = Player(asset="knight_main",x=400,y=GROUND_LEVEL-100,gravity=10,frame_rate_ms=50,move_rate_ms=20)
 lista_personajes.append(player_1)
 
 lista_enemigos = []
+enemy_1 = Enemy(asset="bronze_knight",x=800,y=0,gravity=10,frame_rate_ms=50,move_rate_ms=20)
 lista_enemigos.append(enemy_1)
 
 lista_plataformas = []
@@ -44,8 +42,10 @@ Level.create_plaforms(lista_plataformas,x=0,y=125,w=100,h=100,tile_total=7,p_sca
 Level.create_plaforms(lista_plataformas,x=0,y=450,w=100,h=100,tile_total=3,p_scale=0.4,collition_enabled=True)
 
 lista_trampas = []
-lista_trampas.append(Trap(x=10,y=375,w=50,h=50,p_scale=0.4))
-lista_trampas.append(Trap(x=350,y=325,w=50,h=50,p_scale=0.4))
+trampa_1 = Trap(x=10,y=375,w=50,h=50,p_scale=0.4)
+trampa_2 = Trap(x=350,y=275,w=50,h=50,p_scale=0.4)
+lista_trampas.append(trampa_1)
+lista_trampas.append(trampa_2)
 
 lista_balas = []
 

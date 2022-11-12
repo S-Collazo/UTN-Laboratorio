@@ -43,18 +43,17 @@ class Bullet:
                     else:
                         oponente.add_x(-100)
                         oponente.jump(True)
-                break
+                    break
             
             for plataforma in lista_plataformas:
                 if(self.rect_collition.colliderect(plataforma.rect_collition)):
-                    print("B")
                     self.is_shooting = False
-                break                
+                    break                
 
             for trampa in lista_trampas:
                 if(self.rect_collition.colliderect(trampa.rect_collition)):
                     self.is_shooting = False
-                break        
+                    break        
     
     def do_movement(self):
         self.tiempo_transcurrido_move += self.interval_bullet
