@@ -9,17 +9,18 @@ class Enemy(Entity):
         self.p_scale = p_scale * GLOBAL_SCALE
         
         super().__init__(self.asset_folder,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial,self.p_scale)        
+                
         self.speed_walk = int(ANCHO_VENTANA / 400)
         self.speed_run = int(ANCHO_VENTANA / 400)
         
         self.posicion_extremo_a = x
         self.posicion_extremo_b = x - (ANCHO_VENTANA / 2)
-        self.validador_posicion = False
         
         self.can_block = True
         self.can_throw = True
         
-        self.lives = 3
+        self.hitpoints = 100
+        self.attack_power = 10
         self.score = 0
                
     def update (self,delta_ms,lista_plataformas,lista_oponente,lista_balas):

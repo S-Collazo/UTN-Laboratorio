@@ -11,10 +11,11 @@ class Player(Entity):
         
         super().__init__(self.asset_folder,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial,self.p_scale)
                 
-        self.lives = 5
+        self.hitpoints = 100
+        self.attack_power = 10
         self.score = 0
         
-        self.bullet_aseet = "knight_shield"
+        self.bullet_asset = "knight_shield"
                                                                                  
     def update(self,delta_ms,lista_plataformas,lista_oponente):
         super().update(delta_ms,lista_plataformas,lista_oponente)
@@ -26,7 +27,7 @@ class Player(Entity):
         self.tiempo_transcurrido += delta_ms
         self.is_shooting = Ammo.is_shooting(lista_balas=lista_balas)
         
-        self.shoot(asset=self.bullet_aseet,lista_balas=lista_balas,on_off=False)
+        self.shoot(asset=self.bullet_asset,lista_balas=lista_balas,on_off=False)
         self.attack(False)
         self.block(False)
         
@@ -44,10 +45,10 @@ class Player(Entity):
                 self.tiempo_last_jump = self.tiempo_transcurrido
                    
         if(not keys[pygame.K_a]):
-            self.shoot(self.bullet_aseet,lista_balas,False)  
+            self.shoot(self.bullet_asset,lista_balas,False)  
         if(keys[pygame.K_s] and not keys[pygame.K_a] and not keys[pygame.K_d] and self.is_shooting == False):
             if((self.tiempo_transcurrido - self.tiempo_last_shoot) > (self.interval_time_shoot)):
-                self.shoot(self.bullet_aseet,lista_balas)
+                self.shoot(self.bullet_asset,lista_balas)
                 self.tiempo_last_shoot = self.tiempo_transcurrido
         if(not keys[pygame.K_a]):
             self.attack(False)

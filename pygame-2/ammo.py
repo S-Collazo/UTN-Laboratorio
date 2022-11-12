@@ -14,7 +14,7 @@ class Ammo:
         self.pos_y = y + (50 * GLOBAL_SCALE)
         self.direction = direction
         
-        lista_balas.append(Bullet(self.asset,x=self.pos_x,y=self.pos_y,frame_rate_ms=frame_rate_ms,move_rate_ms=move_rate_ms,move=50,direction_inicial=self.direction,p_scale=self.p_scale,interval_bullet=FPS*2,distance=ANCHO_VENTANA))
+        lista_balas.append(Bullet(asset=self.asset,x=self.pos_x,y=self.pos_y,frame_rate_ms=frame_rate_ms,move_rate_ms=move_rate_ms,move=50,direction_inicial=self.direction,p_scale=self.p_scale,interval_bullet=FPS*2,distance=ANCHO_VENTANA))
         
     def is_shooting(lista_balas):
         retorno = False

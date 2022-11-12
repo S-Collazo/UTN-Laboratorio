@@ -5,7 +5,7 @@ from auxiliar import Auxiliar
 class Bullet:
     def __init__ (self,asset,x,y,move_rate_ms,frame_rate_ms,move=50,direction_inicial=DIRECTION_R,p_scale=1,interval_bullet=FPS*2,distance=ANCHO_VENTANA,type=0):
         self.p_scale = p_scale * GLOBAL_SCALE
-        self.asset_folder = self.asset
+        self.asset_folder = asset
         
         self.image_list= Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\elements\\" + self.asset_folder + "\\" + self.asset_folder + "_{0}.png",2,flip=False,step=0,scale=self.p_scale,w=100,h=100)
         self.frame = 0
@@ -14,6 +14,8 @@ class Bullet:
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+        
+        self.attack_power = 10
         
         self.rect_collition = pygame.Rect(self.rect)
         
@@ -37,7 +39,7 @@ class Bullet:
                 if(self.rect_collition.colliderect(oponente.rect)):
                     self.is_shooting = False
                     if not (oponente.is_block):
-                        oponente.lives -= 1
+                        oponente.hitpoints -= self.attack_power
                                 
                     if(self.rect.x <= oponente.rect.x):
                         oponente.add_x(100)

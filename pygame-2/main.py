@@ -4,6 +4,7 @@ from pygame.locals import *
 from constants import *
 from player import Player
 from enemy import Enemy
+from enemy_goblin import *
 from plataform import Platform
 from bullet import Bullet
 from trap import Trap
@@ -26,7 +27,7 @@ player_1 = Player(asset="knight_main",x=400,y=GROUND_LEVEL-100,gravity=10,frame_
 lista_personajes.append(player_1)
 
 lista_enemigos = []
-enemy_1 = Enemy(asset="bronze_knight",x=800,y=0,gravity=10,frame_rate_ms=50,move_rate_ms=20)
+enemy_1 = Goblin_Standard(x=800,y=0,gravity=10,frame_rate_ms=50,move_rate_ms=20)
 lista_enemigos.append(enemy_1)
 
 lista_plataformas = []
@@ -43,9 +44,7 @@ Level.create_plaforms(lista_plataformas,x=0,y=450,w=100,h=100,tile_total=3,p_sca
 
 lista_trampas = []
 trampa_1 = Trap(x=10,y=375,w=50,h=50,p_scale=0.4)
-trampa_2 = Trap(x=350,y=275,w=50,h=50,p_scale=0.4)
 lista_trampas.append(trampa_1)
-lista_trampas.append(trampa_2)
 
 lista_balas = []
 
@@ -76,7 +75,7 @@ while True:
         Bullet.draw(bala,screen)
         Bullet.update(bala,delta_ms,lista_enemigos,lista_plataformas,lista_trampas)
 
-    if(enemy_1.lives > 0):
+    if(enemy_1.hitpoints > 0):
         enemy_1.update(delta_ms,lista_plataformas,lista_personajes,lista_balas)
         enemy_1.draw(screen)
                         

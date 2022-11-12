@@ -1,0 +1,62 @@
+{
+    "name": "Iron Knight",
+    "asset_folder": "\\players\\knight_main",
+    "hitpoints": 100,
+    "attack_power": 10,
+    "speed_walk_modifier": 100,
+    "jump_height_modifier": 14,
+    "bullet": [
+        {
+            "type": "Knight Shield",
+            "path": "\\elements\\knight shield\\knight_shield_",
+            "quantity": 2
+        }
+    ],
+    "animations": [
+        {
+            "type": "Attack",
+            "path": "\\_ATTACK\\_ATTACK_",
+            "quantity": 5
+        },
+        {
+            "type": "Block",
+            "path": "\\_BLOCK\\_BLOCK_",
+            "quantity": 3
+        },
+        {
+            "type": "Die",
+            "path": "\\_DIE\\_DIE_",
+            "quantity": 3
+        },
+        {
+            "type": "Hurt",
+            "path": "\\_HURT\\_HURT_",
+            "quantity": 2
+        },
+        {
+            "type": "Idle",
+            "path": "\\_IDLE\\_IDLE_",
+            "quantity": 2
+        },
+        {
+            "type": "Jump",
+            "path": "\\_JUMP\\_JUMP_",
+            "quantity": 11
+        },
+        {
+            "type": "Run",
+            "path": "\\_RUN\\_RUN_",
+            "quantity": 4
+        },
+        {
+            "type": "Throw",
+            "path": "\\_THROW\\_THROW_",
+            "quantity": 7
+        },
+        {
+            "type": "Walk",
+            "path": "\\_WALK\\_WALK_",
+            "quantity": 5
+        }
+    ]
+}
