@@ -1,4 +1,5 @@
 import pygame
+import json
 from constants import *
 
 class Auxiliar:
@@ -43,8 +44,21 @@ class Auxiliar:
         return lista
     
     @staticmethod
+    def getSurfaceFromJson(asset,animation,flip=False,p_scale=1):
+        asset_folder = asset["asset_folder"]
+        asset_anim = asset["animations"]
+        sprite = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\caracters\\" + asset_folder + asset_anim[animation]["path"] + "{:03d}.png",asset_anim[animation]["quantity"],flip=flip,step = 0,scale=p_scale,repeat_frame=1)
+        return sprite
+    
+    @staticmethod
     def drawGrid(screen,block_size=10):
         for x in range(0, ANCHO_VENTANA, block_size):
             for y in range(0, ALTO_VENTANA, block_size):
                 rect = pygame.Rect(x, y, block_size, block_size)
                 pygame.draw.rect(screen, WHITE, rect, 1)
+                
+    @staticmethod
+    def readJson(file):
+        with open(file, 'r') as f:
+            data = json.load(f)
+        return data

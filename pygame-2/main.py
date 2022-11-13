@@ -4,7 +4,7 @@ from pygame.locals import *
 from constants import *
 from player import Player
 from enemy import Enemy
-from enemy_goblin import *
+from enemy_goblin import Goblin
 from plataform import Platform
 from bullet import Bullet
 from trap import Trap
@@ -19,16 +19,24 @@ pygame.init()
 
 clock = pygame.time.Clock()
 
-imagen_fondo = pygame.image.load(PATH_RECURSOS + "\\images\\locations\\set_bg_06\\creepy_forest.png")
+imagen_fondo = pygame.image.load(PATH_RECURSOS + "\\locations\\set_bg_06\\creepy_forest.png")
 imagen_fondo = pygame.transform.scale(imagen_fondo,(ANCHO_VENTANA,ALTO_VENTANA))
 
+player_list = Auxiliar.readJson("player_list.json")
 lista_personajes = []
-player_1 = Player(asset="knight_main",x=400,y=GROUND_LEVEL-100,gravity=10,frame_rate_ms=50,move_rate_ms=20)
+player_1 = Player(asset=player_list,name="Iron Knight",x=400,y=GROUND_LEVEL-100,gravity=10,frame_rate_ms=300,move_rate_ms=40)
 lista_personajes.append(player_1)
 
+enemy_list = Auxiliar.readJson("enemy_list.json")
 lista_enemigos = []
-enemy_1 = Goblin_Standard(x=800,y=0,gravity=10,frame_rate_ms=50,move_rate_ms=20)
+enemy_1 = Goblin(asset=enemy_list,name="Goblin Standard",x=501,y=GROUND_LEVEL-100,gravity=10,frame_rate_ms=300,move_rate_ms=40,p_scale=0.2)
+enemy_2 = Goblin(asset=enemy_list,name="Goblin Grunt",x=550,y=50,gravity=10,frame_rate_ms=300,move_rate_ms=40,p_scale=0.2)
+enemy_3 = Goblin(asset=enemy_list,name="Goblin Shaman",x=175,y=25,gravity=10,frame_rate_ms=300,move_rate_ms=40,p_scale=0.2)
 lista_enemigos.append(enemy_1)
+lista_enemigos.append(enemy_2)
+lista_enemigos.append(enemy_3)
+
+lista_entidades = lista_personajes + lista_enemigos
 
 lista_plataformas = []
 lista_plataformas.append(Platform(x=0,y=GROUND_LEVEL,w=ANCHO_VENTANA,h=GROUND_RECT_H,type=1))
@@ -55,8 +63,10 @@ while True:
             sys.exit()
                         
     keys = pygame.key.get_pressed()
-    
+     
     delta_ms = clock.tick(FPS)
+    
+    print(delta_ms)
         
     screen.blit(imagen_fondo,imagen_fondo.get_rect())
     
@@ -73,11 +83,12 @@ while True:
     
     for bala in lista_balas:
         Bullet.draw(bala,screen)
-        Bullet.update(bala,delta_ms,lista_enemigos,lista_plataformas,lista_trampas)
+        Bullet.update(bala,delta_ms,lista_entidades,lista_plataformas,lista_trampas,lista_balas)
 
-    if(enemy_1.hitpoints > 0):
-        enemy_1.update(delta_ms,lista_plataformas,lista_personajes,lista_balas)
-        enemy_1.draw(screen)
+    for enemy in lista_enemigos:
+        if(enemy.hitpoints > 0):
+            enemy.update(delta_ms,lista_plataformas,lista_personajes,lista_balas)
+            enemy.draw(screen)
                         
     if(DEBUG):
         Auxiliar.drawGrid(screen,100)

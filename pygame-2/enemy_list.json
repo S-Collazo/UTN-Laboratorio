@@ -1,260 +1,214 @@
 {
-    "Goblins": [
-        {
+    "Goblins": {
+        "Goblin Standard": {
             "name": "Goblin Standard",
             "asset_folder": "\\enemies\\goblin\\goblin_standard",
             "hitpoints": 50,
             "attack_power": 10,
             "speed_walk_modifier": 100,
             "jump_height_modifier": 10,
-            "bullet": [
-                {
-                    "type": "Skull",
-                    "path": "\\elements\\skull\\skull_",
-                    "quantity": 1
-                }
-            ],
-            "animations": [
-                {
-                    "type": "Attack",
+            "bullet": {
+                "name": "Skull",
+                "path": "\\elements\\skull\\skull",
+                "quantity": 1
+            },
+            "animations": {
+                "Attack": {
                     "path": "\\_ATTACK\\_ATTACK_",
                     "quantity": 3
                 },
-                {
-                    "type": "Block",
+                "Block": {
                     "path": "\\_BLOCK\\_BLOCK_",
                     "quantity": 1
                 },
-                {
-                    "type": "Die",
+                "Die": {
                     "path": "\\_DIE\\_DIE_",
                     "quantity": 4
                 },
-                {
-                    "type": "Hurt",
+                "Hurt": {
                     "path": "\\_HURT\\_HURT_",
                     "quantity": 2
                 },
-                {
-                    "type": "Idle",
+                "Idle": {
                     "path": "\\_IDLE\\_IDLE_",
                     "quantity": 2
                 },
-                {
-                    "type": "Jump",
+                "Jump": {
                     "path": "\\_JUMP\\_JUMP_",
                     "quantity": 5
                 },
-                {
-                    "type": "Run",
+                "Run": {
                     "path": "\\_RUN\\_RUN_",
                     "quantity": 3
                 },
-                {
-                    "type": "Throw",
+                "Throw": {
                     "path": "\\_THROW\\_THROW_",
                     "quantity": 1
                 },
-                {
-                    "type": "Walk",
+                "Walk": {
                     "path": "\\_WALK\\_WALK_",
                     "quantity": 2
                 }
-            ]
+            }
         },
-        {
+        "Goblin Grunt": {
             "name": "Goblin Grunt",
             "asset_folder": "\\enemies\\goblin\\goblin_grunt",
             "hitpoints": 70,
             "attack_power": 10,
             "speed_walk_modifier": 150,
             "jump_height_modifier": 10,
-            "bullet": [
-                {
-                    "type": "Skull",
-                    "path": "\\elements\\skull\\skull_",
-                    "quantity": 1
-                }
-            ],
-            "animations": [
-                {
-                    "type": "Attack",
+            "bullet": {
+                "name": "Skull",
+                "path": "\\elements\\skull\\skull",
+                "quantity": 1
+            },
+            "animations": {
+                "Attack": {
                     "path": "\\_ATTACK\\_ATTACK_",
                     "quantity": 3
                 },
-                {
-                    "type": "Block",
+                "Block": {
                     "path": "\\_BLOCK\\_BLOCK_",
                     "quantity": 3
                 },
-                {
-                    "type": "Die",
+                "Die": {
                     "path": "\\_DIE\\_DIE_",
                     "quantity": 5
                 },
-                {
-                    "type": "Hurt",
+                "Hurt": {
                     "path": "\\_HURT\\_HURT_",
                     "quantity": 2
                 },
-                {
-                    "type": "Idle",
+                "Idle": {
                     "path": "\\_IDLE\\_IDLE_",
                     "quantity": 2
                 },
-                {
-                    "type": "Jump",
+                "Jump": {
                     "path": "\\_JUMP\\_JUMP_",
                     "quantity": 2
                 },
-                {
-                    "type": "Run",
+                "Run": {
                     "path": "\\_RUN\\_RUN_",
                     "quantity": 2
                 },
-                {
-                    "type": "Throw",
+                "Throw": {
                     "path": "\\_THROW\\_THROW_",
                     "quantity": 1
                 },
-                {
-                    "type": "Walk",
+                "Walk": {
                     "path": "\\_WALK\\_WALK_",
                     "quantity": 2
                 }
-            ]
+            }
         },
-        {
+        "Goblin Shaman": {
             "name": "Goblin Shaman",
             "asset_folder": "\\enemies\\goblin\\goblin_shaman",
             "hitpoints": 30,
             "attack_power": 30,
-            "speed_walk_modifier": 1,
-            "jump_height_modifier": 1,
-            "bullet": [
-                {
-                    "type": "Skull",
-                    "path": "\\elements\\skull\\skull_",
-                    "quantity": 1
-                }
-            ],
-            "animations": [
-                {
-                    "type": "Attack",
+            "speed_walk_modifier": 200,
+            "jump_height_modifier": 10,
+            "bullet": {
+                "name": "Skull",
+                "path": "\\elements\\skull\\skull",
+                "quantity": 1
+            },
+            "animations": {
+                "Attack": {
                     "path": "\\_ATTACK\\_ATTACK_",
                     "quantity": 3
                 },
-                {
-                    "type": "Block",
+                "Block": {
                     "path": "\\_BLOCK\\_BLOCK_",
                     "quantity": 1
                 },
-                {
-                    "type": "Die",
+                "Die": {
                     "path": "\\_DIE\\_DIE_",
                     "quantity": 5
                 },
-                {
-                    "type": "Hurt",
+                "Hurt": {
                     "path": "\\_HURT\\_HURT_",
                     "quantity": 2
                 },
-                {
-                    "type": "Idle",
+                "Idle": {
                     "path": "\\_IDLE\\_IDLE_",
                     "quantity": 2
                 },
-                {
-                    "type": "Jump",
+                "Jump": {
                     "path": "\\_JUMP\\_JUMP_",
                     "quantity": 2
                 },
-                {
-                    "type": "Run",
+                "Run": {
                     "path": "\\_RUN\\_RUN_",
                     "quantity": 2
                 },
-                {
-                    "type": "Throw",
+                "Throw": {
                     "path": "\\_THROW\\_THROW_",
                     "quantity": 2
                 },
-                {
-                    "type": "Walk",
+                "Walk": {
                     "path": "\\_WALK\\_WALK_",
                     "quantity": 2
                 }
-            ]
+            }
         }
-    ],
-
-    "Bosses": [
-        {
+    },
+    "Bosses": {
+        "Goblin King": {
             "name": "Goblin King",
             "asset_folder": "\\enemies\\bosses\\Goblin_King",
             "hitpoints": 400,
             "attack_power": 40,
             "speed_walk_modifier": 200,
             "jump_height_modifier": 10,
-            "bullet": [
-                {
-                    "type": "Goblin Club",
-                    "path": "\\elements\\goblin_club\\goblin_club_",
-                    "quantity": 2
-                }
-            ],
-            "animations": [
-                {
-                    "type": "Attack",
+            "bullet": {
+                "name": "Goblin Club",
+                "path": "\\elements\\goblin_club\\goblin_club",
+                "quantity": 2
+            },
+            "animations": {
+                "Attack": {
                     "path": "\\_ATTACK\\_ATTACK_",
                     "quantity": 16
                 },
-                {
-                    "type": "Special Attack",
-                    "path": "\\_ATTACK_SPECIAL\\_ATTACK_SPECIAL",
-                    "quantity": 5
-                },
-                {
-                    "type": "Block",
+                "Block": {
                     "path": "\\_BLOCK\\_BLOCK_",
                     "quantity": 4
                 },
-                {
-                    "type": "Die",
+                "Die": {
                     "path": "\\_DIE\\_DIE_",
                     "quantity": 7
                 },
-                {
-                    "type": "Hurt",
+                "Hurt": {
                     "path": "\\_HURT\\_HURT_",
                     "quantity": 4
                 },
-                {
-                    "type": "Idle",
+                "Idle": {
                     "path": "\\_IDLE\\_IDLE_",
                     "quantity": 4
                 },
-                {
-                    "type": "Jump",
+                "Jump": {
                     "path": "\\_JUMP\\_JUMP_",
                     "quantity": 8
                 },
-                {
-                    "type": "Run",
+                "Run": {
                     "path": "\\_RUN\\_RUN_",
                     "quantity": 11
                 },
-                {
-                    "type": "Throw",
+                "Throw": {
                     "path": "\\_THROW\\_THROW_",
                     "quantity": 5
                 },
-                {
-                    "type": "Walk",
+                "Walk": {
                     "path": "\\_WALK\\_WALK_",
                     "quantity": 7
+                },
+                "Special Attack": {
+                    "path": "\\_ATTACK_SPECIAL\\_ATTACK_SPECIAL",
+                    "quantity": 5
                 }
-            ]
+            }
         }
-    ]
+    }
 }

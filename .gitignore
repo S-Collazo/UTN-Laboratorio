@@ -13553,3 +13553,8 @@ pygame-2/recursos/images/elements/knight_shield/knight_shield_001.png
 pygame-2/recursos/images/elements/skull/skull_000.png
 pygame-2/recursos/images/caracters/enemies/bosses/.DS_Store
 pygame-2/recursos/images/caracters/bosses/.DS_Store
+pygame-2/test/gui_progressbar.py
+pygame-2/test/gui_textbox.py
+pygame-2/recursos/images/caracters/enemies/goblin/goblin_grunt/_ATTACK/_ATTACK_000.png
+pygame-2/recursos/images/caracters/enemies/goblin/goblin_grunt/_ATTACK/_ATTACK_001.png
+pygame-2/recursos/images/caracters/enemies/goblin/goblin_grunt/_ATTACK/_ATTACK_002.png

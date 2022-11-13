@@ -5,41 +5,34 @@ from auxiliar import Auxiliar
 from ammo import Ammo
 
 class Entity:
-    def __init__ (self,asset_folder,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_R,p_scale=1,interval_time=FPS) -> None:  
+    def __init__ (self,asset,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_R,p_scale=1,interval_time=FPS) -> None:  
         self.p_scale = p_scale * GLOBAL_SCALE
-       
-        """
-        self.stay_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_IDLE\\_IDLE_{:03d}.png",2,flip=False,step = 0,scale=self.p_scale)
-        self.stay_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_IDLE\\_IDLE_{:03d}.png",2,flip=True,step = 0,scale=self.p_scale)
-        self.jump_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_JUMP\\_JUMP_{:03d}.png",4,flip=False,step = 0,scale=self.p_scale)
-        self.jump_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_JUMP\\_JUMP_{:03d}.png",4,flip=True,step = 0,scale=self.p_scale)
-        self.walk_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_RUN\\_RUN_{:03d}.png",3,flip=False,step = 0,scale=self.p_scale)
-        self.walk_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_RUN\\_RUN_{:03d}.png",3,flip=True,step = 0,scale=self.p_scale)
-        self.shoot_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_THROW\\_THROW_{:03d}.png",6,flip=False,step = 0,scale=self.p_scale,repeat_frame=1)
-        self.shoot_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_THROW\\_THROW_{:03d}.png",6,flip=True,step = 0,scale=self.p_scale,repeat_frame=1)
-        self.attack_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_ATTACK\\_ATTACK_{:03d}.png",4,flip=False,step = 0,scale=self.p_scale,repeat_frame=1)
-        self.attack_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_ATTACK\\_ATTACK_{:03d}.png",4,flip=True,step = 0,scale=self.p_scale,repeat_frame=1)
-        self.block_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_BLOCK\\_BLOCK_{:03d}.png",3,flip=False,step = 0,scale=self.p_scale,repeat_frame=1)
-        self.block_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_BLOCK\\_BLOCK_{:03d}.png",3,flip=True,step = 0,scale=self.p_scale,repeat_frame=1)
-        """
-        
-        self.stay_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_IDLE\\_IDLE_{:03d}.png",1,flip=False,step = 0,scale=self.p_scale)
-        self.stay_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_IDLE\\_IDLE_{:03d}.png",1,flip=True,step = 0,scale=self.p_scale)
-        self.jump_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_JUMP\\_JUMP_{:03d}.png",1,flip=False,step = 0,scale=self.p_scale)
-        self.jump_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_JUMP\\_JUMP_{:03d}.png",1,flip=True,step = 0,scale=self.p_scale)
-        self.walk_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_RUN\\_RUN_{:03d}.png",1,flip=False,step = 0,scale=self.p_scale)
-        self.walk_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_RUN\\_RUN_{:03d}.png",1,flip=True,step = 0,scale=self.p_scale)
-        self.shoot_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_THROW\\_THROW_{:03d}.png",1,flip=False,step = 0,scale=self.p_scale,repeat_frame=1)
-        self.shoot_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_THROW\\_THROW_{:03d}.png",1,flip=True,step = 0,scale=self.p_scale,repeat_frame=1)
-        self.attack_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_ATTACK\\_ATTACK_{:03d}.png",1,flip=False,step = 0,scale=self.p_scale,repeat_frame=1)
-        self.attack_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_ATTACK\\_ATTACK_{:03d}.png",1,flip=True,step = 0,scale=self.p_scale,repeat_frame=1)
-        self.block_r = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_BLOCK\\_BLOCK_{:03d}.png",1,flip=False,step = 0,scale=self.p_scale,repeat_frame=1)
-        self.block_l = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + "\\_BLOCK\\_BLOCK_{:03d}.png",1,flip=True,step = 0,scale=self.p_scale,repeat_frame=1)
+        self.asset = asset
+        self.asset_name = asset["name"]
+            
+        self.attack_r = Auxiliar.getSurfaceFromJson(self.asset,"Attack",flip=False,p_scale=self.p_scale)
+        self.attack_l = Auxiliar.getSurfaceFromJson(self.asset,"Attack",flip=True,p_scale=self.p_scale)
+        self.block_r = Auxiliar.getSurfaceFromJson(self.asset,"Block",flip=False,p_scale=self.p_scale)
+        self.block_l = Auxiliar.getSurfaceFromJson(self.asset,"Block",flip=True,p_scale=self.p_scale)
+        self.death_r = Auxiliar.getSurfaceFromJson(self.asset,"Die",flip=False,p_scale=self.p_scale)
+        self.death_l = Auxiliar.getSurfaceFromJson(self.asset,"Die",flip=True,p_scale=self.p_scale)
+        self.hurt_r = Auxiliar.getSurfaceFromJson(self.asset,"Hurt",flip=False,p_scale=self.p_scale)
+        self.hurt_l = Auxiliar.getSurfaceFromJson(self.asset,"Hurt",flip=True,p_scale=self.p_scale)
+        self.stay_r = Auxiliar.getSurfaceFromJson(self.asset,"Idle",flip=False,p_scale=self.p_scale)
+        self.stay_l = Auxiliar.getSurfaceFromJson(self.asset,"Idle",flip=True,p_scale=self.p_scale)
+        self.jump_r = Auxiliar.getSurfaceFromJson(self.asset,"Jump",flip=False,p_scale=self.p_scale)
+        self.jump_l = Auxiliar.getSurfaceFromJson(self.asset,"Jump",flip=True,p_scale=self.p_scale)
+        self.run_r = Auxiliar.getSurfaceFromJson(self.asset,"Run",flip=False,p_scale=self.p_scale)
+        self.run_l = Auxiliar.getSurfaceFromJson(self.asset,"Run",flip=True,p_scale=self.p_scale)
+        self.shoot_r = Auxiliar.getSurfaceFromJson(self.asset,"Throw",flip=False,p_scale=self.p_scale)
+        self.shoot_l = Auxiliar.getSurfaceFromJson(self.asset,"Throw",flip=True,p_scale=self.p_scale)
+        self.walk_r = Auxiliar.getSurfaceFromJson(self.asset,"Walk",flip=False,p_scale=self.p_scale)
+        self.walk_l = Auxiliar.getSurfaceFromJson(self.asset,"Walk",flip=True,p_scale=self.p_scale)    
         self.frame = 0
         
-        
-        self.frame = 0
-                
+        self.hitpoints = self.asset["hitpoints"]
+        self.attack_power = self.asset["attack_power"]
+               
         self.tiempo_transcurrido = 0
         self.tiempo_transcurrido_anim = 0
         self.tiempo_transcurrido_move = 0
@@ -57,10 +50,10 @@ class Entity:
         
         self.move_x = 0
         self.move_y = 0
-        self.speed_walk = int((ANCHO_VENTANA / 100))
+        self.speed_walk = int((ANCHO_VENTANA / self.asset["speed_walk_modifier"]))
         self.speed_run = self.speed_walk * 2
         self.gravity = gravity
-        self.jump_height = int((ALTO_VENTANA / 14))
+        self.jump_height = int((ALTO_VENTANA / self.asset["jump_height_modifier"]))
         self.jump_power = self.jump_height / 2
         self.y_start_jump = y
         self.is_jump = False
@@ -76,10 +69,7 @@ class Entity:
         self.rect.y = y
             
         self.direction = direction_inicial
-        
-        self.hitpoints = 100
-        self.attack_power = 10
-                
+                        
         self.rect_collition = pygame.Rect(x+self.rect.width / 3,y,self.rect.width / 3,self.rect.height)
         self.rect_ground_collition = pygame.Rect(self.rect_collition)
         self.rect_ground_collition.height = GROUND_COLLIDE_H
@@ -148,7 +138,6 @@ class Entity:
                     self.animation = self.block_l    
             
     def shoot(self,asset,lista_balas,on_off = True):
-        self.asset = asset
         self.is_shoot = on_off
         if(on_off == True and self.is_jump == False and self.is_fall == False):
             if(self.animation != self.shoot_r and self.animation != self.shoot_l):
@@ -241,7 +230,7 @@ class Entity:
                                            
     def update(self,delta_ms,lista_plataformas,lista_oponente):
         if(DEBUG):
-            if(self.hitpoints >= 0):
+            if(self.hitpoints >= 1000):
                     print(self.hitpoints)
             
         self.do_animation(delta_ms,self.frame_rate_ms)

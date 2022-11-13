@@ -5,9 +5,18 @@ from auxiliar import Auxiliar
 class Bullet:
     def __init__ (self,asset,x,y,move_rate_ms,frame_rate_ms,move=50,direction_inicial=DIRECTION_R,p_scale=1,interval_bullet=FPS*2,distance=ANCHO_VENTANA,type=0):
         self.p_scale = p_scale * GLOBAL_SCALE
-        self.asset_folder = asset
+        self.asset = asset
+        self.asset_name = asset["name"]
+        self.bullet_asset = asset["bullet"]
+        self.bullet_asset_name = asset["bullet"]["name"]
         
-        self.image_list= Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\elements\\" + self.asset_folder + "\\" + self.asset_folder + "_{0}.png",2,flip=False,step=0,scale=self.p_scale,w=100,h=100)
+        self.direction = direction_inicial
+        
+        if(self.direction == DIRECTION_L):
+            self.image_list= Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + self.bullet_asset["path"] + "_{:03d}.png",self.bullet_asset["quantity"],flip=False,step=0,scale=self.p_scale,w=100,h=100)
+        else:
+            self.image_list= Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + self.bullet_asset["path"] + "_{:03d}.png",self.bullet_asset["quantity"],flip=True,step=0,scale=self.p_scale,w=100,h=100)
+        
         self.frame = 0
         self.animation = self.image_list
         self.image = self.animation[self.frame]
@@ -22,9 +31,7 @@ class Bullet:
         self.delta_x = move
         self.move_rate_ms = move_rate_ms * 350
         self.frame_rate_ms = frame_rate_ms / 2
-        
-        self.direction = direction_inicial
-        
+               
         self.distance = distance
         self.tiempo_transcurrido_move = 0
         self.tiempo_transcurrido_anim = 0
@@ -33,20 +40,21 @@ class Bullet:
         self.is_shooting = True
         self.collition_enabled = True
     
-    def damage(self,lista_oponente,lista_plataformas,lista_trampas):
+    def damage(self,lista_oponente,lista_plataformas,lista_trampas,lista_balas):
         if(self.is_shooting):  
             for oponente in lista_oponente:
-                if(self.rect_collition.colliderect(oponente.rect)):
-                    self.is_shooting = False
-                    if not (oponente.is_block):
-                        oponente.hitpoints -= self.attack_power
-                                
-                    if(self.rect.x <= oponente.rect.x):
-                        oponente.add_x(100)
-                    else:
-                        oponente.add_x(-100)
-                        oponente.jump(True)
-                    break
+                if not(self.asset_name == oponente.asset_name):
+                    if(self.rect_collition.colliderect(oponente.rect)):
+                        self.is_shooting = False
+                        if not (oponente.is_block):
+                            oponente.hitpoints -= self.attack_power
+                                    
+                        if(self.rect.x <= oponente.rect.x):
+                            oponente.add_x(100)
+                        else:
+                            oponente.add_x(-100)
+                            oponente.jump(True)
+                        break
             
             for plataforma in lista_plataformas:
                 if(self.rect_collition.colliderect(plataforma.rect_collition)):
@@ -56,7 +64,13 @@ class Bullet:
             for trampa in lista_trampas:
                 if(self.rect_collition.colliderect(trampa.rect_collition)):
                     self.is_shooting = False
-                    break        
+                    break   
+                
+            for bala in lista_balas:
+                if not(self.bullet_asset_name == bala.bullet_asset_name):
+                    if(self.rect_collition.colliderect(bala.rect_collition)):
+                        self.is_shooting = False
+                        break      
     
     def do_movement(self):
         self.tiempo_transcurrido_move += self.interval_bullet
@@ -85,8 +99,8 @@ class Bullet:
             else:
                  self.frame = 0
                 
-    def update (self,delta_ms,lista_oponente,lista_plataformas,lista_trampas):
-        self.damage(lista_oponente,lista_plataformas,lista_trampas)
+    def update (self,delta_ms,lista_oponente,lista_plataformas,lista_trampas,lista_balas):
+        self.damage(lista_oponente,lista_plataformas,lista_trampas,lista_balas)
         self.do_movement()
         self.do_animation(delta_ms)
        
