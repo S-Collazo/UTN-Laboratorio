@@ -1,9 +1,7 @@
 import pygame
-import re
 from constants import *
 from auxiliar import Auxiliar
 from ammo import Ammo
-from ui_progressbar import ProgressBar
 
 class Entity:
     def __init__ (self,asset,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_R,p_scale=1,interval_time=FPS) -> None:  
@@ -31,6 +29,7 @@ class Entity:
         self.walk_l = Auxiliar.getSurfaceFromJson(self.asset,"Walk",flip=True,p_scale=self.p_scale)    
         self.frame = 0
         
+        self.hitpoints_max = self.asset["hitpoints"]
         self.hitpoints = self.asset["hitpoints"]
         self.attack_power = self.asset["attack_power"]
                

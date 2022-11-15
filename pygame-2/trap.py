@@ -12,19 +12,14 @@ class Trap:
         
         self.rect_collition = pygame.Rect(self.rect)
    
-    def damage (self,lista_personajes,lista_enemigos):        
-        for personaje in lista_personajes:
-            if(self.rect_collition.colliderect(personaje.rect_collition)):
-                        personaje.lives = 0
+    def damage (self,lista_entidades):        
+        for entidad in lista_entidades:
+            if(self.rect_collition.colliderect(entidad.rect_collition)):
+                        entidad.hitpoints = 0
             break
         
-        for enemigo in lista_enemigos:
-            if(self.rect_collition.colliderect(enemigo.rect_collition)):
-                        enemigo.lives = 0
-            break
-        
-    def update (self,lista_personajes,lista_enemigos):
-        self.damage(lista_personajes,lista_enemigos)
+    def update (self,lista_entidades):
+        self.damage(lista_entidades)
     
     def draw (self,screen):        
         if(DEBUG):

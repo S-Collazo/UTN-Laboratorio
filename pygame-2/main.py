@@ -9,6 +9,7 @@ from plataform import Platform
 from bullet import Bullet
 from trap import Trap
 from level import Level
+from item import Health_Potion
 from auxiliar import Auxiliar
 
 flags = DOUBLEBUF
@@ -54,6 +55,10 @@ lista_trampas = []
 trampa_1 = Trap(x=10,y=375,w=50,h=50,p_scale=0.4)
 lista_trampas.append(trampa_1)
 
+lista_items = []
+potion_1 = Health_Potion(path="\\chemistry\\essence_of_rookswort\\essence_of_rookswort",x=50,y=75,w=100,h=100,units=1,p_scale=1.5)
+lista_items.append(potion_1)
+
 lista_balas = []
 
 while True:
@@ -73,11 +78,17 @@ while True:
         
     for trampa in lista_trampas:
         Trap.draw(trampa,screen)
-        Trap.update(trampa,lista_personajes,lista_enemigos)
+        Trap.update(trampa,lista_entidades)
+        
+    for item in lista_items:
+        if (item.units > 0):
+            Health_Potion.draw(item,screen)
+            Health_Potion.update(item,lista_personajes)
        
     player_1.events(delta_ms,keys,lista_balas)
     player_1.update(delta_ms,lista_plataformas,lista_enemigos)
     player_1.draw(screen)
+    print(player_1.hitpoints)
     
     for bala in lista_balas:
         Bullet.draw(bala,screen)
