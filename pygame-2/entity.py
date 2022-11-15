@@ -150,6 +150,16 @@ class Entity:
                     self.animation = self.shoot_l
                     
             Ammo(asset=self.asset,lista_balas=lista_balas,x=self.rect.x,y=self.rect.y,frame_rate_ms=self.frame_rate_ms,move_rate_ms=self.move_rate_ms,direction=self.direction,p_scale=self.p_scale)
+     
+    def hurt (self,on_off = True):
+        self.is_hurt = on_off
+        if(on_off == True and self.is_jump == False and self.is_fall == False):
+            if(self.animation != self.hurt_r and self.animation != self.hurt_l):
+                self.frame = 0
+                if(self.direction == DIRECTION_R):
+                    self.animation = self.hurt_r
+                else:
+                    self.animation = self.hurt_l
                                                                         
     def is_on_platform(self,lista_plataformas):
         retorno = False
@@ -185,8 +195,9 @@ class Entity:
     def damage(self,lista_oponente):
         if(self.hitpoints > 0 and self.is_attack):
             for oponente in lista_oponente:
-                if(self.rect_body_collition.colliderect(oponente.rect) or self.rect_body_collition.colliderect(oponente.rect_body_collition) and not oponente.is_block):
-                        oponente.hitpoints -= self.attack_power
+                if(oponente.rect_body_collition.colliderect(self.rect) or oponente.rect_body_collition.colliderect(self.rect_body_collition) and not oponente.is_block):
+                        self.hitpoints -= oponente.attack_power
+                        self.hurt()
                                 
                         if(self.rect.x <= oponente.rect.x):
                             oponente.add_x(100)

@@ -31,7 +31,7 @@ enemy_list = Auxiliar.readJson("enemy_list.json")
 lista_enemigos = []
 enemy_1 = Goblin_Standard(asset=enemy_list,x=501,y=GROUND_LEVEL-100,gravity=10,frame_rate_ms=60,move_rate_ms=40,p_scale=0.2)
 enemy_2 = Goblin_Grunt(asset=enemy_list,x=550,y=50,gravity=10,frame_rate_ms=80,move_rate_ms=40,p_scale=0.2)
-enemy_3 = Goblin_Shaman(asset=enemy_list,x=100,y=30,gravity=10,frame_rate_ms=80,move_rate_ms=40,p_scale=0.2)
+enemy_3 = Goblin_Shaman(asset=enemy_list,x=100,y=1,gravity=10,frame_rate_ms=80,move_rate_ms=40,p_scale=0.2)
 lista_enemigos.append(enemy_1)
 lista_enemigos.append(enemy_2)
 lista_enemigos.append(enemy_3)
