@@ -3,6 +3,7 @@ import re
 from constants import *
 from auxiliar import Auxiliar
 from ammo import Ammo
+from ui_progressbar import ProgressBar
 
 class Entity:
     def __init__ (self,asset,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_R,p_scale=1,interval_time=FPS) -> None:  
@@ -137,7 +138,7 @@ class Entity:
                 else:
                     self.animation = self.block_l    
             
-    def shoot(self,asset,lista_balas,on_off = True):
+    def shoot(self,lista_balas,on_off = True):
         self.is_shoot = on_off
         if(on_off == True and self.is_jump == False and self.is_fall == False):
             if(self.animation != self.shoot_r and self.animation != self.shoot_l):
@@ -194,6 +195,17 @@ class Entity:
                             oponente.jump(True)
                                         
                 break
+            
+    """
+    def hitpoint_bar(self):
+        self.hp_bar_x = self.rect.x
+        self.hp_bar_y = self.rect.y
+        self.hp_bar_w = (self.rect.w / 2)
+        self.hp_bar_image = PATH_RECURSOS + "/gui/set_gui_01/Comic_Border/Bars/Bar_Background01.png"
+        self.hp_bar_segment = PATH_RECURSOS + "/gui/set_gui_01/Comic_Border/Bars/Bar_Segment05.png"
+        self.hp_bar_length = self.hitpoints
+        self.hp_bar = ProgressBar(master_surface=self.rect,x=self.hp_bar_x,y=self.hp_bar_y,w=self.hp_bar_w,h=20,background_color=WHITE,border_color=BLACK,background_image=self.hp_bar_image,image_progress=self.hp_bar_segment,value=0,value_max=self.hp_bar_length)
+    """
                       
     def do_movement(self,delta_ms,lista_plataformas):
         self.tiempo_transcurrido_move += delta_ms
@@ -216,9 +228,8 @@ class Entity:
                     self.jump(False)
                 self.is_fall = False
                 
-    def do_animation (self,delta_ms,frame_rate_ms):
+    def do_animation (self,delta_ms):
         self.tiempo_transcurrido_anim += delta_ms
-        self.frame_rate_ms = frame_rate_ms
         
         if(self.tiempo_transcurrido_anim >= self.frame_rate_ms):
             self.tiempo_transcurrido_anim = 0
@@ -226,16 +237,17 @@ class Entity:
             if(self.frame < len(self.animation) - 1):
                 self.frame += 1
             else:
-                 self.frame = 0
+                self.frame = 0
                                            
     def update(self,delta_ms,lista_plataformas,lista_oponente):
         if(DEBUG):
             if(self.hitpoints >= 1000):
                     print(self.hitpoints)
             
-        self.do_animation(delta_ms,self.frame_rate_ms)
+        self.do_animation(delta_ms)
         self.do_movement(delta_ms,lista_plataformas)
         self.damage(lista_oponente)
+        #self.hitpoint_bar()
     
     def draw (self,screen):
         if(DEBUG):
@@ -244,6 +256,7 @@ class Entity:
             if(self.is_attack or self.is_block):
                 pygame.draw.rect(screen,PURPLE,self.rect_body_collition)
     
+        #self.hp_bar.draw()
         self.image = self.animation[self.frame]
         screen.blit(self.image, self.rect)
 

@@ -22,9 +22,9 @@ class Player(Entity):
         self.tiempo_transcurrido += delta_ms
         self.is_shooting = Ammo.is_shooting(lista_balas=lista_balas)
         
-        self.shoot(asset=self.asset,lista_balas=lista_balas,on_off=False)
-        self.attack(False)
-        self.block(False)
+        #self.shoot(asset=self.asset,lista_balas=lista_balas,on_off=False)
+        #self.attack(False)
+        #self.block(False)
         
         if(keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT] and not keys[pygame.K_SPACE]):
             super().walk(DIRECTION_L)
@@ -40,10 +40,10 @@ class Player(Entity):
                 self.tiempo_last_jump = self.tiempo_transcurrido
                    
         if(not keys[pygame.K_a]):
-            self.shoot(self.asset,lista_balas,False)  
+            self.shoot(lista_balas,False)  
         if(keys[pygame.K_s] and not keys[pygame.K_a] and not keys[pygame.K_d] and self.is_shooting == False):
             if((self.tiempo_transcurrido - self.tiempo_last_shoot) > (self.interval_time_shoot)):
-                self.shoot(self.asset,lista_balas)
+                self.shoot(lista_balas)
                 self.tiempo_last_shoot = self.tiempo_transcurrido
         if(not keys[pygame.K_a]):
             self.attack(False)

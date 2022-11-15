@@ -29,8 +29,8 @@ class Bullet:
         self.rect_collition = pygame.Rect(self.rect)
         
         self.delta_x = move
-        self.move_rate_ms = move_rate_ms * 350
-        self.frame_rate_ms = frame_rate_ms / 2
+        self.frame_rate_ms = frame_rate_ms
+        self.move_rate_ms = move_rate_ms * self.frame_rate_ms
                
         self.distance = distance
         self.tiempo_transcurrido_move = 0

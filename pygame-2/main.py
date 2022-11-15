@@ -4,7 +4,7 @@ from pygame.locals import *
 from constants import *
 from player import Player
 from enemy import Enemy
-from enemy_goblin import Goblin
+from enemy_goblin import *
 from plataform import Platform
 from bullet import Bullet
 from trap import Trap
@@ -24,14 +24,14 @@ imagen_fondo = pygame.transform.scale(imagen_fondo,(ANCHO_VENTANA,ALTO_VENTANA))
 
 player_list = Auxiliar.readJson("player_list.json")
 lista_personajes = []
-player_1 = Player(asset=player_list,name="Iron Knight",x=400,y=GROUND_LEVEL-100,gravity=10,frame_rate_ms=300,move_rate_ms=40)
+player_1 = Player(asset=player_list,name="Iron Knight",x=400,y=GROUND_LEVEL-100,gravity=10,frame_rate_ms=60,move_rate_ms=40)
 lista_personajes.append(player_1)
 
 enemy_list = Auxiliar.readJson("enemy_list.json")
 lista_enemigos = []
-enemy_1 = Goblin(asset=enemy_list,name="Goblin Standard",x=501,y=GROUND_LEVEL-100,gravity=10,frame_rate_ms=300,move_rate_ms=40,p_scale=0.2)
-enemy_2 = Goblin(asset=enemy_list,name="Goblin Grunt",x=550,y=50,gravity=10,frame_rate_ms=300,move_rate_ms=40,p_scale=0.2)
-enemy_3 = Goblin(asset=enemy_list,name="Goblin Shaman",x=175,y=25,gravity=10,frame_rate_ms=300,move_rate_ms=40,p_scale=0.2)
+enemy_1 = Goblin_Standard(asset=enemy_list,x=501,y=GROUND_LEVEL-100,gravity=10,frame_rate_ms=60,move_rate_ms=40,p_scale=0.2)
+enemy_2 = Goblin_Grunt(asset=enemy_list,x=550,y=50,gravity=10,frame_rate_ms=80,move_rate_ms=40,p_scale=0.2)
+enemy_3 = Goblin_Shaman(asset=enemy_list,x=100,y=30,gravity=10,frame_rate_ms=80,move_rate_ms=40,p_scale=0.2)
 lista_enemigos.append(enemy_1)
 lista_enemigos.append(enemy_2)
 lista_enemigos.append(enemy_3)
@@ -45,7 +45,7 @@ Level.create_plaforms(lista_plataformas,x=400,y=500,w=100,h=100,tile_total=10,p_
 Level.create_plaforms(lista_plataformas,x=900,y=450,w=100,h=100,tile_total=3,p_scale=0.4,collition_enabled=True)
 Level.create_plaforms(lista_plataformas,x=725,y=375,w=100,h=100,tile_total=2,p_scale=0.4,collition_enabled=True)
 Level.create_plaforms(lista_plataformas,x=350,y=350,w=100,h=100,tile_total=7,p_scale=0.4,collition_enabled=True)
-Level.create_plaforms(lista_plataformas,x=200,y=250,w=100,h=100,tile_total=2,p_scale=0.4,collition_enabled=True)
+Level.create_plaforms(lista_plataformas,x=200,y=275,w=100,h=100,tile_total=2,p_scale=0.4,collition_enabled=True)
 Level.create_plaforms(lista_plataformas,x=400,y=200,w=100,h=100,tile_total=17,p_scale=0.4,collition_enabled=True)
 Level.create_plaforms(lista_plataformas,x=0,y=125,w=100,h=100,tile_total=7,p_scale=0.4,collition_enabled=True)
 Level.create_plaforms(lista_plataformas,x=0,y=450,w=100,h=100,tile_total=3,p_scale=0.4,collition_enabled=True)
@@ -65,9 +65,7 @@ while True:
     keys = pygame.key.get_pressed()
      
     delta_ms = clock.tick(FPS)
-    
-    print(delta_ms)
-        
+            
     screen.blit(imagen_fondo,imagen_fondo.get_rect())
     
     for plataforma in lista_plataformas:

@@ -5,39 +5,35 @@ from auxiliar import Auxiliar
 from ui_widget import Widget
     
 class Button(Widget):
-    def __init__ (self,master_surface,x,y,w,h,background_color,border_color,on_click,on_click_param,text,font,font_size,font_color):
-        super().__init__(master_surface,x,y,w,h,background_color,border_color)
-        pygame.font.init()
+    def __init__ (self,master_surface,x=0,y=0,w=200,h=50,background_color=GREEN,border_color=RED,background_image=None,text="Button",font="Arial",font_size=14,font_color=BLUE,on_click=None,on_click_param=None):
+        super().__init__(master_surface,x,y,w,h,background_color,border_color,background_image,text,font,font_size,font_color)
         
         self.on_click = on_click
         self.on_click_param = on_click_param
-        
-        self._text = text
-        self.font_sys = pygame.font.SysFont(font,font_size)
-        self.font_color = font_color
-        
+        self.state = M_STATE_NORMAL
+                
         self.render()
             
     def render (self):
-        image_text = self.font_sys.render(self._text,True,self.font_color,self.background_color)
+        super().render()
         
-        self.slave_surface = pygame.surface.Surface((self.w,self.h))
-        self.slave_rect = self.slave_surface.get_rect()
-        self.slave_rect.x = self.x
-        self.slave_rect.y = self.y
-        
-        self.slave_rect_collition = pygame.Rect(self.slave_rect)
-        self.slave_rect_collition.x += self.master_form.x
-        self.slave_rect_collition.y += self.master_form.y
-        
-        self.slave_surface.fill(self.background_color)
-        self.slave_surface.blit(image_text,(5,5))
-        # self.border = pygame.draw.rect(self.slave_surface,self.border_color,self.slave_rect)
-                 
+        if self.state == M_STATE_HOVER:
+            self.slave_surface.fill(M_BRIGHT_HOVER, special_flags=pygame.BLEND_RGB_ADD) 
+        elif self.state == M_STATE_CLICK:
+            self.slave_surface.fill(M_BRIGHT_CLICK, special_flags=pygame.BLEND_RGB_SUB) 
+                         
     def update (self,lista_eventos):
+        mousePos = pygame.mouse.get_pos()
+        self.state = M_STATE_NORMAL
+        if self.slave_rect_collide.collidepoint(mousePos):
+            if(pygame.mouse.get_pressed()[0]):
+                self.state = M_STATE_CLICK
+            else:
+                self.state = M_STATE_HOVER
+              
         for evento in lista_eventos:
-            if (evento.type == pygame.MOUSEBUTTONDOWN):
-                if (self.slave_rect_collition.collidepoint(evento.pos)):
+            if evento.type == pygame.MOUSEBUTTONDOWN:
+                if(self.slave_rect_collide.collidepoint(evento.pos)):
                     self.on_click(self.on_click_param)
-        
+
         self.render()

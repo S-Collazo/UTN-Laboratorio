@@ -19,16 +19,17 @@ class Enemy(Entity):
         super().__init__(self.asset_type,x,y,gravity,frame_rate_ms,move_rate_ms,self.direction,p_scale)             
         self.x = x
         
-        self.can_block = True
-        self.can_throw = True
+        self.can_block = False
+        self.can_throw = False
                        
     def update (self,delta_ms,lista_plataformas,lista_oponente,lista_balas):
         super().update(delta_ms,lista_plataformas,lista_oponente)
-        self.events(delta_ms,lista_oponente,lista_balas)
+        #self.events(delta_ms,lista_oponente,lista_balas)
         
     def draw (self,screen):
         super().draw(screen)
         
+    """
     def events(self,delta_ms,lista_oponente,lista_balas):
         self.tiempo_transcurrido += delta_ms
         self.is_shooting = Ammo.is_shooting(lista_balas=lista_balas)
@@ -40,17 +41,17 @@ class Enemy(Entity):
             self.posicion_extremo_a = self.x
             self.posicion_extremo_b = ANCHO_VENTANA - (self.rect.w + 5)
         
-        self.shoot(asset=self.asset,lista_balas=lista_balas,on_off=False)
-        self.attack(False)
-        self.block(False)
+        #self.shoot(asset=self.asset,lista_balas=lista_balas,on_off=False)
+        #self.attack(False)
+        #self.block(False)
          
         for oponente in lista_oponente:
             self.player_position_x = oponente.rect.x
             self.player_position_y = oponente.rect.y
-            self.distance_difference_x = self.rect.x - oponente.rect.x
+            self.distance_difference_x = self.rect.x - (oponente.rect.x - oponente.rect.w)
             self.distance_difference_y = self.rect.y - (oponente.rect.y - oponente.jump_height)
             
-            if(abs(self.distance_difference_x) > 500 or abs(self.distance_difference_y) > 100):
+            if(abs(self.distance_difference_x) > 500 or abs(self.distance_difference_y) > 50):
                 if(self.rect.x >= self.posicion_extremo_a and self.rect.x <= self.posicion_extremo_b):
                     super().walk(self.direction)
                 else:
@@ -59,26 +60,25 @@ class Enemy(Entity):
                     if(self.rect.x > self.posicion_extremo_b):
                         super().walk(DIRECTION_L)
             else:
-                if(self.distance_difference_x >= 0):
-                    super().walk(DIRECTION_L)
+                if(abs(self.distance_difference_x) > 10):
+                    if(self.distance_difference_x >= 0):
+                        super().walk(DIRECTION_L)
 
-                else:
-                    super().walk(DIRECTION_R)
-                    
-                if(abs(self.distance_difference_x) > (oponente.rect.w + 50)):
+                    else:
+                        super().walk(DIRECTION_R)
+                   
                     if(self.can_throw and self.is_shooting == False):
                         if((self.tiempo_transcurrido - self.tiempo_last_shoot) > (self.interval_time_shoot)):
                             super().shoot(self.asset_type,lista_balas)
                             self.tiempo_last_shoot = self.tiempo_transcurrido
-                
-                    if(abs(self.distance_difference_x) <= (oponente.rect.w + 50)):
-                        if(oponente.is_attack and self.can_block):
-                            if((self.tiempo_transcurrido - self.tiempo_last_block) > (self.interval_time_block)):
-                                self.block()
-                                self.tiempo_last_block = self.tiempo_transcurrido
-                        if((self.tiempo_transcurrido - self.tiempo_last_attack) > (self.interval_time_attack)):
-                            self.attack()
-                            self.tiempo_last_attack = self.tiempo_transcurrido
+                else:
+                    if(oponente.is_attack and self.can_block):
+                        if((self.tiempo_transcurrido - self.tiempo_last_block) > (self.interval_time_block)):
+                            self.block()
+                            self.tiempo_last_block = self.tiempo_transcurrido
+                    elif((self.tiempo_transcurrido - self.tiempo_last_attack) > (self.interval_time_attack)):
+                        self.attack()
+                        self.tiempo_last_attack = self.tiempo_transcurrido
                     
                 for bala in lista_balas:
                     if(self.can_block):
@@ -86,3 +86,5 @@ class Enemy(Entity):
                             if((self.tiempo_transcurrido - self.tiempo_last_block) > (self.interval_time_block)):
                                 self.block()
                                 self.tiempo_last_block = self.tiempo_transcurrido
+    """
+        
