@@ -4,6 +4,7 @@ from constants import *
 from auxiliar import Auxiliar
 from entity import Entity
 from ammo import Ammo
+from item import *
 
 class Enemy(Entity):
     def __init__ (self,asset,group,name,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_L,p_scale=0.1) -> None:
@@ -21,10 +22,27 @@ class Enemy(Entity):
         
         self.can_block = False
         self.can_throw = False
+        self.is_alive = True    
                        
-    def update (self,delta_ms,lista_plataformas):
-        super().update(delta_ms,lista_plataformas)
-        #self.events(delta_ms,lista_oponente,lista_balas)
+    def death (self,lista_items):
+        if(self.animation != self.death_r and self.animation != self.death_l):
+            if (self.direction == DIRECTION_R):
+                self.animation = self.death_r
+            else:
+                self.animation = self.death_l
+            self.move_x = 0
+            self.move_y = 0
+            self.frame = 0
+            
+            gem_reward = Gem(x=self.rect.x,y=self.rect.y,w=100,h=200,units=1,p_scale=1.2)
+            lista_items.append(gem_reward)
+        
+                       
+    def update (self,delta_ms,lista_plataformas,lista_items):          
+        if (self.is_alive):
+            super().update(delta_ms,lista_plataformas)
+        else:
+            self.death(lista_items)
         
     def draw (self,screen):
         super().draw(screen)

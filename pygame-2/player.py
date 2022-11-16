@@ -10,7 +10,7 @@ class Player(Entity):
         
         super().__init__(self.asset,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial,p_scale)
     
-        self.score = 0
+        self.currency = 0
                                                                                      
     def update(self,delta_ms,lista_plataformas):
         super().update(delta_ms,lista_plataformas)

@@ -7,8 +7,8 @@ class Goblin_Standard (Enemy):
     def __init__(self,asset,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_L,p_scale=0.1):
         super().__init__ (asset,"Goblins","Goblin Standard",x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial,p_scale)
         
-    def update (self,delta_ms,lista_plataformas,lista_oponente,lista_balas):
-        super().update(delta_ms,lista_plataformas)
+    def update (self,delta_ms,lista_plataformas,lista_oponente,lista_balas,lista_items):
+        super().update(delta_ms,lista_plataformas,lista_items)
         self.events(delta_ms,lista_oponente)
         
     def draw (self,screen):
@@ -56,8 +56,8 @@ class Goblin_Grunt (Enemy):
         super().__init__ (asset,"Goblins","Goblin Grunt",x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial,p_scale)
         self.can_block = True
         
-    def update (self,delta_ms,lista_plataformas,lista_oponente,lista_balas):
-        super().update(delta_ms,lista_plataformas)
+    def update (self,delta_ms,lista_plataformas,lista_oponente,lista_balas,lista_items):
+        super().update(delta_ms,lista_plataformas,lista_items)
         self.events(delta_ms,lista_oponente,lista_balas)
         
     def draw (self,screen):
@@ -117,8 +117,8 @@ class Goblin_Shaman (Enemy):
         super().__init__ (asset,"Goblins","Goblin Shaman",x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial,p_scale)
         self.can_throw = True
         
-    def update (self,delta_ms,lista_plataformas,lista_oponente,lista_balas):
-        super().update(delta_ms,lista_plataformas)
+    def update (self,delta_ms,lista_plataformas,lista_oponente,lista_balas,lista_items):
+        super().update(delta_ms,lista_plataformas,lista_items)
         self.events(delta_ms,lista_oponente,lista_balas)
         
     def draw (self,screen):

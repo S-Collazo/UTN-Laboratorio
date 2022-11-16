@@ -55,7 +55,7 @@ trampa_1 = Trap(x=10,y=375,w=50,h=50,p_scale=0.4)
 lista_trampas.append(trampa_1)
 
 lista_items = []
-potion_1 = Health_Potion(path="\\chemistry\\essence_of_rookswort\\essence_of_rookswort",x=50,y=75,w=100,h=100,units=1,p_scale=1.5)
+potion_1 = Health_Potion(x=50,y=75,w=100,h=100,units=1,p_scale=1.5)
 lista_items.append(potion_1)
 
 lista_balas = []
@@ -85,8 +85,8 @@ while True:
             lista_items.remove(item)
             break
         else:
-            Health_Potion.draw(item,screen)
-            Health_Potion.update(item,lista_personajes)
+            item.draw(screen)
+            item.update(lista_personajes)
        
     player_1.events(delta_ms,keys,lista_balas)
     player_1.update(delta_ms,lista_plataformas)
@@ -102,11 +102,14 @@ while True:
 
     for enemy in lista_enemigos:
         if (enemy.hitpoints < 1):
+            enemy.death(lista_items)
             lista_enemigos.remove(enemy)
             break
         else:
-            enemy.update(delta_ms,lista_plataformas,lista_personajes,lista_balas)
+            enemy.update(delta_ms,lista_plataformas,lista_personajes,lista_balas,lista_items)
             enemy.draw(screen)
+            
+    print(player_1.currency)
             
     damage_control.update()
                         
