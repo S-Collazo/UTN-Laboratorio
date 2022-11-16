@@ -37,13 +37,13 @@ class Entity:
         self.tiempo_transcurrido_anim = 0
         self.tiempo_transcurrido_move = 0
         self.tiempo_last_jump = 0
-        self.interval_time_jump = interval_time
+        self.interval_time_jump = interval_time * self.asset["interval_jump"]
         self.tiempo_last_attack = 0
-        self.interval_time_attack = interval_time * 2
+        self.interval_time_attack = interval_time * self.asset["interval_attack"]
         self.tiempo_last_shoot = 0
-        self.interval_time_shoot = interval_time
+        self.interval_time_shoot = interval_time * self.asset["interval_shoot"]
         self.tiempo_last_block = 0
-        self.interval_time_block = interval_time * 5
+        self.interval_time_block = interval_time * self.asset["interval_block"]
         
         self.frame_rate_ms = frame_rate_ms 
         self.move_rate_ms = move_rate_ms
@@ -75,7 +75,7 @@ class Entity:
         self.rect_ground_collition.height = GROUND_COLLIDE_H
         self.rect_ground_collition.y = y + self.rect.height - GROUND_COLLIDE_H
                 
-        self.rect_body_collition = pygame.Rect(x,y,self.rect.width/2,self.rect.height)
+        self.rect_body_collition = pygame.Rect(x+10,y,self.rect.width/2,self.rect.height)
             
     def walk (self,direction_walk):        
         if(self.is_jump == False and self.is_fall == False):
@@ -90,7 +90,7 @@ class Entity:
                     self.move_x = -self.speed_walk
                                             
     def jump (self, on_off = True):
-        if (on_off  and self.is_jump == False):
+        if (on_off  and self.is_jump == False and self.is_fall == False and ((self.rect.y - self.jump_height) > 0)):
             self.y_start_jump = self.rect.y
             if (self.direction == DIRECTION_R):
                 self.animation = self.jump_r
@@ -139,7 +139,7 @@ class Entity:
             
     def shoot(self,lista_balas,on_off = True):
         self.is_shoot = on_off
-        if(on_off == True and self.is_jump == False and self.is_fall == False):
+        if(on_off == True):
             if(self.animation != self.shoot_r and self.animation != self.shoot_l):
                 self.frame = 0
                 self.is_shoot = True
@@ -185,27 +185,12 @@ class Entity:
         
                 
     def add_y(self,delta_y):
-        if((self.rect.y + delta_y) >= 0 and (self.rect.y + self.rect.h + delta_y) <= ALTO_VENTANA):
+        if((self.rect.y + delta_y) <= ALTO_VENTANA and (self.rect.y + delta_y) >= 0):
             self.rect.y += delta_y
             self.rect_collition.y += delta_y
             self.rect_ground_collition.y += delta_y
             self.rect_body_collition.y += delta_y
-    
-    def damage(self,lista_oponente):
-        if(self.hitpoints > 0 and self.is_attack):
-            for oponente in lista_oponente:
-                if(oponente.rect_body_collition.colliderect(self.rect) or oponente.rect_body_collition.colliderect(self.rect_body_collition) and not oponente.is_block):
-                        self.hitpoints -= oponente.attack_power
-                        self.hurt()
-                                
-                        if(self.rect.x <= oponente.rect.x):
-                            oponente.add_x(100)
-                        else:
-                            oponente.add_x(-100)
-                            oponente.jump(True)
-                                        
-                break
-            
+           
     """
     def hitpoint_bar(self):
         self.hp_bar_x = self.rect.x
@@ -249,19 +234,18 @@ class Entity:
             else:
                 self.frame = 0
                                            
-    def update(self,delta_ms,lista_plataformas,lista_oponente):
+    def update(self,delta_ms,lista_plataformas):
         if(DEBUG):
             if(self.hitpoints >= 1000):
                     print(self.hitpoints)
             
         self.do_animation(delta_ms)
         self.do_movement(delta_ms,lista_plataformas)
-        self.damage(lista_oponente)
         #self.hitpoint_bar()
     
     def draw (self,screen):
         if(DEBUG):
-            pygame.draw.rect(screen,RED,self.rect)
+            pygame.draw.rect(screen,RED,self.rect_collition)
             pygame.draw.rect(screen,GREEN,self.rect_ground_collition)
             if(self.is_attack or self.is_block):
                 pygame.draw.rect(screen,PURPLE,self.rect_body_collition)

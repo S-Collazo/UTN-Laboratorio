@@ -5,11 +5,12 @@ from constants import *
 from player import Player
 from enemy import Enemy
 from enemy_goblin import *
-from plataform import Platform
+from platforms import Platforms
 from bullet import Bullet
 from trap import Trap
 from level import Level
 from item import Health_Potion
+from damage_control import *
 from auxiliar import Auxiliar
 
 flags = DOUBLEBUF
@@ -37,10 +38,8 @@ lista_enemigos.append(enemy_1)
 lista_enemigos.append(enemy_2)
 lista_enemigos.append(enemy_3)
 
-lista_entidades = lista_personajes + lista_enemigos
-
 lista_plataformas = []
-lista_plataformas.append(Platform(x=0,y=GROUND_LEVEL,w=ANCHO_VENTANA,h=GROUND_RECT_H,type=1))
+lista_plataformas.append(Platforms(x=0,y=GROUND_LEVEL,w=ANCHO_VENTANA,h=GROUND_RECT_H,type=1))
 Level.create_plaforms(lista_plataformas,x=250,y=550,w=100,h=100,tile_total=2,p_scale=0.4,collition_enabled=True)
 Level.create_plaforms(lista_plataformas,x=400,y=500,w=100,h=100,tile_total=10,p_scale=0.4,collition_enabled=True)
 Level.create_plaforms(lista_plataformas,x=900,y=450,w=100,h=100,tile_total=3,p_scale=0.4,collition_enabled=True)
@@ -61,6 +60,8 @@ lista_items.append(potion_1)
 
 lista_balas = []
 
+damage_control = Damage_Control(lista_personajes,lista_enemigos,lista_balas,lista_trampas)
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -74,30 +75,40 @@ while True:
     screen.blit(imagen_fondo,imagen_fondo.get_rect())
     
     for plataforma in lista_plataformas:
-        Platform.draw(plataforma,screen)
+        Platforms.draw(plataforma,screen)
         
     for trampa in lista_trampas:
         Trap.draw(trampa,screen)
-        Trap.update(trampa,lista_entidades)
         
     for item in lista_items:
-        if (item.units > 0):
+        if (item.units < 1):
+            lista_items.remove(item)
+            break
+        else:
             Health_Potion.draw(item,screen)
             Health_Potion.update(item,lista_personajes)
        
     player_1.events(delta_ms,keys,lista_balas)
-    player_1.update(delta_ms,lista_plataformas,lista_enemigos)
+    player_1.update(delta_ms,lista_plataformas)
     player_1.draw(screen)
-    print(player_1.hitpoints)
     
     for bala in lista_balas:
-        Bullet.draw(bala,screen)
-        Bullet.update(bala,delta_ms,lista_entidades,lista_plataformas,lista_trampas,lista_balas)
+        if not (bala.is_shoot):
+            lista_balas.remove(bala)
+            break
+        else:
+            Bullet.draw(bala,screen)
+            Bullet.update(bala,delta_ms,lista_personajes,lista_enemigos,lista_plataformas,lista_trampas,lista_balas)
 
     for enemy in lista_enemigos:
-        if(enemy.hitpoints > 0):
+        if (enemy.hitpoints < 1):
+            lista_enemigos.remove(enemy)
+            break
+        else:
             enemy.update(delta_ms,lista_plataformas,lista_personajes,lista_balas)
             enemy.draw(screen)
+            
+    damage_control.update()
                         
     if(DEBUG):
         Auxiliar.drawGrid(screen,100)

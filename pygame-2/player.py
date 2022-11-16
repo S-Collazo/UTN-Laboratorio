@@ -12,15 +12,15 @@ class Player(Entity):
     
         self.score = 0
                                                                                      
-    def update(self,delta_ms,lista_plataformas,lista_oponente):
-        super().update(delta_ms,lista_plataformas,lista_oponente)
+    def update(self,delta_ms,lista_plataformas):
+        super().update(delta_ms,lista_plataformas)
 
     def draw (self,screen):
         super().draw(screen)
                 
     def events(self,delta_ms,keys,lista_balas):
         self.tiempo_transcurrido += delta_ms
-        self.is_shooting = Ammo.is_shooting(lista_balas=lista_balas)
+        self.is_shooting = Ammo.is_shooting(lista_balas=lista_balas,asset=self.asset)
         
         #self.shoot(asset=self.asset,lista_balas=lista_balas,on_off=False)
         #self.attack(False)

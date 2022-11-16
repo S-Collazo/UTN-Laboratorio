@@ -2,7 +2,7 @@ import pygame
 from constants import *
 from auxiliar import Auxiliar
 
-class Platform:
+class Platforms:
     def __init__ (self,x,y,w,h,type=0,p_scale=1,collition_enabled=True):
         self.image_list= Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\tileset\\creepy_forest\\Tiles\\Tile ({0}).png",17,flip=False,scale=p_scale,w=w,h=h)
         self.image = self.image_list[type]

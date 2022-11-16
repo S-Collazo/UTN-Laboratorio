@@ -22,8 +22,8 @@ class Enemy(Entity):
         self.can_block = False
         self.can_throw = False
                        
-    def update (self,delta_ms,lista_plataformas,lista_oponente,lista_balas):
-        super().update(delta_ms,lista_plataformas,lista_oponente)
+    def update (self,delta_ms,lista_plataformas):
+        super().update(delta_ms,lista_plataformas)
         #self.events(delta_ms,lista_oponente,lista_balas)
         
     def draw (self,screen):

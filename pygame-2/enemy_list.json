@@ -7,10 +7,15 @@
             "attack_power": 10,
             "speed_walk_modifier": 100,
             "jump_height_modifier": 10,
+            "interval_jump": 0,
+            "interval_attack": 20,
+            "interval_block": 0,
+            "interval_shoot": 0,
             "bullet": {
                 "name": "Skull",
                 "path": "\\elements\\skull\\skull",
-                "quantity": 1
+                "quantity": 1,
+                "bullet_power": 20
             },
             "animations": {
                 "Attack": {
@@ -58,10 +63,15 @@
             "attack_power": 10,
             "speed_walk_modifier": 150,
             "jump_height_modifier": 10,
+            "interval_jump": 0,
+            "interval_attack": 20,
+            "interval_block": 20,
+            "interval_shoot": 0,
             "bullet": {
                 "name": "Skull",
                 "path": "\\elements\\skull\\skull",
-                "quantity": 1
+                "quantity": 1,
+                "bullet_power": 20
             },
             "animations": {
                 "Attack": {
@@ -109,10 +119,15 @@
             "attack_power": 30,
             "speed_walk_modifier": 200,
             "jump_height_modifier": 10,
+            "interval_jump": 0,
+            "interval_attack": 0,
+            "interval_block": 0,
+            "interval_shoot": 30,
             "bullet": {
                 "name": "Skull",
                 "path": "\\elements\\skull\\skull",
-                "quantity": 1
+                "quantity": 1,
+                "bullet_power": 30
             },
             "animations": {
                 "Attack": {
@@ -162,6 +177,10 @@
             "attack_power": 40,
             "speed_walk_modifier": 200,
             "jump_height_modifier": 10,
+            "interval_jump": 10,
+            "interval_attack": 20,
+            "interval_block": 30,
+            "interval_shoot": 100,
             "bullet": {
                 "name": "Goblin Club",
                 "path": "\\elements\\goblin_club\\goblin_club",

@@ -3,7 +3,7 @@ from constants import *
 from auxiliar import Auxiliar
 
 class Bullet:
-    def __init__ (self,asset,x,y,move_rate_ms,frame_rate_ms,move=50,direction_inicial=DIRECTION_R,p_scale=1,interval_bullet=FPS*2,distance=ANCHO_VENTANA,type=0):
+    def __init__ (self,asset,x,y,move_rate_ms,frame_rate_ms,move=100,direction_inicial=DIRECTION_R,p_scale=1,interval_bullet=FPS*2,distance=ANCHO_VENTANA,type=0):
         self.p_scale = p_scale * GLOBAL_SCALE
         self.asset = asset
         self.asset_name = asset["name"]
@@ -24,9 +24,9 @@ class Bullet:
         self.rect.x = x
         self.rect.y = y
         
-        self.attack_power = 10
+        self.attack_power = asset["bullet"]["bullet_power"]
         
-        self.rect_collition = pygame.Rect(self.rect)
+        self.rect_body_collition = pygame.Rect(self.rect)
         
         self.delta_x = move
         self.frame_rate_ms = frame_rate_ms
@@ -37,39 +37,33 @@ class Bullet:
         self.tiempo_transcurrido_anim = 0
         self.interval_bullet = interval_bullet
         
-        self.is_shooting = True
+        self.is_shoot = True
+        self.is_attack = False
         self.collition_enabled = True
     
-    def damage(self,lista_oponente,lista_plataformas,lista_trampas,lista_balas):
-        if(self.is_shooting):  
-            for oponente in lista_oponente:
-                if not(self.asset_name == oponente.asset_name):
-                    if(self.rect_collition.colliderect(oponente.rect)):
-                        self.is_shooting = False
-                        if not (oponente.is_block):
-                            oponente.hitpoints -= self.attack_power
-                                    
-                        if(self.rect.x <= oponente.rect.x):
-                            oponente.add_x(100)
-                        else:
-                            oponente.add_x(-100)
-                            oponente.jump(True)
+    def shooting (self,lista_personajes,lista_enemigos,lista_plataformas,lista_trampas,lista_balas):
+        self.lista_entidades = lista_personajes + lista_enemigos
+        if(self.is_shoot):  
+            for entidad in self.lista_entidades:
+                if not(self.asset_name == entidad.asset_name):
+                    if(self.rect_body_collition.colliderect(entidad.rect)):
+                        self.is_shoot = False
                         break
             
             for plataforma in lista_plataformas:
-                if(self.rect_collition.colliderect(plataforma.rect_collition)):
-                    self.is_shooting = False
+                if(self.rect_body_collition.colliderect(plataforma.rect_collition)):
+                    self.is_shoot = False
                     break                
 
             for trampa in lista_trampas:
-                if(self.rect_collition.colliderect(trampa.rect_collition)):
-                    self.is_shooting = False
+                if(self.rect_body_collition.colliderect(trampa.rect_body_collition)):
+                    self.is_shoot = False
                     break   
                 
             for bala in lista_balas:
                 if not(self.bullet_asset_name == bala.bullet_asset_name):
-                    if(self.rect_collition.colliderect(bala.rect_collition)):
-                        self.is_shooting = False
+                    if(self.rect_body_collition.colliderect(bala.rect_body_collition)):
+                        self.is_shoot = False
                         break      
     
     def do_movement(self):
@@ -81,12 +75,12 @@ class Bullet:
             if((self.rect.x + self.rect.w + self.delta_x) >= 0 and (self.rect.x + self.rect.w + self.delta_x) <= self.distance):
                 if(self.direction == DIRECTION_R):
                     self.rect.x += self.delta_x
-                    self.rect_collition.x += self.delta_x
+                    self.rect_body_collition.x += self.delta_x
                 else:
                     self.rect.x -= self.delta_x
-                    self.rect_collition.x -= self.delta_x             
+                    self.rect_body_collition.x -= self.delta_x             
             else:
-                self.is_shooting = False
+                self.is_shoot = False
                 
     def do_animation (self,delta_ms):
         self.tiempo_transcurrido_anim += delta_ms
@@ -99,16 +93,16 @@ class Bullet:
             else:
                  self.frame = 0
                 
-    def update (self,delta_ms,lista_oponente,lista_plataformas,lista_trampas,lista_balas):
-        self.damage(lista_oponente,lista_plataformas,lista_trampas,lista_balas)
+    def update (self,delta_ms,lista_personajes,lista_enemigos,lista_plataformas,lista_trampas,lista_balas):
+        self.shooting (lista_personajes,lista_enemigos,lista_plataformas,lista_trampas,lista_balas)
         self.do_movement()
         self.do_animation(delta_ms)
        
     def draw (self,screen):        
-        if(self.is_shooting):
+        if(self.is_shoot):
             if(DEBUG):
                 if(self.collition_enabled):
-                    pygame.draw.rect(screen,PURPLE,self.rect_collition)
+                    pygame.draw.rect(screen,PURPLE,self.rect_body_collition)
                 
             screen.blit(self.image,self.rect)
            

@@ -15,10 +15,10 @@ class Ammo:
         
         lista_balas.append(Bullet(asset=asset,x=self.pos_x,y=self.pos_y,frame_rate_ms=frame_rate_ms,move_rate_ms=move_rate_ms,move=50,direction_inicial=self.direction,p_scale=self.p_scale,interval_bullet=FPS*2,distance=ANCHO_VENTANA))
         
-    def is_shooting(lista_balas):
+    def is_shooting(lista_balas,asset):
         retorno = False
         for bala in lista_balas:
-            if(bala.is_shooting):
+            if(bala.is_shoot and bala.bullet_asset_name == asset["bullet"]["name"]):
                 retorno = True
                 break   
         return retorno

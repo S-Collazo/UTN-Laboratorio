@@ -7,10 +7,15 @@
             "attack_power": 10,
             "speed_walk_modifier": 100,
             "jump_height_modifier": 14,
+            "interval_jump": 1,
+            "interval_attack": 10,
+            "interval_block": 10,
+            "interval_shoot": 20,
             "bullet": {
                 "name": "Knight Shield",
                 "path": "\\elements\\knight_shield\\knight_shield",
-                "quantity": 2
+                "quantity": 2,
+                "bullet_power": 20
             },
             "animations": {
                 "Attack": {
