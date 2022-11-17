@@ -3,7 +3,6 @@ import sys
 from pygame.locals import *
 from constants import *
 from player import Player
-from enemy import Enemy
 from enemy_goblin import *
 from platforms import Platforms
 from bullet import Bullet
@@ -108,8 +107,6 @@ while True:
         else:
             enemy.update(delta_ms,lista_plataformas,lista_personajes,lista_balas,lista_items)
             enemy.draw(screen)
-            
-    print(player_1.currency)
             
     damage_control.update()
                         

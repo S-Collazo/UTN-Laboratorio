@@ -49,8 +49,11 @@ class Health_Potion (Item):
             super().draw(screen)
             
 class Gem (Item):
-    def __init__ (self,x,y,w,h,units=1,p_scale=1):
-        self.path="\\coin\\gem_moonstone\\gem_moonstone"
+    def __init__ (self,x,y,w,h,units=1,p_scale=1,enemy_drop=False):
+        if (enemy_drop):
+            self.path="\\coin\\gem_moonstone\\gem_moonstone"
+        else:
+            self.path="\\tileset\\creepy_forest\\Objects\\gem_ore"
         super().__init__ (path=self.path,x=x,y=y,w=w,h=h,units=units,p_scale=p_scale)
         self.currency_value = 100
     

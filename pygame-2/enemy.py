@@ -34,7 +34,7 @@ class Enemy(Entity):
             self.move_y = 0
             self.frame = 0
             
-            gem_reward = Gem(x=self.rect.x,y=self.rect.y,w=100,h=200,units=1,p_scale=1.2)
+            gem_reward = Gem(x=self.rect.x + (self.rect.w / 2),y=self.rect.y + (self.rect.h / 2),w=100,h=200,units=1,p_scale=1,enemy_drop=True)
             lista_items.append(gem_reward)
         
                        
