@@ -30,7 +30,7 @@ class Bullet:
         
         self.delta_x = move
         self.frame_rate_ms = frame_rate_ms
-        self.move_rate_ms = move_rate_ms * self.frame_rate_ms
+        self.move_rate_ms = move_rate_ms * FPS
                
         self.distance = distance
         self.tiempo_transcurrido_move = 0

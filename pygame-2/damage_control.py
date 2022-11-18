@@ -22,7 +22,7 @@ class Damage_Control:
 
                     break
                 break
-
+                        
     def update(self):
         self.damage(self.lista_personajes, self.lista_enemigos)
         self.damage(self.lista_enemigos, self.lista_personajes)

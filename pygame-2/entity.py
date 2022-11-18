@@ -90,17 +90,15 @@ class Entity:
                     self.move_x = -self.speed_walk
                                             
     def jump (self, on_off = True):
-        if (on_off  and self.is_jump == False and self.is_fall == False and ((self.rect.y - self.jump_height) > 0)):
+        if (on_off  and self.is_jump == False and self.is_fall == False):
             self.y_start_jump = self.rect.y
+            self.move_y = -self.jump_height
             if (self.direction == DIRECTION_R):
                 self.animation = self.jump_r
-                self.move_y = -self.jump_height
                 self.move_x = self.jump_power
             else:
                 self.animation = self.jump_l
-                self.move_y = -self.jump_height
                 self.move_x = -self.jump_power
-                
             self.frame = 0
             self.is_jump = True
         if(on_off == False):
@@ -170,9 +168,9 @@ class Entity:
                     retorno = True
                     break   
         return retorno
-                
+            
     def add_x(self,delta_x):        
-        if((self.rect.x + delta_x) >= 0 and (self.rect.x + self.rect.w + delta_x) <= ANCHO_VENTANA):
+        if((self.rect_collition.x + delta_x) >= 0 and (self.rect_collition.x + self.rect_collition.w + delta_x) <= ANCHO_VENTANA):
             self.rect.x += delta_x
             self.rect_collition.x += delta_x
             self.rect_ground_collition.x += delta_x
@@ -182,26 +180,14 @@ class Entity:
             self.rect_body_collition.x = self.rect.x + 5 + (self.rect_body_collition.width)
         else:
             self.rect_body_collition.x = self.rect.x - 5
-        
-                
+                   
     def add_y(self,delta_y):
-        if((self.rect.y + delta_y) <= ALTO_VENTANA and (self.rect.y + delta_y) >= 0):
-            self.rect.y += delta_y
-            self.rect_collition.y += delta_y
-            self.rect_ground_collition.y += delta_y
-            self.rect_body_collition.y += delta_y
-           
-    """
-    def hitpoint_bar(self):
-        self.hp_bar_x = self.rect.x
-        self.hp_bar_y = self.rect.y
-        self.hp_bar_w = (self.rect.w / 2)
-        self.hp_bar_image = PATH_RECURSOS + "/gui/set_gui_01/Comic_Border/Bars/Bar_Background01.png"
-        self.hp_bar_segment = PATH_RECURSOS + "/gui/set_gui_01/Comic_Border/Bars/Bar_Segment05.png"
-        self.hp_bar_length = self.hitpoints
-        self.hp_bar = ProgressBar(master_surface=self.rect,x=self.hp_bar_x,y=self.hp_bar_y,w=self.hp_bar_w,h=20,background_color=WHITE,border_color=BLACK,background_image=self.hp_bar_image,image_progress=self.hp_bar_segment,value=0,value_max=self.hp_bar_length)
-    """
-                      
+        #if((self.rect.y + delta_y) <= ALTO_VENTANA and (self.rect.y + delta_y) >= 0):
+        self.rect.y += delta_y
+        self.rect_collition.y += delta_y
+        self.rect_ground_collition.y += delta_y
+        self.rect_body_collition.y += delta_y
+                                 
     def do_movement(self,delta_ms,lista_plataformas):
         self.tiempo_transcurrido_move += delta_ms
         
@@ -241,7 +227,6 @@ class Entity:
             
         self.do_animation(delta_ms)
         self.do_movement(delta_ms,lista_plataformas)
-        #self.hitpoint_bar()
     
     def draw (self,screen):
         if(DEBUG):
@@ -250,7 +235,6 @@ class Entity:
             if(self.is_attack or self.is_block):
                 pygame.draw.rect(screen,PURPLE,self.rect_body_collition)
     
-        #self.hp_bar.draw()
         self.image = self.animation[self.frame]
         screen.blit(self.image, self.rect)
 

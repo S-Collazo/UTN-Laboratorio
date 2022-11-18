@@ -13,26 +13,37 @@ class Chest:
         self.chest_closed = self.image_list[0]
         self.chest_open = self.image_list[1]
         
-        self.image = self.chest_closed
+        self.is_open = False
+        
+        self.image = self.chest_closed           
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
         
+        
+        
         self.rect_collition = pygame.Rect(self.rect)
 
     def get_loot (self,lista_items):
-        max_items = len(lista_items) - 1
-        loot_number = random.randrange(0,max_items)
+        if not (self.is_open):
+            loot_number = random.randrange(1,10)
+            
+            if (loot_number % 2):
+                loot_reward = Gem(x=self.rect.x + (self.rect.w / 3),y=self.rect.y - (self.rect.h / 2),w=100,h=200,units=1,p_scale=1,enemy_drop=True)
+            else:
+                loot_reward = Health_Potion(x=self.rect.x + (self.rect.w / 3),y=self.rect.y - (self.rect.h / 2),w=100,h=100,units=1,p_scale=1.5)
+
+            lista_items.append(loot_reward)
         
-        if (loot_number % 0):
-            loot_reward = Gem(x=self.rect.x + (self.rect.w / 2),y=self.rect.y + (self.rect.h / 2),w=100,h=200,units=1,p_scale=1,enemy_drop=True)
-        else:
-            loot_reward = Health_Potion(x=self.rect.x + (self.rect.w / 2),y=self.rect.y + (self.rect.h / 2),w=100,h=100,units=1,p_scale=1.5)
+    def is_opened (self,lista_personajes,lista_items):
+        for personaje in lista_personajes:
+            if (personaje.rect_body_collition.colliderect(self.rect_collition)):
+                self.get_loot(lista_items)
+                self.image = self.chest_open
+                self.is_open = True
 
-        lista_items.append(loot_reward)
-
-    def update (self,lista_personajes):
-        pass
+    def update (self,lista_personajes,lista_items):
+        self.is_opened(lista_personajes,lista_items)
     
     def draw (self,screen):        
         if(DEBUG):

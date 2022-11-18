@@ -11,8 +11,8 @@ class FormMenuA(Form):
     def __init__(self,name,master_surface,x,y,w,h,background_color,border_color,active):
         super().__init__(name,master_surface,x,y,w,h,background_color,border_color,active)
 
-        self.boton1 = Button(master_surface=self,x=50,y=50,w=200,h=50,background_color=(255,0,0),border_color=(255,0,255),on_click=self.on_click_boton1,on_click_param="form_menu_B",text="ABRIR B",font="Verdana",font_size=30,font_color=(0,255,0))
-        self.boton2 = Button(master_surface=self,x=200,y=50,w=200,h=50,background_color=(255,0,0),border_color=(255,0,255),on_click=self.on_click_boton1,on_click_param="form_menu_B",text="MENU 2",font="Verdana",font_size=30,font_color=(0,255,0))
+        self.boton1 = Button(master_surface=self,x=0,y=0,w=140,h=50,background_color=(255,0,0),border_color=(255,0,255),on_click=self.on_click_boton1,on_click_param="form_menu_B",text="ABRIR B",font="Verdana",font_size=30,font_color=(0,255,0))
+        self.boton2 = Button(master_surface=self,x=0,y=60,w=140,h=50,background_color=(255,0,0),border_color=(255,0,255),on_click=self.on_click_boton1,on_click_param="form_menu_B",text="MENU 2",font="Verdana",font_size=30,font_color=(0,255,0))
         self.boton3 = Button(master_surface=self,x=0,y=120,w=140,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Comic_Border/Buttons/Button_M_02.png",on_click=self.on_click_boton3,on_click_param="form_menu_B",text="MENU",font="Verdana",font_size=30,font_color=WHITE)
               
         self.txt1 = TextBox(master_surface=self,x=200,y=50,w=240,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Comic_Border/Buttons/Button_XL_08.png",text="Text",font="Verdana",font_size=30,font_color=BLACK)

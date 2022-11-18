@@ -4,7 +4,7 @@ from constants import *
 from auxiliar import Auxiliar
 
 class Widget:
-    def __init__ (self,master_surface,x,y,w,h,background_color,border_color,background_image,text,font,font_size,font_color):
+    def __init__ (self,master_surface,x,y,w,h,background_color,border_color,background_image,text,font,font_size,font_color,bold=False):
         self.master_form = master_surface
         self.x = x
         self.y = y
@@ -17,11 +17,14 @@ class Widget:
             self.background_image = pygame.image.load(background_image)
             self.background_image = pygame.transform.scale(self.background_image,(w, h)).convert_alpha()
         else:
-            self.background_image = None
+            self.background_image = pygame.Surface((w, h))
+            self.background_image = self.background_image.convert_alpha()
+            self.background_image.fill((0, 0, 0, 0))
+            
         self._text = text
         if(self._text != None):
             pygame.font.init()
-            self._font_sys = pygame.font.SysFont(font,font_size)
+            self._font_sys = pygame.font.SysFont(font,font_size,bold)
             self._font_color = font_color
     
     def render (self):

@@ -27,6 +27,10 @@ class Form ():
              
         if(self.background_color != None):
             self.surface.fill(self.background_color)
+        else:
+            self.surface = pygame.Surface((w,h))
+            self.surface = self.surface.convert_alpha()
+            self.surface.fill((0, 0, 0, 0))
             
     def set_active(self,name):
         for aux_form in self.forms_dict.values():

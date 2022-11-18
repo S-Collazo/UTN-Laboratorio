@@ -7,15 +7,14 @@ from ammo import Ammo
 from item import *
 
 class Enemy(Entity):
-    def __init__ (self,asset,group,name,x,y,gravity,frame_rate_ms,move_rate_ms,direction_inicial=DIRECTION_L,p_scale=0.1) -> None:
+    def __init__ (self,asset,group,name,x,y,gravity,frame_rate_ms,move_rate_ms,p_scale=0.1) -> None:
         self.asset_type = asset[group][name]
         
-        self.direction = direction_inicial
         self.direction_value = random.random()
         if (self.direction_value == 0):
             self.direction = DIRECTION_L
         else:
-            self.direciton = DIRECTION_R
+            self.direction = DIRECTION_R
         
         super().__init__(self.asset_type,x,y,gravity,frame_rate_ms,move_rate_ms,self.direction,p_scale)             
         self.x = x

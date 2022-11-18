@@ -8,7 +8,7 @@
             "speed_walk_modifier": 100,
             "jump_height_modifier": 10,
             "interval_jump": 0,
-            "interval_attack": 20,
+            "interval_attack": 30,
             "interval_block": 0,
             "interval_shoot": 0,
             "bullet": {
@@ -64,8 +64,8 @@
             "speed_walk_modifier": 150,
             "jump_height_modifier": 10,
             "interval_jump": 0,
-            "interval_attack": 20,
-            "interval_block": 20,
+            "interval_attack": 30,
+            "interval_block": 60,
             "interval_shoot": 0,
             "bullet": {
                 "name": "Skull",
@@ -122,7 +122,7 @@
             "interval_jump": 0,
             "interval_attack": 0,
             "interval_block": 0,
-            "interval_shoot": 30,
+            "interval_shoot": 40,
             "bullet": {
                 "name": "Skull",
                 "path": "\\elements\\skull\\skull",
