@@ -136,7 +136,7 @@ class Goblin_Shaman (Enemy):
             self.animation = self.stay_r
             self.shoot(lista_balas,False)
                      
-            if(abs(self.distance_difference_x) <= 500 and abs(self.distance_difference_y) <= 50):
+            if(abs(self.distance_difference_x) <= 500 and abs(self.distance_difference_y) <= 100):
                 if(self.is_shooting == False and ((self.tiempo_transcurrido - self.tiempo_last_shoot) > self.interval_time_shoot)):
                     if(self.distance_difference_x > 0):
                         self.direction = DIRECTION_L

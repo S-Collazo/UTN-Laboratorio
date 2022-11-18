@@ -23,13 +23,15 @@ class ProgressBar(Widget):
         self.render()
         
 class HitpointBar(Widget):
-    def __init__(self,player,master_surface,x=5,y=0,w=200,h=25,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Comic_Border/Bars/Bar_Background01.png",image_progress=PATH_RECURSOS + "/gui/set_gui_01/Comic_Border/Bars/Bar_Segment01.png"):
-        super().__init__(master_surface,x,y,w,h,background_color,border_color,background_image,None,None,None,None)
+    def __init__(self,player,master_surface,x=5,y=0,w=200,h=25,background_color=None,border_color=BLACK):
+        self.background_image=PATH_RECURSOS + "/gui/set_gui_01/Comic_Border/Bars/Bar_Background01.png"
+        self.image_progress=PATH_RECURSOS + "/gui/set_gui_01/Comic_Border/Bars/Bar_Segment01.png"
+        super().__init__(master_surface,x,y,w,h,background_color,border_color,self.background_image,None,None,None,None)
        
         self.value = player.hitpoints
         self.value_max = player.hitpoints_max
        
-        self.surface_element = pygame.image.load(image_progress)
+        self.surface_element = pygame.image.load(self.image_progress)
         self.surface_element = pygame.transform.scale(self.surface_element,(w/self.value_max, h)).convert_alpha()
 
         self.render(player)
