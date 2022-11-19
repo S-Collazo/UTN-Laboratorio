@@ -25,7 +25,7 @@ pygame.init()
 
 clock = pygame.time.Clock()
 
-imagen_fondo = pygame.image.load(PATH_RECURSOS + "\\locations\\set_bg_06\\creepy_forest.png")
+imagen_fondo = pygame.image.load(PATH_RECURSOS + "\\locations\\set_bg_06\\creepy_forest_003.png")
 imagen_fondo = pygame.transform.scale(imagen_fondo,(ANCHO_VENTANA,ALTO_VENTANA))
 
 player_list = Auxiliar.readJson("player_list.json")
@@ -70,7 +70,7 @@ lista_balas = []
 
 damage_control = Damage_Control(lista_personajes,lista_enemigos,lista_balas,lista_trampas)
 
-screen_info = Screen_Info(entity=player_1,name="Screen Info",master_surface = screen,x=0,y=0,w=ANCHO_VENTANA,h=ALTO_VENTANA,background_color=None,border_color=None,active=True)
+screen_info = Screen_Info(entity=player_1,name="Screen Info",master_surface=screen,x=0,y=0,w=ANCHO_VENTANA,h=ALTO_VENTANA,background_color=None,border_color=None,active=True)
 
 while True:
     if pause:
