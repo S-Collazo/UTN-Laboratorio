@@ -35,7 +35,8 @@ class Form ():
     def set_active(self,name):
         for aux_form in self.forms_dict.values():
             aux_form.active = False
-        self.forms_dict[name].active = True
+        if (name != None):
+            self.forms_dict[name].active = True
 
     def render(self):
         pass

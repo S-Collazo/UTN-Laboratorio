@@ -1,0 +1,98 @@
+{
+    "Nivel 1": {
+        "background_image": "\\locations\\set_bg_06\\creepy_forest_000.png",
+        "gravity": 10,
+        "frame_rate_ms": 60,
+        "move_rate_ms": 40,
+        "player": {
+            "player_list": "player_list.json",
+            "player_quantity":[
+                1,
+                1,
+                1
+            ],
+            "p_scale": 0.1,
+            "player_starter_position": "100,650"
+        },
+        "enemy": {
+            "enemy_list": "enemy_list.json",
+            "enemy_quantity": [
+                2,
+                3,
+                4
+            ],
+            "p_scale": 0.2,
+            "enemy_type": [
+                "Standard/Standard",
+                "Standard/Standard/Grunt",
+                "Standard/Grunt/Shaman/Shaman"
+            ],
+            "enemy_starter_position": [
+                "501,650",
+                "550,150",
+                "100,100",
+                "800,200"
+            ]
+        },
+        "platform": {
+            "floor_state": 1,
+            "platform_quantity": [
+                9,
+                9,
+                9
+            ],
+            "p_scale": 0.4,
+            "platform_dimensions": "100,100",
+            "platform_position_length": [
+                "250,650,2",
+                "400,600,10",
+                "900,550,3",
+                "725,475,2",
+                "350,450,7",
+                "200,375,2",
+                "400,300,17",
+                "0,225,7",
+                "0,550,3"
+            ]
+        },
+        "trap": {
+            "trap_quantity":[
+                0,
+                1,
+                2
+            ],
+            "p_scale": 0.4,
+            "trap_dimensions": "50,50",
+            "trap_position": [
+                "10,475",
+                "900,675"
+            ]
+        },
+        "item": {
+            "item_list": "item_list.json",
+            "item_quantity":[
+                3,
+                2,
+                1
+            ],
+            "p_scale": 1,
+            "item_position": [
+                "50,160",
+                "650,535",
+                "400,680"
+            ]
+        },
+        "chest": {
+            "chest_quantity":[
+                1,
+                1,
+                0
+            ],
+            "p_scale": 0.5,
+            "chest_dimensions": "200,100",
+            "chest_position": [
+                "850,200"
+            ]
+        }
+    }
+}

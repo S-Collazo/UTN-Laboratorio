@@ -8,7 +8,7 @@ class Bullet:
         self.asset = asset
         self.asset_name = asset["name"]
         self.bullet_asset = asset["bullet"]
-        self.bullet_asset_name = asset["bullet"]["name"]
+        self.bullet_asset_name = self.bullet_asset["name"]
         
         self.direction = direction_inicial
         
@@ -24,7 +24,7 @@ class Bullet:
         self.rect.x = x
         self.rect.y = y
         
-        self.attack_power = asset["bullet"]["bullet_power"]
+        self.attack_power = self.bullet_asset["bullet_power"]
         
         self.rect_body_collition = pygame.Rect(self.rect)
         
@@ -49,6 +49,8 @@ class Bullet:
                     if(self.rect_body_collition.colliderect(entidad.rect)):
                         self.is_shoot = False
                         break
+                else:
+                    self.attack_power = 0
             
             for plataforma in lista_plataformas:
                 if(self.rect_body_collition.colliderect(plataforma.rect_collition)):

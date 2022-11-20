@@ -6,7 +6,9 @@ from constants import *
 from auxiliar import Auxiliar
 
 class Chest:
-    def __init__ (self,x,y,w,h,p_scale=1):
+    def __init__ (self,item_asset,x,y,w,h,p_scale=1):
+        self.item_asset = item_asset
+        
         self.p_scale = p_scale * GLOBAL_SCALE
                 
         self.image_list = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\tileset\\creepy_forest\\Objects\\chest_{:03d}.png",2,step=0,flip=False,scale=self.p_scale,w=w,h=h)
@@ -26,12 +28,12 @@ class Chest:
 
     def get_loot (self,lista_items):
         if not (self.is_open):
-            loot_number = random.randrange(1,10)
+            loot_number = random.randrange(10)
             
             if (loot_number % 2):
-                loot_reward = Gem(x=self.rect.x + (self.rect.w / 3),y=self.rect.y - (self.rect.h / 2),w=100,h=200,units=1,p_scale=1,enemy_drop=True)
+                loot_reward = Gem(asset=self.item_asset,name="Basic Gem",x=self.rect.x + (self.rect.w / 3),y=self.rect.y - (self.rect.h / 2),p_scale=1,enemy_drop=True)
             else:
-                loot_reward = Health_Potion(x=self.rect.x + (self.rect.w / 3),y=self.rect.y - (self.rect.h / 2),w=100,h=100,units=1,p_scale=1.5)
+                loot_reward = Health_Potion(asset=self.item_asset,name="Basic Health Potion",x=self.rect.x + (self.rect.w / 3),y=self.rect.y - (self.rect.h / 2),p_scale=1.5)
 
             lista_items.append(loot_reward)
         

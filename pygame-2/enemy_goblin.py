@@ -7,8 +7,8 @@ class Goblin_Standard (Enemy):
     def __init__(self, asset, x, y, gravity, frame_rate_ms, move_rate_ms, p_scale=0.1):
         super().__init__(asset, "Goblins", "Goblin Standard", x, y, gravity,frame_rate_ms, move_rate_ms, p_scale)
 
-    def update(self, delta_ms, lista_plataformas, lista_oponente, lista_balas, lista_items):
-        super().update(delta_ms, lista_plataformas, lista_items)
+    def update(self, delta_ms, lista_plataformas, lista_oponente, lista_balas, lista_items,item_asset):
+        super().update(delta_ms, lista_plataformas, lista_items,item_asset)
         self.events(delta_ms, lista_oponente)
 
     def draw(self, screen):
@@ -22,7 +22,7 @@ class Goblin_Standard (Enemy):
             self.posicion_extremo_b = self.x
         else:
             self.posicion_extremo_a = self.x
-            self.posicion_extremo_b = ANCHO_VENTANA - (self.rect.w + 5)
+            self.posicion_extremo_b = ANCHO_VENTANA - (self.rect.w + 100)
 
         for oponente in lista_oponente:
             self.player_position_x = oponente.rect_body_collition.x
@@ -56,8 +56,8 @@ class Goblin_Grunt (Enemy):
         super().__init__ (asset,"Goblins","Goblin Grunt",x,y,gravity,frame_rate_ms,move_rate_ms,p_scale)
         self.can_block = True
         
-    def update (self,delta_ms,lista_plataformas,lista_oponente,lista_balas,lista_items):
-        super().update(delta_ms,lista_plataformas,lista_items)
+    def update (self,delta_ms,lista_plataformas,lista_oponente,lista_balas,lista_items,item_asset):
+        super().update(delta_ms,lista_plataformas,lista_items,item_asset)
         self.events(delta_ms,lista_oponente,lista_balas)
         
     def draw (self,screen):
@@ -116,8 +116,8 @@ class Goblin_Shaman (Enemy):
         super().__init__ (asset,"Goblins","Goblin Shaman",x,y,gravity,frame_rate_ms,move_rate_ms,p_scale)
         self.can_throw = True
         
-    def update (self,delta_ms,lista_plataformas,lista_oponente,lista_balas,lista_items):
-        super().update(delta_ms,lista_plataformas,lista_items)
+    def update (self,delta_ms,lista_plataformas,lista_oponente,lista_balas,lista_items,item_asset):
+        super().update(delta_ms,lista_plataformas,lista_items,item_asset)
         self.events(delta_ms,lista_oponente,lista_balas)
         
     def draw (self,screen):
@@ -133,14 +133,16 @@ class Goblin_Shaman (Enemy):
             self.distance_difference_x = self.rect_body_collition.x - oponente.rect_body_collition.x
             self.distance_difference_y = self.rect.y - oponente.rect.y
             
-            self.animation = self.stay_r
+            if(self.distance_difference_x > 0):
+                self.direction = DIRECTION_L
+                self.animation = self.stay_l
+            else:
+                self.direction = DIRECTION_R
+                self.animation = self.stay_r
+            
             self.shoot(lista_balas,False)
                      
             if(abs(self.distance_difference_x) <= 500 and abs(self.distance_difference_y) <= 100):
                 if(self.is_shooting == False and ((self.tiempo_transcurrido - self.tiempo_last_shoot) > self.interval_time_shoot)):
-                    if(self.distance_difference_x > 0):
-                        self.direction = DIRECTION_L
-                    else:
-                        self.direction = DIRECTION_R
                     self.shoot(lista_balas)
                     self.tiempo_last_shoot = self.tiempo_transcurrido

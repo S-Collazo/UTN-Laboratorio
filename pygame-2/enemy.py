@@ -23,7 +23,7 @@ class Enemy(Entity):
         self.can_throw = False
         self.is_alive = True    
                        
-    def death (self,lista_items):
+    def death (self,lista_items,item_asset):
         if(self.animation != self.death_r and self.animation != self.death_l):
             if (self.direction == DIRECTION_R):
                 self.animation = self.death_r
@@ -33,15 +33,15 @@ class Enemy(Entity):
             self.move_y = 0
             self.frame = 0
             
-            gem_reward = Gem(x=self.rect.x + (self.rect.w / 2),y=self.rect.y + (self.rect.h / 2),w=100,h=200,units=1,p_scale=1,enemy_drop=True)
+            gem_reward = Gem(asset=item_asset,name="Basic Gem",x=self.rect.x + (self.rect.w / 2),y=self.rect.y + (self.rect.h / 2),p_scale=1,enemy_drop=True)
             lista_items.append(gem_reward)
         
                        
-    def update (self,delta_ms,lista_plataformas,lista_items):          
+    def update (self,delta_ms,lista_plataformas,lista_items,item_asset):          
         if (self.is_alive):
             super().update(delta_ms,lista_plataformas)
         else:
-            self.death(lista_items)
+            self.death(lista_items,item_asset)
         
     def draw (self,screen):
         super().draw(screen)

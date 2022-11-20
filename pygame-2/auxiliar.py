@@ -1,5 +1,6 @@
 import pygame
 import json
+import re
 from constants import *
 
 class Auxiliar:
@@ -62,3 +63,15 @@ class Auxiliar:
         with open(file, 'r') as f:
             data = json.load(f)
         return data
+    
+    @staticmethod
+    def splitIntoString(text,splitter):
+        split_text = text.split(splitter)
+        return split_text
+    
+    @staticmethod
+    def splitIntoInt(text,splitter):
+        split_text = Auxiliar.splitIntoString(text,splitter)
+        int_text = list(map(int,split_text))
+        return int_text
+    

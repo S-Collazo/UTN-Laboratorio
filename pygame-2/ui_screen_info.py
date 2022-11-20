@@ -5,7 +5,7 @@ from ui_form import Form
 from ui_progressbar import *
 from ui_wallet import Wallet
 
-class Screen_Info(Form):
+class ScreenInfo(Form):
     def __init__(self,entity,name,master_surface,x,y,w,h,background_color=None,border_color=None,active=True):
         super().__init__(name,master_surface,x,y,w,h,background_color,border_color,active)
                 

@@ -9,8 +9,8 @@ class Damage_Control:
         self.lista_trampas = lista_trampas
 
     def damage(self, lista_atacante, lista_atacado):
-        for atacado in lista_atacado:
-            for atacante in lista_atacante:
+        for atacante in lista_atacante:
+            for atacado in lista_atacado:
                 if not (atacado.is_block) and (atacante.is_attack or atacante.is_shoot):
                     if((atacante.rect_body_collition.colliderect(atacado.rect_collition))):
                         atacado.hitpoints -= atacante.attack_power
@@ -18,10 +18,7 @@ class Damage_Control:
                         if(atacante.rect.x <= atacado.rect.x):
                             atacado.add_x(25)
                         else:
-                            atacado.add_x(25)
-
-                    break
-                break
+                            atacado.add_x(-25)    
                         
     def update(self):
         self.damage(self.lista_personajes, self.lista_enemigos)
