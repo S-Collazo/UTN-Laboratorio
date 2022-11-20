@@ -126,6 +126,10 @@ class Level:
                 item.update(self.lista_personajes)
                     
         for player in self.lista_personajes:
+            if not (player.is_alive):
+                player.death()
+                self.game_state = GAME_DEATH
+                return self.game_state
             player.events(delta_ms,keys,lista_eventos,self.lista_balas)
             player.update(delta_ms,self.lista_plataformas)
             player.draw(self.screen)
@@ -139,7 +143,7 @@ class Level:
                 Bullet.update(bala,delta_ms,self.lista_personajes,self.lista_enemigos,self.lista_plataformas,self.lista_trampas,self.lista_balas)
 
         for enemy in self.lista_enemigos:
-            if (enemy.hitpoints < 1):
+            if not (enemy.is_alive):
                 enemy.death(self.lista_items,self.item_list)
                 self.lista_enemigos.remove(enemy)
                 break

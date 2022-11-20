@@ -13,7 +13,8 @@ class Player(Entity):
         self.currency = 0
                                                                                      
     def update(self,delta_ms,lista_plataformas):
-        super().update(delta_ms,lista_plataformas)
+        if (self.is_alive):
+            super().update(delta_ms,lista_plataformas)
 
     def draw (self,screen):
         super().draw(screen)

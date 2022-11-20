@@ -2,6 +2,7 @@ import pygame
 import sys
 from ui_start import Start
 from ui_pause import Pause
+from ui_death import Death
 from level import Level
 from pygame.locals import *
 from constants import *
@@ -21,9 +22,10 @@ pygame.init()
 
 clock = pygame.time.Clock()
 
-
-pause_menu = Pause(screen)
 start = Start(screen)
+pause_menu = Pause(screen)
+death = Death(screen)
+
 while True:
     while (game_state == GAME_MENU):
             lista_eventos = pygame.event.get()
@@ -38,15 +40,20 @@ while True:
             pygame.display.flip()
 
     else:
-        level = Level(screen,level_number,level_difficulty)
+        if (game_state == GAME_RESTART):
+            game_state = GAME_RUNNING
         
-        while not (game_state == GAME_MENU):
+        level = Level(screen,level_number,level_difficulty)
+                
+        while not (game_state == GAME_MENU or game_state == GAME_RESTART):
             while (game_state == GAME_PAUSE):
                 lista_eventos = pygame.event.get()
                 keys = pygame.key.get_pressed()                
                 delta_ms = clock.tick(FPS)
                 
                 start.start_main.active = True
+                death.death_main.active = True
+                            
                 game_state = pause_menu.pause_level(delta_ms,lista_eventos)
                 
                 pygame.display.flip()
@@ -56,9 +63,24 @@ while True:
                 keys = pygame.key.get_pressed()                
                 delta_ms = clock.tick(FPS)
                 
+                start.start_main.active = True
                 pause_menu.pause_main.active = True
+                death.death_main.active = True
+                
                 game_state = level.run_level(delta_ms,lista_eventos,keys)
                     
+                pygame.display.flip()
+                
+            while (game_state == GAME_DEATH):
+                lista_eventos = pygame.event.get()
+                keys = pygame.key.get_pressed()                
+                delta_ms = clock.tick(FPS)
+                
+                start.start_main.active = True
+                pause_menu.pause_main.active = True
+                
+                game_state = death.death_screen(delta_ms,lista_eventos)
+                
                 pygame.display.flip()
 
 

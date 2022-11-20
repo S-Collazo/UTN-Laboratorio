@@ -32,6 +32,8 @@ class Entity:
         self.hitpoints_max = self.asset["hitpoints"]
         self.hitpoints = self.asset["hitpoints"]
         self.attack_power = self.asset["attack_power"]
+        self.is_alive = True 
+
                
         self.tiempo_transcurrido = 0
         self.tiempo_transcurrido_anim = 0
@@ -61,7 +63,7 @@ class Entity:
         self.is_shoot = False
         self.is_attack = False
         self.is_block = False
-        
+            
         self.animation = self.stay_r
         self.image = self.animation[self.frame]
         self.rect = self.image.get_rect()
@@ -157,6 +159,16 @@ class Entity:
                     self.animation = self.hurt_r
                 else:
                     self.animation = self.hurt_l
+            
+    def death (self):
+        if(self.animation != self.death_r and self.animation != self.death_l):
+            if (self.direction == DIRECTION_R):
+                self.animation = self.death_r
+            else:
+                self.animation = self.death_l
+            self.move_x = 0
+            self.move_y = 0
+            self.frame = 0
                                                                         
     def is_on_platform(self,lista_plataformas):
         retorno = False

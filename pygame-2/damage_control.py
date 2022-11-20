@@ -14,11 +14,14 @@ class Damage_Control:
                 if not (atacado.is_block) and (atacante.is_attack or atacante.is_shoot):
                     if((atacante.rect_body_collition.colliderect(atacado.rect_collition))):
                         atacado.hitpoints -= atacante.attack_power
-
+                        
                         if(atacante.rect.x <= atacado.rect.x):
                             atacado.add_x(25)
                         else:
                             atacado.add_x(-25)    
+                        
+                        if(atacado.hitpoints - atacante.attack_power <= 0):
+                            atacado.is_alive = False
                         
     def update(self):
         self.damage(self.lista_personajes, self.lista_enemigos)
