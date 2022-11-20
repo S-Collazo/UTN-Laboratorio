@@ -12,13 +12,16 @@ class LevelSelector(Form):
         self.menu_x = self.w / 5
         
         self.lvl1 = Button(master_surface=self,x=self.menu_x,y=10,w=150,h=100,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_XL_06.png",on_click=self.on_click_lvl1,on_click_param="Nivel 1",text="Nivel 1",font="Verdana",font_size=30,font_color=WHITE)
-        self.lvl1_easy = Button(master_surface=self,x=self.menu_x,y=35,w=50,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_S_05.png",on_click=self.on_click_lvl1_easy,on_click_param="level_selector",text="Facil",font="Verdana",font_size=10,font_color=BLACK)
-        self.lvl1_normal = Button(master_surface=self,x=self.menu_x + 50,y=35,w=50,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_S_08.png",on_click=self.on_click_lvl1_normal,on_click_param="level_selector",text="Normal",font="Verdana",font_size=10,font_color=BLACK)
-        self.lvl1_hard = Button(master_surface=self,x=self.menu_x + 100,y=35,w=50,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_S_09.png",on_click=self.on_click_lvl1_hard,on_click_param="level_selector",text="Dificil",font="Verdana",font_size=10,font_color=BLACK)
+        self.lvl1_easy = Button(master_surface=self,x=self.menu_x,y=35,w=50,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_S_05.png",on_click=self.on_click_lvl1_easy,on_click_param=None,text="Facil",font="Verdana",font_size=10,font_color=BLACK)
+        self.lvl1_normal = Button(master_surface=self,x=self.menu_x + 50,y=35,w=50,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_S_08.png",on_click=self.on_click_lvl1_normal,on_click_param=None,text="Normal",font="Verdana",font_size=10,font_color=BLACK)
+        self.lvl1_hard = Button(master_surface=self,x=self.menu_x + 100,y=35,w=50,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_S_09.png",on_click=self.on_click_lvl1_hard,on_click_param=None,text="Dificil",font="Verdana",font_size=10,font_color=BLACK)
         
         self.button_exit = Button(master_surface=self,x=self.menu_x + 50,y=205,w=150,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_M_05.png",on_click=self.on_click_button_exit,on_click_param="main",text="Volver",font="Verdana",font_size=20,font_color=BLACK)
         
         self.lista_widget = [self.lvl1,self.button_exit]
+        
+        self.level_number = "null"
+        self.level_difficulty = -1
         
     def on_click_lvl1(self,parametro):
         self.lista_widget.append(self.lvl1_easy)
@@ -27,15 +30,18 @@ class LevelSelector(Form):
         self.level_number = parametro
     
     def on_click_lvl1_easy(self, parametro):
-        self.set_active(parametro)
+        if (self.level_difficulty >= 0):
+            self.set_active(parametro)
         self.level_difficulty = 0
     
     def on_click_lvl1_normal (self, parametro):
-        self.set_active(parametro)
+        if (self.level_difficulty >= 0):
+            self.set_active(parametro)
         self.level_difficulty = 1
         
     def on_click_lvl1_hard (self, parametro):
-        self.set_active(parametro)
+        if (self.level_difficulty >= 0):
+            self.set_active(parametro)
         self.level_difficulty = 2
         
     def on_click_button_exit (self, parametro):

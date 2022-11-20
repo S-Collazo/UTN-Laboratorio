@@ -15,7 +15,7 @@ class StartMain(Form):
         self.button_exit = Button(master_surface=self,x=self.menu_x + 50,y=205,w=150,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_M_05.png",on_click=self.on_click_button_exit,on_click_param=None,text="Cerrar Juego",font="Verdana",font_size=20,font_color=BLACK)
         
         self.lista_widget = [self.button_play,self.button_options,self.button_exit]
-
+        
     def on_click_button_play(self,parametro) -> bool:
         self.set_active(parametro)
 

@@ -13,20 +13,25 @@ class PauseMain(Form):
         
         self.button_continue = Button(master_surface=self,x=self.menu_x + 50,y=75,w=150,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_M_09.png",on_click=self.on_click_button_continue,on_click_param="ScreenInfo",text="Reanudar",font="Verdana",font_size=20,font_color=BLACK)
         self.button_options = Button(master_surface=self,x=self.menu_x + 50,y=140,w=150,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_M_08.png",on_click=self.on_click_button_options,on_click_param="pause_options",text="Opciones",font="Verdana",font_size=20,font_color=BLACK)
-        self.button_exit = Button(master_surface=self,x=self.menu_x + 50,y=205,w=150,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_M_05.png",on_click=self.on_click_button_exit,on_click_param="form_menu_B",text="Menu Principal",font="Verdana",font_size=20,font_color=BLACK)
+        self.button_exit = Button(master_surface=self,x=self.menu_x + 50,y=205,w=150,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_M_05.png",on_click=self.on_click_button_exit,on_click_param=None,text="Menu Principal",font="Verdana",font_size=20,font_color=BLACK)
               
         self.txt1 = TextBox(master_surface=self,x=self.menu_x,y=10,w=240,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_XL_06.png",text="Menu",font="Verdana",font_size=30,font_color=WHITE)
         
         self.lista_widget = [self.button_continue,self.button_options,self.button_exit,self.txt1]
+        
+        self.game_state = GAME_PAUSE
+        self.exit = False
 
     def on_click_button_continue(self,parametro) -> bool:
         self.set_active(parametro)
+        self.exit = False
 
     def on_click_button_options(self, parametro):
         self.set_active(parametro)
     
     def on_click_button_exit (self, parametro):
         self.set_active(parametro)
+        self.exit = True
 
     def update(self, lista_eventos):
         for aux_widget in self.lista_widget:

@@ -18,11 +18,11 @@ from auxiliar import Auxiliar
 class Level:
     def __init__(self,screen,level,difficulty):
         self.screen = screen
-        self.level = level
+        self.level_number = level
         self.difficulty = difficulty
                            
         level_list = Auxiliar.readJson("level_list.json")
-        level_info = level_list[self.level]
+        level_info = level_list[self.level_number]
 
         lv_gravity = level_info["gravity"]
         lv_frame_rate_ms = level_info["frame_rate_ms"]
@@ -95,66 +95,65 @@ class Level:
         self.screen_info = ScreenInfo(entity=self.lista_personajes[0],name="ScreenInfo",master_surface=self.screen,x=0,y=0,w=ANCHO_VENTANA,h=ALTO_VENTANA,background_color=None,border_color=None,active=True)
          
     def run_level (self,delta_ms,lista_eventos,keys):
-        self.pause_status = False
+        self.game_state = GAME_RUNNING
         
-        if not (self.pause_status):
-            for event in lista_eventos:
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_ESCAPE:
-                        self.pause_status = True
-                                                    
-            self.screen.blit(self.background_image,self.background_image.get_rect())
+        for event in lista_eventos:
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    self.game_state = GAME_PAUSE
+                                                
+        self.screen.blit(self.background_image,self.background_image.get_rect())
+        
+        for plataforma in self.lista_plataformas:
+            Platforms.draw(plataforma,self.screen)
             
-            for plataforma in self.lista_plataformas:
-                Platforms.draw(plataforma,self.screen)
-                
-            for trampa in self.lista_trampas:
-                Trap.draw(trampa,self.screen)
+        for trampa in self.lista_trampas:
+            Trap.draw(trampa,self.screen)
+        
+        for chest in self.lista_chests:
+            chest.update(self.lista_personajes,self.lista_items)
+            chest.draw(self.screen)
             
-            for chest in self.lista_chests:
-                chest.update(self.lista_personajes,self.lista_items)
-                chest.draw(self.screen)
-                
-            for item in self.lista_items:
-                if (item.used):
-                    self.lista_items.remove(item)
-                    break
-                else:
-                    item.draw(self.screen)
-                    item.update(self.lista_personajes)
-                        
-            for player in self.lista_personajes:
-                player.events(delta_ms,keys,lista_eventos,self.lista_balas)
-                player.update(delta_ms,self.lista_plataformas)
-                player.draw(self.screen)
-                
-            for bala in self.lista_balas:
-                if not (bala.is_shoot):
-                    self.lista_balas.remove(bala)
-                    break
-                else:
-                    Bullet.draw(bala,self.screen)
-                    Bullet.update(bala,delta_ms,self.lista_personajes,self.lista_enemigos,self.lista_plataformas,self.lista_trampas,self.lista_balas)
+        for item in self.lista_items:
+            if (item.used):
+                self.lista_items.remove(item)
+                break
+            else:
+                item.draw(self.screen)
+                item.update(self.lista_personajes)
+                    
+        for player in self.lista_personajes:
+            player.events(delta_ms,keys,lista_eventos,self.lista_balas)
+            player.update(delta_ms,self.lista_plataformas)
+            player.draw(self.screen)
+            
+        for bala in self.lista_balas:
+            if not (bala.is_shoot):
+                self.lista_balas.remove(bala)
+                break
+            else:
+                Bullet.draw(bala,self.screen)
+                Bullet.update(bala,delta_ms,self.lista_personajes,self.lista_enemigos,self.lista_plataformas,self.lista_trampas,self.lista_balas)
 
-            for enemy in self.lista_enemigos:
-                if (enemy.hitpoints < 1):
-                    enemy.death(self.lista_items,self.item_list)
-                    self.lista_enemigos.remove(enemy)
-                    break
-                else:
-                    enemy.update(delta_ms,self.lista_plataformas,self.lista_personajes,self.lista_balas,self.lista_items,self.item_list)
-                    enemy.draw(self.screen)
-                                
-            self.damage_control.update()
+        for enemy in self.lista_enemigos:
+            if (enemy.hitpoints < 1):
+                enemy.death(self.lista_items,self.item_list)
+                self.lista_enemigos.remove(enemy)
+                break
+            else:
+                enemy.update(delta_ms,self.lista_plataformas,self.lista_personajes,self.lista_balas,self.lista_items,self.item_list)
+                enemy.draw(self.screen)
+                            
+        self.damage_control.update()
+        
+        if(self.screen_info.active):
+            self.screen_info.update(lista_eventos,self.lista_personajes[0])
+            self.screen_info.draw()
+                                    
+        if(DEBUG):
+            Auxiliar.drawGrid(self.screen,100)
             
-            if(self.screen_info.active):
-                self.screen_info.update(lista_eventos,self.lista_personajes[0])
-                self.screen_info.draw()
-                                        
-            if(DEBUG):
-                Auxiliar.drawGrid(self.screen,100)
-            
-            return self.pause_status
+        return self.game_state
