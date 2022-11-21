@@ -42,5 +42,5 @@ class HitpointBar(Widget):
         for x in range(self.value):
             self.slave_surface.blit(self.surface_element, (x*self.w/self.value_max, 0))
 
-    def update(self,lista_eventos,player):
+    def update(self,lista_eventos,player,timer):
         self.render(player)

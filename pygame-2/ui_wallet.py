@@ -14,6 +14,6 @@ class Wallet (Widget):
     def render(self):
         super().render()
 
-    def update(self,lista_eventos,player):
+    def update(self,lista_eventos,player,timer):
         self._text = "{0}".format(player.currency)
         self.render()

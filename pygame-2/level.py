@@ -94,6 +94,8 @@ class Level:
 
         self.screen_info = ScreenInfo(entity=self.lista_personajes[0],name="ScreenInfo",master_surface=self.screen,x=0,y=0,w=ANCHO_VENTANA,h=ALTO_VENTANA,background_color=None,border_color=None,active=True)
          
+        self.timer = 0
+         
     def run_level (self,delta_ms,lista_eventos,keys):
         self.game_state = GAME_RUNNING
         
@@ -106,7 +108,7 @@ class Level:
                     self.game_state = GAME_PAUSE
                                                 
         self.screen.blit(self.background_image,self.background_image.get_rect())
-        
+                
         for plataforma in self.lista_plataformas:
             Platforms.draw(plataforma,self.screen)
             
@@ -152,10 +154,16 @@ class Level:
                 enemy.draw(self.screen)
                             
         self.damage_control.update()
+
+        self.timer = pygame.time.get_ticks()
         
         if(self.screen_info.active):
-            self.screen_info.update(lista_eventos,self.lista_personajes[0])
+            self.screen_info.update(lista_eventos,self.lista_personajes[0],self.timer)
             self.screen_info.draw()
+        
+        if (len(self.lista_enemigos) < 1):
+            self.game_state = GAME_VICTORY
+            return self.game_state
                                     
         if(DEBUG):
             Auxiliar.drawGrid(self.screen,100)
