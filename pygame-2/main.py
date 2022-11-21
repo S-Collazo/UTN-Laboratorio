@@ -67,6 +67,7 @@ while True:
                 
                 start.start_main.active = True
                 pause_menu.pause_main.active = True
+                death.death_main.active = True
                 
                 game_state = level.run_level(delta_ms,lista_eventos,keys)
                     

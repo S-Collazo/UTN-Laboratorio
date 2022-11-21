@@ -43,14 +43,14 @@ class WinMain(Form):
         self.set_active(parametro)
         self.exit = True
 
-    def bonus (self,time):
-        self.timer = int(time / 1000 % 60)
-        if (self.timer <= 30):
-            self.bonus_value = 2
-        elif (self.timer <= 20):
-            self.bonus_value = 3
-        elif (self.timer <= 10):
-            self.bonus_value = 4
+    def bonus (self,time_sec,time_min):
+        if (time_min == 0):    
+            if (time_sec <= 30):
+                self.bonus_value = 2
+            elif (time_sec <= 20):
+                self.bonus_value = 3
+            elif (time_sec <= 10):
+                self.bonus_value = 4
         else:
             self.bonus_value = 1 
         
@@ -60,7 +60,7 @@ class WinMain(Form):
         self.timer_sec = int(time / 1000 % 60)
         self.timer_min = int(time/60000 % 24)
         
-        self.bonus_time = self.bonus(time)
+        self.bonus_time = self.bonus(self.timer_sec,self.timer_min)
         self.score_final = int(player.currency * self.bonus_time)
     
         self.txt2._text = "Tiempo: {:02d}:{:02d}".format(self.timer_min,self.timer_sec)

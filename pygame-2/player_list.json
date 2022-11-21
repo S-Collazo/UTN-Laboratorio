@@ -15,7 +15,7 @@
                 "name": "Knight Shield",
                 "path": "\\elements\\knight_shield\\knight_shield",
                 "quantity": 2,
-                "bullet_power": 20
+                "attack_power": 20
             },
             "animations": {
                 "Attack": {

@@ -24,7 +24,7 @@ class Bullet:
         self.rect.x = x
         self.rect.y = y
         
-        self.attack_power = self.bullet_asset["bullet_power"]
+        self.attack_power = self.bullet_asset["attack_power"]
         
         self.rect_body_collition = pygame.Rect(self.rect)
         
@@ -46,11 +46,9 @@ class Bullet:
         if(self.is_shoot):  
             for entidad in self.lista_entidades:
                 if not(self.asset_name == entidad.asset_name):
-                    if(self.rect_body_collition.colliderect(entidad.rect)):
+                    if(self.rect_body_collition.colliderect(entidad.rect_collition)):
                         self.is_shoot = False
                         break
-                else:
-                    self.attack_power = 0
             
             for plataforma in lista_plataformas:
                 if(self.rect_body_collition.colliderect(plataforma.rect_collition)):
