@@ -23,11 +23,11 @@ pygame.init()
 
 clock = pygame.time.Clock()
 
-start = Start(screen)
-pause_menu = Pause(screen)
-death = Death(screen)
-
 while True:
+    start = Start(screen)
+    pause_menu = Pause(screen)
+    death = Death(screen)
+    
     while (game_state == GAME_MENU):
             lista_eventos = pygame.event.get()
             keys = pygame.key.get_pressed()                
