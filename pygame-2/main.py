@@ -45,7 +45,7 @@ while True:
             game_state = GAME_RUNNING
         
         level = Level(screen,level_number,level_difficulty)
-        win = Win(screen,level.lista_personajes[0],level.timer)
+        win = Win(screen,level.lista_personajes[0],level.time_final)
                 
         while not (game_state == GAME_MENU or game_state == GAME_RESTART):
             while (game_state == GAME_PAUSE):
@@ -94,7 +94,7 @@ while True:
                 pause_menu.pause_main.active = True
                 death.death_main.active = True
                 
-                game_state = win.win_screen(delta_ms,lista_eventos,level.lista_personajes[0],level.timer)
+                game_state = win.win_screen(delta_ms,lista_eventos,level.lista_personajes[0],level.time_final)
                 
                 pygame.display.flip()
 

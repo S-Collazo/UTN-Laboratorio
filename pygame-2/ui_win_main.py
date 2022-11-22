@@ -13,7 +13,8 @@ class WinMain(Form):
         
         self.time = "Tiempo: {0}".format(time)
         self.score = "Puntuación: {0}".format(player.currency)
-        self.time_bonus = "Bonificación por tiempo: {0}".format(0)
+        self.bonus_value = 1 
+        self.time_bonus = "Bonificación por tiempo: {0}".format(self.bonus_value)
         self.score_final = "Puntuación Final: {0}".format(player.currency)
                 
         self.button_continue = Button(master_surface=self,x=self.menu_x + 50,y=540,w=200,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_M_07.png",on_click=self.on_click_button_continue,on_click_param="level_selector",text="Siguiente Nivel",font="Verdana",font_size=20,font_color=BLACK)
@@ -43,27 +44,25 @@ class WinMain(Form):
         self.set_active(parametro)
         self.exit = True
 
-    def bonus (self,time_sec,time_min):
-        if (time_min == 0):    
-            if (time_sec <= 30):
-                self.bonus_value = 2
+    def bonus (self,time_min,time_sec):
+        if (time_min == 0):
+            if (time_sec <= 10):
+                self.bonus_value = 4
             elif (time_sec <= 20):
                 self.bonus_value = 3
-            elif (time_sec <= 10):
-                self.bonus_value = 4
-        else:
-            self.bonus_value = 1 
+            elif (time_sec <= 30):
+                self.bonus_value = 2
         
         return self.bonus_value
 
     def update(self, lista_eventos,player,time):
-        self.timer_sec = int(time / 1000 % 60)
-        self.timer_min = int(time/60000 % 24)
+        self.time_min = time[0]
+        self.time_sec = time[1]
         
-        self.bonus_time = self.bonus(self.timer_sec,self.timer_min)
+        self.bonus_time = self.bonus(self.time_min,self.time_sec)
         self.score_final = int(player.currency * self.bonus_time)
     
-        self.txt2._text = "Tiempo: {:02d}:{:02d}".format(self.timer_min,self.timer_sec)
+        self.txt2._text = "Tiempo: {:02d}:{:02d}".format(self.time_min,self.time_sec)
         self.txt3._text = "Puntuación: {0}".format(player.currency)
         self.txt4._text = "Bonus por tiempo: x{0}".format(self.bonus_time)
         self.txt5._text = "Puntuación Final: {0}".format(self.score_final)

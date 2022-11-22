@@ -1,6 +1,7 @@
 import pygame
 import sys
 import random
+import time
 import ui_pause
 from pygame.locals import *
 from constants import *
@@ -93,12 +94,13 @@ class Level:
         self.damage_control = Damage_Control(self.lista_personajes,self.lista_enemigos,self.lista_balas,self.lista_trampas)
 
         self.screen_info = ScreenInfo(entity=self.lista_personajes[0],name="ScreenInfo",master_surface=self.screen,x=0,y=0,w=ANCHO_VENTANA,h=ALTO_VENTANA,background_color=None,border_color=None,active=True)
+
+        self.time_passed = 0
+        self.time_final = [0,0]
          
-        self.timer = 0
-         
-    def run_level (self,delta_ms,lista_eventos,keys):
+    def run_level (self,delta_ms,lista_eventos,keys):                
         self.game_state = GAME_RUNNING
-        
+                        
         for event in lista_eventos:
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -131,7 +133,7 @@ class Level:
             if not (player.is_alive):
                 player.death()
                 self.game_state = GAME_DEATH
-                return self.game_state
+
             player.events(delta_ms,keys,lista_eventos,self.lista_balas)
             player.update(delta_ms,self.lista_plataformas)
             player.draw(self.screen)
@@ -152,18 +154,18 @@ class Level:
             else:
                 enemy.update(delta_ms,self.lista_plataformas,self.lista_personajes,self.lista_balas,self.lista_items,self.item_list)
                 enemy.draw(self.screen)
-                            
+                                    
+        if (len(self.lista_enemigos) < 1):
+            self.time_final = self.screen_info.timer.final_time()
+            self.game_state = GAME_VICTORY
+                                        
         self.damage_control.update()
 
-        self.timer = pygame.time.get_ticks()
-        
+        self.time_passed = delta_ms / 1000
+                
         if(self.screen_info.active):
-            self.screen_info.update(lista_eventos,self.lista_personajes[0],self.timer)
+            self.screen_info.update(lista_eventos,self.lista_personajes[0],self.time_passed)
             self.screen_info.draw()
-        
-        if (len(self.lista_enemigos) < 1):
-            self.game_state = GAME_VICTORY
-            return self.game_state
                                     
         if(DEBUG):
             Auxiliar.drawGrid(self.screen,100)
