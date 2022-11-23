@@ -194,7 +194,6 @@ class Entity:
             self.rect_body_collition.x = self.rect.x - 5
                    
     def add_y(self,delta_y):
-        #if((self.rect.y + delta_y) <= ALTO_VENTANA and (self.rect.y + delta_y) >= 0):
         self.rect.y += delta_y
         self.rect_collition.y += delta_y
         self.rect_ground_collition.y += delta_y
