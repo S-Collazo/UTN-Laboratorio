@@ -16,22 +16,33 @@
         },
         "enemy": {
             "enemy_list": "enemy_list.json",
+            "enemy_spawner": 0,
+            "interval_time_spawn": [
+                0,
+                0,
+                0
+            ],
             "enemy_quantity": [
                 2,
                 3,
                 4
             ],
             "p_scale": 0.2,
+            "enemy_type_number": [
+                1,
+                2,
+                3
+            ],
             "enemy_type": [
-                "Standard/Standard",
-                "Standard/Standard/Grunt",
-                "Standard/Grunt/Shaman/Shaman"
+                "Standard",
+                "Standard/Grunt",
+                "Standard/Grunt/Shaman"
             ],
             "enemy_starter_position": [
                 "501,650",
                 "550,150",
                 "100,100",
-                "800,200"
+                "700,200"
             ]
         },
         "platform": {
@@ -92,6 +103,105 @@
             "chest_dimensions": "200,100",
             "chest_position": [
                 "850,200"
+            ]
+        }
+    },
+
+    "Nivel 2": {
+        "background_image": "\\locations\\set_bg_06\\creepy_forest_001.png",
+        "gravity": 10,
+        "frame_rate_ms": 60,
+        "move_rate_ms": 40,
+        "player": {
+            "player_list": "player_list.json",
+            "player_quantity":[
+                1,
+                1,
+                1
+            ],
+            "p_scale": 0.1,
+            "player_starter_position": "0,650"
+        },
+        "enemy": {
+            "enemy_list": "enemy_list.json",
+            "enemy_spawner": 1,
+            "interval_time_spawn": [
+                5,
+                3,
+                1
+            ],
+            "enemy_quantity": [
+                10,
+                20,
+                30
+            ],
+            "p_scale": 0.2,
+            "enemy_type_number": [
+                1,
+                2,
+                3
+            ],
+            "enemy_type": [
+                "Standard",
+                "Standard/Grunt",
+                "Standard/Grunt/Shaman"
+            ],
+            "enemy_starter_position": [
+                "100,0",
+                "300,0",
+                "600,0",
+                "900,0"
+            ]
+        },
+        "platform": {
+            "floor_state": 1,
+            "platform_quantity": [
+                3,
+                3,
+                3
+            ],
+            "p_scale": 0.4,
+            "platform_dimensions": "100,100",
+            "platform_position_length": [
+                "0,650,3",
+                "310,600,10",
+                "880,650,3"
+            ]
+        },
+        "trap": {
+            "trap_quantity":[
+                0,
+                0,
+                0
+            ],
+            "p_scale": 0.4,
+            "trap_dimensions": "50,50",
+            "trap_position": [
+                "0,0"
+            ]
+        },
+        "item": {
+            "item_list": "item_list.json",
+            "item_quantity":[
+                1,
+                1,
+                0
+            ],
+            "p_scale": 1,
+            "item_position": [
+                "450,535"
+            ]
+        },
+        "chest": {
+            "chest_quantity":[
+                0,
+                0,
+                0
+            ],
+            "p_scale": 0.5,
+            "chest_dimensions": "200,100",
+            "chest_position": [
+                "0,0"
             ]
         }
     }

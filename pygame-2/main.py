@@ -35,19 +35,23 @@ while True:
                 
             game_state = start.start_menu(delta_ms,lista_eventos,keys)
             
-            level_number = start.level_number
+            level_number_value = start.level_number_value
+            level_number = "Nivel {0}".format(level_number_value)
             level_difficulty = start.level_difficulty
             
             pygame.display.flip()
 
     else:
-        if (game_state == GAME_RESTART):
+        if (game_state == GAME_RESTART or game_state == GAME_CONTINUE):
+            if (game_state == GAME_CONTINUE):
+                level_number_value += 1
+                level_number = level_number = "Nivel {0}".format(level_number_value)
             game_state = GAME_RUNNING
         
         level = Level(screen,level_number,level_difficulty)
-        win = Win(screen,level.lista_personajes[0],level.time_final)
+        win = Win(screen,level.lista_personajes[0],level.time_final,level.has_spawner)
                 
-        while not (game_state == GAME_MENU or game_state == GAME_RESTART):
+        while not (game_state == GAME_MENU or game_state == GAME_RESTART or game_state == GAME_CONTINUE):
             while (game_state == GAME_PAUSE):
                 lista_eventos = pygame.event.get()
                 keys = pygame.key.get_pressed()                

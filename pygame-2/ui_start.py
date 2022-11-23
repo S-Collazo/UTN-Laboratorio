@@ -17,7 +17,7 @@ class Start:
         self.start_options = StartOptions(name="options",master_surface = self.screen,x=300,y=200,w=400,h=300,background_color=BLACK,border_color=None,active=False)
         self.level_selector = LevelSelector(name="level_selector",master_surface = self.screen,x=300,y=200,w=400,h=300,background_color=None,border_color=None,active=False)
 
-        self.level_number = "null"
+        self.level_number_value = 0
         self.level_difficulty = 0
         
     def start_menu (self,delta_ms,lista_eventos,keys):
@@ -40,7 +40,7 @@ class Start:
             self.level_selector.update(lista_eventos)
             self.level_selector.draw()
         else:
-            self.level_number = self.level_selector.level_number
+            self.level_number_value = self.level_selector.level_number_value
             self.level_difficulty = self.level_selector.level_difficulty
             self.game_state = GAME_RUNNING
                

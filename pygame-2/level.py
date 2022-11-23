@@ -8,6 +8,7 @@ from constants import *
 from player import Player
 from bullet import Bullet
 from enemy_goblin import *
+from enemy_spawner import Spawner
 from platforms import Platforms
 from trap import Trap
 from item import Health_Potion
@@ -36,6 +37,8 @@ class Level:
         item_info = level_info["item"]
         chest_info = level_info["chest"]
 
+        self.has_spawner = enemy_info["enemy_spawner"]
+
         self.background_image = pygame.image.load(PATH_RECURSOS + level_info["background_image"])
         self.background_image = pygame.transform.scale(self.background_image,(ANCHO_VENTANA,ALTO_VENTANA))
 
@@ -47,15 +50,19 @@ class Level:
 
         self.enemy_list = Auxiliar.readJson(enemy_info["enemy_list"])
         self.lista_enemigos = []
-        for n in range(enemy_info["enemy_quantity"][self.difficulty]):
-            enemy_type = Auxiliar.splitIntoString(enemy_info["enemy_type"][self.difficulty],"/")
-            enemy_coordinates = Auxiliar.splitIntoInt(enemy_info["enemy_starter_position"][n],",")
-            if (enemy_type[n] == "Standard"):
-                self.lista_enemigos.append(Goblin_Standard(asset=self.enemy_list,x=enemy_coordinates[0],y=enemy_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,p_scale=enemy_info["p_scale"]))  
-            elif (enemy_type[n] == "Grunt"):
-                self.lista_enemigos.append(Goblin_Grunt(asset=self.enemy_list,x=enemy_coordinates[0],y=enemy_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,p_scale=enemy_info["p_scale"]))  
-            else:
-                self.lista_enemigos.append(Goblin_Shaman(asset=self.enemy_list,x=enemy_coordinates[0],y=enemy_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,p_scale=enemy_info["p_scale"]))
+        if (self.has_spawner):
+           self.spawner = Spawner(difficulty=self.difficulty,enemy=enemy_info,enemy_list=self.enemy_list,gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms) 
+        else:
+            for n in range(enemy_info["enemy_quantity"][self.difficulty]):
+                enemy_type_value = random.randrange(enemy_info["enemy_type_number"][self.difficulty])
+                enemy_type = Auxiliar.splitIntoString(enemy_info["enemy_type"][self.difficulty],"/")
+                enemy_coordinates = Auxiliar.splitIntoInt(enemy_info["enemy_starter_position"][n],",")
+                if (enemy_type[enemy_type_value] == "Standard"):
+                    self.lista_enemigos.append(Goblin_Standard(asset=self.enemy_list,x=enemy_coordinates[0],y=enemy_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,p_scale=enemy_info["p_scale"]))  
+                elif (enemy_type[enemy_type_value] == "Grunt"):
+                    self.lista_enemigos.append(Goblin_Grunt(asset=self.enemy_list,x=enemy_coordinates[0],y=enemy_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,p_scale=enemy_info["p_scale"]))  
+                else:
+                    self.lista_enemigos.append(Goblin_Shaman(asset=self.enemy_list,x=enemy_coordinates[0],y=enemy_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,p_scale=enemy_info["p_scale"]))
 
         self.lista_plataformas = []
         if (platform_info["floor_state"]):
@@ -75,7 +82,10 @@ class Level:
         self.lista_items = []
         if (item_info["item_quantity"][self.difficulty] > 0):
             for n in range(item_info["item_quantity"][self.difficulty]):
-                item_type = random.randrange(item_info["item_quantity"][self.difficulty])
+                if (self.has_spawner):
+                    item_type = 1
+                else:
+                    item_type = random.randrange(item_info["item_quantity"][self.difficulty])
                 item_coordinates = Auxiliar.splitIntoInt(item_info["item_position"][n],",")
                 if (item_type % 2 == 0):
                     self.lista_items.append(Gem(asset=self.item_list,name="Basic Gem",x=item_coordinates[0],y=item_coordinates[1],p_scale=item_info["p_scale"]))
@@ -154,19 +164,25 @@ class Level:
             else:
                 enemy.update(delta_ms,self.lista_plataformas,self.lista_personajes,self.lista_balas,self.lista_items,self.item_list)
                 enemy.draw(self.screen)
-                                    
-        if (len(self.lista_enemigos) < 1):
-            self.time_final = self.screen_info.timer.final_time()
-            self.game_state = GAME_VICTORY
-                                        
-        self.damage_control.update()
-
+        
         self.time_passed = delta_ms / 1000
+        
+        if (self.has_spawner):
+            self.spawner.spawn(time=self.time_passed,lista_enemigos=self.lista_enemigos)
+            if (self.spawner.spawned_enemies < 1 and len(self.lista_enemigos) < 1):
+                self.time_final = self.screen_info.timer.final_time()
+                self.game_state = GAME_VICTORY
+        else:                       
+            if (len(self.lista_enemigos) < 1):
+                self.time_final = self.screen_info.timer.final_time()
+                self.game_state = GAME_VICTORY
+                                                
+        self.damage_control.update()
                 
         if(self.screen_info.active):
             self.screen_info.update(lista_eventos,self.lista_personajes[0],self.time_passed)
             self.screen_info.draw()
-                                    
+                                           
         if(DEBUG):
             Auxiliar.drawGrid(self.screen,100)
                                 

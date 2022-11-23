@@ -7,13 +7,18 @@ from ui_button import Button
 from ui_textbox import TextBox
 
 class WinMain(Form):
-    def __init__(self,player,time,name,master_surface,x,y,w,h,background_color,border_color,active):
+    def __init__(self,player,time,name,master_surface,x,y,w,h,background_color,border_color,active,spawner=False):
         super().__init__(name,master_surface,x,y,w,h,background_color,border_color,active)
         self.menu_x = self.w / 3
+        self.has_spawner = spawner
         
         self.time = "Tiempo: {0}".format(time)
         self.score = "Puntuación: {0}".format(player.currency)
-        self.bonus_value = 1 
+        self.bonus_value = 1
+        if (self.has_spawner):
+            self.bonus_modifier = 2
+        else:
+            self.bonus_modifier = 1
         self.time_bonus = "Bonificación por tiempo: {0}".format(self.bonus_value)
         self.score_final = "Puntuación Final: {0}".format(player.currency)
                 
@@ -31,10 +36,11 @@ class WinMain(Form):
         
         self.game_state = GAME_VICTORY
         self.exit = False
+        self.next = False
 
     def on_click_button_continue(self,parametro) -> bool:
         self.set_active(parametro)
-        self.exit = True
+        self.next = True
 
     def on_click_button_restart(self,parametro) -> bool:
         self.set_active(parametro)
@@ -46,11 +52,11 @@ class WinMain(Form):
 
     def bonus (self,time_min,time_sec):
         if (time_min == 0):
-            if (time_sec <= 10):
+            if (time_sec <= 10 * self.bonus_modifier):
                 self.bonus_value = 4
-            elif (time_sec <= 20):
+            elif (time_sec <= 20 * self.bonus_modifier):
                 self.bonus_value = 3
-            elif (time_sec <= 30):
+            elif (time_sec <= 30 * self.bonus_modifier):
                 self.bonus_value = 2
         
         return self.bonus_value
