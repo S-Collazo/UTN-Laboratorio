@@ -8,7 +8,7 @@ from ui_button import Button
 class StartMain(Form):
     def __init__(self,name,master_surface,x,y,w,h,background_color,border_color,active):
         super().__init__(name,master_surface,x,y,w,h,background_color,border_color,active)
-        self.menu_x = self.w / 5
+        self.menu_x = self.w / 3
         
         self.button_play = Button(master_surface=self,x=self.menu_x + 50,y=75,w=150,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_M_07.png",on_click=self.on_click_button_play,on_click_param="level_selector",text="Jugar",font="Verdana",font_size=20,font_color=BLACK)
         self.button_options = Button(master_surface=self,x=self.menu_x + 50,y=140,w=150,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_M_07.png",on_click=self.on_click_button_options,on_click_param="options",text="Opciones",font="Verdana",font_size=20,font_color=BLACK)

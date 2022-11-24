@@ -51,7 +51,7 @@ class Bullet:
                         break
             
             for plataforma in lista_plataformas:
-                if(self.rect_body_collition.colliderect(plataforma.rect_collition)):
+                if(plataforma.collition_enabled and self.rect_body_collition.colliderect(plataforma.rect_collition)):
                     self.is_shoot = False
                     break                
 

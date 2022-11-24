@@ -31,6 +31,10 @@ class Player(Entity):
             super().stay()
         if(keys[pygame.K_LEFT] and keys[pygame.K_RIGHT] and not keys[pygame.K_SPACE]):
             super().stay()   
+       
+        self.attack(False)
+        self.block(False)
+        self.shoot(lista_balas,False)
         
         for event in lista_eventos:
             if (event.type == pygame.KEYDOWN):
@@ -39,22 +43,16 @@ class Player(Entity):
                         super().jump(True)
                         self.tiempo_last_jump = self.tiempo_transcurrido
                         
-                if(not keys[pygame.K_s]):
-                    self.shoot(lista_balas,False)  
                 if(keys[pygame.K_s] and not keys[pygame.K_a] and not keys[pygame.K_d] and self.is_shooting == False):
                     if((self.tiempo_transcurrido - self.tiempo_last_shoot) > (self.interval_time_shoot)):
                         self.shoot(lista_balas)
                         self.tiempo_last_shoot = self.tiempo_transcurrido
-                        
-                if(not keys[pygame.K_a]):
-                    self.attack(False)
+
                 if(keys[pygame.K_a] and not (keys[pygame.K_s] or keys[pygame.K_d])):
                     if((self.tiempo_transcurrido - self.tiempo_last_attack) > (self.interval_time_attack)):
                         self.attack()
                         self.tiempo_last_attack = self.tiempo_transcurrido
                         
-                if(not keys[pygame.K_d]):
-                    self.block(False)
                 if(keys[pygame.K_d] and not (keys[pygame.K_s] or keys[pygame.K_a])):
                     if((self.tiempo_transcurrido - self.tiempo_last_block) > (self.interval_time_block)):
                         self.block()

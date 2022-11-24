@@ -53,6 +53,7 @@
             "boss_starter_position": "800,650"
         },
         "platform": {
+            "platform_folder": "\\tileset\\creepy_forest\\Tiles\\",
             "floor_state": 1,
             "platform_quantity": [
                 9,
@@ -62,15 +63,15 @@
             "p_scale": 0.4,
             "platform_dimensions": "100,100",
             "platform_position_length": [
-                "250,650,2",
-                "400,600,10",
-                "900,550,3",
-                "725,475,2",
-                "350,450,7",
-                "200,375,2",
-                "400,300,17",
-                "0,225,7",
-                "0,550,3"
+                "250,650,2,0,0",
+                "400,600,10,0,0",
+                "900,550,3,0,0",
+                "725,475,2,0,0",
+                "350,450,7,0,0",
+                "200,375,2,0,0",
+                "400,300,17,0,0",
+                "0,225,7,0,0",
+                "0,550,3,0,0"
             ]
         },
         "trap": {
@@ -155,10 +156,10 @@
                 "Standard/Grunt/Shaman"
             ],
             "enemy_starter_position": [
-                "100,0",
-                "300,0",
+                "200,0",
+                "400,0",
                 "600,0",
-                "900,0"
+                "800,0"
             ]
         },
         "boss": {
@@ -168,6 +169,7 @@
             "boss_starter_position": "800,650"
         },
         "platform": {
+            "platform_folder": "\\tileset\\creepy_forest\\Tiles\\",
             "floor_state": 1,
             "platform_quantity": [
                 3,
@@ -177,9 +179,9 @@
             "p_scale": 0.4,
             "platform_dimensions": "100,100",
             "platform_position_length": [
-                "0,650,3",
-                "310,600,10",
-                "880,650,3"
+                "0,650,3,0,0",
+                "310,600,10,13,0",
+                "880,650,3,0,0"
             ]
         },
         "trap": {
@@ -199,6 +201,113 @@
             "item_quantity":[
                 1,
                 1,
+                0
+            ],
+            "p_scale": 1,
+            "item_position": [
+                "450,535"
+            ]
+        },
+        "chest": {
+            "chest_quantity":[
+                0,
+                0,
+                0
+            ],
+            "p_scale": 0.5,
+            "chest_dimensions": "200,100",
+            "chest_position": [
+                "0,0"
+            ]
+        }
+    },
+
+    "Nivel 3": {
+        "background_image": "\\locations\\set_bg_06\\castle_bridge.png",
+        "gravity": 10,
+        "frame_rate_ms": 60,
+        "move_rate_ms": 40,
+        "boss_room": 1,
+        "player": {
+            "player_list": "player_list.json",
+            "player_quantity":[
+                1,
+                1,
+                1
+            ],
+            "p_scale": 0.1,
+            "player_starter_position": "0,500"
+        },
+        "enemy": {
+            "enemy_list": "enemy_list.json",
+            "enemy_spawner": 1,
+            "interval_time_spawn": [
+                2,
+                2,
+                2
+            ],
+            "enemy_quantity": [
+                4,
+                8,
+                12
+            ],
+            "p_scale": 0.2,
+            "enemy_type_number": [
+                3,
+                3,
+                3
+            ],
+            "enemy_type": [
+                "Standard/Grunt/Shaman",
+                "Standard/Grunt/Shaman",
+                "Standard/Grunt/Shaman"
+            ],
+            "enemy_starter_position": [
+                "100,0",
+                "300,0",
+                "600,0",
+                "900,0"
+            ]
+        },
+        "boss": {
+            "boss_list": "enemy_list.json",
+            "boss:_name": "Goblin King",
+            "p_scale": 1.2,
+            "boss_starter_position": "800,650"
+        },
+        "platform": {
+            "platform_folder": "\\tileset\\castle_bridge\\Tiles\\",
+            "floor_state": 0,
+            "platform_quantity": [
+                3,
+                3,
+                3
+            ],
+            "p_scale": 0.4,
+            "platform_dimensions": "100,100",
+            "platform_position_length": [
+                "-25,700,30,13,0",
+                "0,600,3,0,1",
+                "880,600,3,0,1"
+            ]
+        },
+        "trap": {
+            "trap_quantity":[
+                0,
+                0,
+                0
+            ],
+            "p_scale": 0.4,
+            "trap_dimensions": "50,50",
+            "trap_position": [
+                "0,0"
+            ]
+        },
+        "item": {
+            "item_list": "item_list.json",
+            "item_quantity":[
+                0,
+                0,
                 0
             ],
             "p_scale": 1,

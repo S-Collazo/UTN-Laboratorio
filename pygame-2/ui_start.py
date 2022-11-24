@@ -13,9 +13,9 @@ class Start:
         self.background_image = pygame.image.load(PATH_RECURSOS + "\\background.png")
         self.background_image = pygame.transform.scale(self.background_image,(ANCHO_VENTANA,ALTO_VENTANA))
         
-        self.start_main = StartMain(name="main",master_surface = self.screen,x=300,y=250,w=400,h=300,background_color=None,border_color=None,active=True)
-        self.start_options = StartOptions(name="options",master_surface = self.screen,x=300,y=200,w=400,h=300,background_color=BLACK,border_color=None,active=False)
-        self.level_selector = LevelSelector(name="level_selector",master_surface = self.screen,x=300,y=200,w=400,h=300,background_color=None,border_color=None,active=False)
+        self.start_main = StartMain(name="main",master_surface = self.screen,x=100,y=250,w=600,h=300,background_color=None,border_color=None,active=True)
+        self.start_options = StartOptions(name="options",master_surface = self.screen,x=100,y=200,w=600,h=300,background_color=BLACK,border_color=None,active=False)
+        self.level_selector = LevelSelector(name="level_selector",master_surface = self.screen,x=100,y=200,w=600,h=300,background_color=None,border_color=None,active=False)
 
         self.level_number_value = 0
         self.level_difficulty = 0

@@ -66,11 +66,11 @@ class Level:
 
         self.lista_plataformas = []
         if (platform_info["floor_state"]):
-            self.lista_plataformas.append(Platforms(x=0,y=GROUND_LEVEL,w=ANCHO_VENTANA,h=GROUND_RECT_H,type=1))
+            self.lista_plataformas.append(Platforms(path=platform_info["platform_folder"],x=0,y=GROUND_LEVEL,w=ANCHO_VENTANA,h=GROUND_RECT_H,type=1))
         for n in range(platform_info["platform_quantity"][self.difficulty]):
             platform_coordinates = Auxiliar.splitIntoInt(platform_info["platform_position_length"][n],",")
             platform_dimensions = Auxiliar.splitIntoInt(platform_info["platform_dimensions"],",")
-            Platforms.create_plaforms(self.lista_plataformas,x=platform_coordinates[0],y=platform_coordinates[1],w=platform_dimensions[0],h=platform_dimensions[1],tile_total=platform_coordinates[2],p_scale=platform_info["p_scale"])
+            Platforms.create_plaforms(self.lista_plataformas,path=platform_info["platform_folder"],x=platform_coordinates[0],y=platform_coordinates[1],w=platform_dimensions[0],h=platform_dimensions[1],tile_total=platform_coordinates[2],p_scale=platform_info["p_scale"],tile_type=platform_coordinates[3],add_bottom=platform_coordinates[4])
 
         self.lista_trampas = []
         for n in range(trap_info["trap_quantity"][self.difficulty]):

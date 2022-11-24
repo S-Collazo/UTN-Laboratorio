@@ -181,7 +181,7 @@ class Entity:
         return retorno
             
     def add_x(self,delta_x):        
-        if((self.rect_collition.x + delta_x) >= 0 and (self.rect_collition.x + self.rect_collition.w + delta_x) <= ANCHO_VENTANA):
+        if((self.rect_collition.x + delta_x) >= -self.rect_collition.w and (self.rect_collition.x + self.rect_collition.w + delta_x) <= ANCHO_VENTANA):
             self.rect.x += delta_x
             self.rect_collition.x += delta_x
             self.rect_ground_collition.x += delta_x

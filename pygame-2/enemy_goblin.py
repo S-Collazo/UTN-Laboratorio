@@ -19,10 +19,10 @@ class Goblin_Standard (Enemy):
 
         if(self.x <= ANCHO_VENTANA / 2):
             self.posicion_extremo_a = 5
-            self.posicion_extremo_b = self.x
+            self.posicion_extremo_b = ANCHO_VENTANA / 2
         else:
-            self.posicion_extremo_a = self.x
-            self.posicion_extremo_b = ANCHO_VENTANA - (self.rect.w + 100)
+            self.posicion_extremo_a = ANCHO_VENTANA / 2
+            self.posicion_extremo_b = ANCHO_VENTANA - self.rect.w - 5
 
         for oponente in lista_oponente:
             self.player_position_x = oponente.rect_body_collition.x
@@ -68,10 +68,10 @@ class Goblin_Grunt (Enemy):
             
         if(self.x <= ANCHO_VENTANA / 2):
             self.posicion_extremo_a = 5
-            self.posicion_extremo_b = self.x
+            self.posicion_extremo_b = ANCHO_VENTANA / 2
         else:
-            self.posicion_extremo_a = self.x
-            self.posicion_extremo_b = ANCHO_VENTANA - (self.rect.w + 5)
+            self.posicion_extremo_a = ANCHO_VENTANA / 2
+            self.posicion_extremo_b = ANCHO_VENTANA - self.rect.w - 5
                      
         for oponente in lista_oponente:
             self.player_position_x = oponente.rect_body_collition.x
