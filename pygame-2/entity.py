@@ -34,7 +34,6 @@ class Entity:
         self.attack_power = self.asset["attack_power"]
         self.is_alive = True 
 
-               
         self.tiempo_transcurrido = 0
         self.tiempo_transcurrido_anim = 0
         self.tiempo_transcurrido_move = 0

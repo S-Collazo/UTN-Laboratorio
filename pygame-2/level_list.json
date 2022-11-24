@@ -4,6 +4,7 @@
         "gravity": 10,
         "frame_rate_ms": 60,
         "move_rate_ms": 40,
+        "boss_room": 0,
         "player": {
             "player_list": "player_list.json",
             "player_quantity":[
@@ -44,6 +45,12 @@
                 "100,100",
                 "700,200"
             ]
+        },
+        "boss": {
+            "boss_list": "enemy_list.json",
+            "p_scale": 1.2,
+            "boss_type_number": 0,
+            "boss_starter_position": "800,650"
         },
         "platform": {
             "floor_state": 1,
@@ -112,6 +119,7 @@
         "gravity": 10,
         "frame_rate_ms": 60,
         "move_rate_ms": 40,
+        "boss_room": 0,
         "player": {
             "player_list": "player_list.json",
             "player_quantity":[
@@ -152,6 +160,12 @@
                 "600,0",
                 "900,0"
             ]
+        },
+        "boss": {
+            "boss_list": "enemy_list.json",
+            "p_scale": 1.2,
+            "boss_type_number": 0,
+            "boss_starter_position": "800,650"
         },
         "platform": {
             "floor_state": 1,
