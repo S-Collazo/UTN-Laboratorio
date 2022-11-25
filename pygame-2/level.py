@@ -13,7 +13,7 @@ from trap import Trap
 from item import Health_Potion
 from loot import *
 from damage_control import *
-from ui_screen_info import ScreenInfo
+from ui_screen_info import *
 from auxiliar import Auxiliar
 
 class Level:
@@ -51,6 +51,11 @@ class Level:
 
         self.enemy_list = Auxiliar.readJson(enemy_info["enemy_list"])
         self.lista_enemigos = []
+        if(self.boss_room):
+            self.boss_list = Auxiliar.readJson(boss_info["boss_list"])
+            boss_coordinates = Auxiliar.splitIntoInt(boss_info["boss_starter_position"],",")
+            self.lista_enemigos.append(Boss(asset=self.boss_list,name=boss_info["boss_name"],x=boss_coordinates[0],y=boss_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,p_scale=boss_info["p_scale"]))
+        
         if (self.has_spawner):
            self.spawner = Spawner(difficulty=self.difficulty,enemy=enemy_info,enemy_list=self.enemy_list,gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms) 
         else:
@@ -65,17 +70,10 @@ class Level:
                 else:
                     self.lista_enemigos.append(Goblin_Shaman(asset=self.enemy_list,x=enemy_coordinates[0],y=enemy_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,p_scale=enemy_info["p_scale"]))
 
-        if(self.boss_room):
-            self.boss_list = Auxiliar.readJson(boss_info["boss_list"])
-            boss_coordinates = Auxiliar.splitIntoInt(boss_info["boss_starter_position"],",")
-            self.lista_enemigos.append(Boss(asset=self.boss_list,name=boss_info["boss_name"],x=boss_coordinates[0],y=boss_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,p_scale=boss_info["p_scale"]))
-            
-
         self.lista_plataformas = []
-        for n in range(platform_info["platform_quantity"][self.difficulty]):
-            platform_coordinates = Auxiliar.splitIntoInt(platform_info["platform_position_length"][n],",")
-            platform_dimensions = Auxiliar.splitIntoInt(platform_info["platform_dimensions"],",")
-            Platforms.create_plaforms(self.lista_plataformas,path=platform_info["platform_folder"],x=platform_coordinates[0],y=platform_coordinates[1],w=platform_dimensions[0],h=platform_dimensions[1],tile_total=platform_coordinates[2],p_scale=platform_info["p_scale"],tile_type=platform_coordinates[3],add_bottom=platform_coordinates[4])
+        for n in range(int(len(platform_info["platform_list"]))):
+            platform_parameters = platform_info["platform_list"][n]
+            Platforms.create_plaforms(self.lista_plataformas,path=platform_info["platform_folder"],x=platform_parameters["x"],y=platform_parameters["y"],w=platform_parameters["w"],h=platform_parameters["h"],tile_total=platform_parameters["tile_total"],p_scale=platform_info["p_scale"],tile_type=platform_parameters["tile_type"],add_bottom=platform_parameters["add_bottom"])
         if (platform_info["floor_state"]):
             self.lista_plataformas.append(Platforms(path=platform_info["platform_folder"],x=0,y=GROUND_LEVEL,w=ANCHO_VENTANA,h=GROUND_RECT_H,type=1))
 
@@ -112,9 +110,12 @@ class Level:
 
         self.screen_info = ScreenInfo(entity=self.lista_personajes[0],name="ScreenInfo",master_surface=self.screen,x=0,y=0,w=ANCHO_VENTANA,h=ALTO_VENTANA,background_color=None,border_color=None,active=True)
 
+        if (self.boss_room):
+            self.boss_info = BossInfo(entity=self.lista_enemigos[0],name="BossInfo",master_surface=self.screen,x=0,y=0,w=ANCHO_VENTANA,h=ALTO_VENTANA)
+
         self.time_passed = 0
         self.time_final = [0,0]
-         
+                 
     def run_level (self,delta_ms,lista_eventos,keys):                
         self.game_state = GAME_RUNNING
                         
@@ -185,10 +186,14 @@ class Level:
                     self.game_state = GAME_VICTORY
                                                     
         self.damage_control.update()
-                
+                        
         if(self.screen_info.active):
             self.screen_info.update(lista_eventos,self.lista_personajes[0],self.time_passed)
             self.screen_info.draw()
+            
+        if(self.boss_info.active):
+            self.boss_info.update(lista_eventos,self.lista_enemigos[0],self.time_passed)
+            self.boss_info.draw()
                                            
         if(DEBUG):
             Auxiliar.drawGrid(self.screen,100)

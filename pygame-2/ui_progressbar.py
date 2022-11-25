@@ -23,24 +23,24 @@ class ProgressBar(Widget):
         self.render()
         
 class HitpointBar(Widget):
-    def __init__(self,player,master_surface,x=5,y=0,w=200,h=25,background_color=None,border_color=BLACK):
+    def __init__(self,entity,master_surface,x=5,y=0,w=200,h=25,background_color=None,border_color=BLACK):
         self.background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Bars/Bar_Background01.png"
         self.image_progress=PATH_RECURSOS + "/gui/set_gui_01/Paper/Bars/Bar_Segment01.png"
         super().__init__(master_surface,x,y,w,h,background_color,border_color,self.background_image,None,None,None,None)
        
-        self.value = player.hitpoints
-        self.value_max = player.hitpoints_max
+        self.value = entity.hitpoints
+        self.value_max = entity.hitpoints_max
        
         self.surface_element = pygame.image.load(self.image_progress)
         self.surface_element = pygame.transform.scale(self.surface_element,(w/self.value_max, h)).convert_alpha()
 
-        self.render(player)
+        self.render(entity)
         
-    def render(self,player):
-        self.value = player.hitpoints
+    def render(self,entity):
+        self.value = entity.hitpoints
         super().render()
         for x in range(self.value):
             self.slave_surface.blit(self.surface_element, (x*self.w/self.value_max, 0))
 
-    def update(self,lista_eventos,player,timer):
-        self.render(player)
+    def update(self,lista_eventos,entity,timer):
+        self.render(entity)

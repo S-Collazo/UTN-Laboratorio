@@ -7,7 +7,7 @@
         "boss_room": 0,
         "player": {
             "player_list": "player_list.json",
-            "player_quantity":[
+            "player_quantity": [
                 1,
                 1,
                 1
@@ -55,27 +55,93 @@
         "platform": {
             "platform_folder": "\\tileset\\creepy_forest\\Tiles\\",
             "floor_state": 1,
-            "platform_quantity": [
-                9,
-                9,
-                9
-            ],
             "p_scale": 0.4,
-            "platform_dimensions": "100,100",
-            "platform_position_length": [
-                "250,650,2,0,0",
-                "400,600,10,0,0",
-                "900,550,3,0,0",
-                "725,475,2,0,0",
-                "350,450,7,0,0",
-                "200,375,2,0,0",
-                "400,300,17,0,0",
-                "0,225,7,0,0",
-                "0,550,3,0,0"
+            "platform_list": [
+                {
+                    "x": 250,
+                    "y": 650,
+                    "w": 100,
+                    "h": 100,
+                    "tile_total": 2,
+                    "tile_type": 0,
+                    "add_bottom": 0
+                },
+                {
+                    "x": 400,
+                    "y": 600,
+                    "w": 100,
+                    "h": 100,
+                    "tile_total": 10,
+                    "tile_type": 0,
+                    "add_bottom": 0
+                },
+                {
+                    "x": 900,
+                    "y": 550,
+                    "w": 100,
+                    "h": 100,
+                    "tile_total": 3,
+                    "tile_type": 0,
+                    "add_bottom": 0
+                },
+                {
+                    "x": 725,
+                    "y": 475,
+                    "w": 100,
+                    "h": 100,
+                    "tile_total": 2,
+                    "tile_type": 0,
+                    "add_bottom": 0
+                },
+                {
+                    "x": 350,
+                    "y": 450,
+                    "w": 100,
+                    "h": 100,
+                    "tile_total": 7,
+                    "tile_type": 0,
+                    "add_bottom": 0
+                },
+                {
+                    "x": 200,
+                    "y": 375,
+                    "w": 100,
+                    "h": 100,
+                    "tile_total": 2,
+                    "tile_type": 0,
+                    "add_bottom": 0
+                },
+                {
+                    "x": 400,
+                    "y": 300,
+                    "w": 100,
+                    "h": 100,
+                    "tile_total": 17,
+                    "tile_type": 0,
+                    "add_bottom": 0
+                },
+                {
+                    "x": 0,
+                    "y": 225,
+                    "w": 100,
+                    "h": 100,
+                    "tile_total": 7,
+                    "tile_type": 0,
+                    "add_bottom": 0
+                },
+                {
+                    "x": 0,
+                    "y": 550,
+                    "w": 100,
+                    "h": 100,
+                    "tile_total": 3,
+                    "tile_type": 0,
+                    "add_bottom": 0
+                }
             ]
         },
         "trap": {
-            "trap_quantity":[
+            "trap_quantity": [
                 0,
                 1,
                 2
@@ -89,7 +155,7 @@
         },
         "item": {
             "item_list": "item_list.json",
-            "item_quantity":[
+            "item_quantity": [
                 3,
                 2,
                 1
@@ -102,7 +168,7 @@
             ]
         },
         "chest": {
-            "chest_quantity":[
+            "chest_quantity": [
                 1,
                 1,
                 0
@@ -115,6 +181,7 @@
         }
     },
 
+    
     "Nivel 2": {
         "background_image": "\\locations\\set_bg_06\\creepy_forest_001.png",
         "gravity": 10,
@@ -123,7 +190,7 @@
         "boss_room": 0,
         "player": {
             "player_list": "player_list.json",
-            "player_quantity":[
+            "player_quantity": [
                 1,
                 1,
                 1
@@ -171,21 +238,39 @@
         "platform": {
             "platform_folder": "\\tileset\\creepy_forest\\Tiles\\",
             "floor_state": 1,
-            "platform_quantity": [
-                3,
-                3,
-                3
-            ],
             "p_scale": 0.4,
-            "platform_dimensions": "100,100",
-            "platform_position_length": [
-                "0,650,3,0,0",
-                "310,600,10,13,0",
-                "880,650,3,0,0"
+            "platform_list": [
+                {
+                    "x": 0,
+                    "y": 650,
+                    "w": 100,
+                    "h": 100,
+                    "tile_total": 3,
+                    "tile_type": 0,
+                    "add_bottom": 0
+                },
+                {
+                    "x": 310,
+                    "y": 600,
+                    "w": 100,
+                    "h": 100,
+                    "tile_total": 10,
+                    "tile_type": 13,
+                    "add_bottom": 0
+                },
+                {
+                    "x": 880,
+                    "y": 650,
+                    "w": 100,
+                    "h": 100,
+                    "tile_total": 3,
+                    "tile_type": 0,
+                    "add_bottom": 0
+                }
             ]
         },
         "trap": {
-            "trap_quantity":[
+            "trap_quantity": [
                 0,
                 0,
                 0
@@ -198,7 +283,7 @@
         },
         "item": {
             "item_list": "item_list.json",
-            "item_quantity":[
+            "item_quantity": [
                 1,
                 1,
                 0
@@ -209,7 +294,7 @@
             ]
         },
         "chest": {
-            "chest_quantity":[
+            "chest_quantity": [
                 0,
                 0,
                 0
@@ -222,6 +307,7 @@
         }
     },
 
+
     "Nivel 3": {
         "background_image": "\\locations\\set_bg_06\\castle_bridge.png",
         "gravity": 10,
@@ -230,7 +316,7 @@
         "boss_room": 1,
         "player": {
             "player_list": "player_list.json",
-            "player_quantity":[
+            "player_quantity": [
                 1,
                 1,
                 1
@@ -278,20 +364,30 @@
         "platform": {
             "platform_folder": "\\tileset\\castle_bridge\\Tiles\\",
             "floor_state": 0,
-            "platform_quantity": [
-                2,
-                2,
-                2
-            ],
             "p_scale": 0.4,
-            "platform_dimensions": "100,100",
-            "platform_position_length": [
-                "800,550,6,0,1",
-                "-25,650,30,13,0"
+            "platform_list": [
+                {
+                    "x": 880,
+                    "y": 550,
+                    "w": 100,
+                    "h": 100,
+                    "tile_total": 6,
+                    "tile_type": 0,
+                    "add_bottom": 1
+                },
+                {
+                    "x": -25,
+                    "y": 650,
+                    "w": 100,
+                    "h": 100,
+                    "tile_total": 30,
+                    "tile_type": 13,
+                    "add_bottom": 0
+                }
             ]
         },
         "trap": {
-            "trap_quantity":[
+            "trap_quantity": [
                 0,
                 0,
                 0
@@ -304,7 +400,7 @@
         },
         "item": {
             "item_list": "item_list.json",
-            "item_quantity":[
+            "item_quantity": [
                 0,
                 0,
                 0
@@ -315,7 +411,7 @@
             ]
         },
         "chest": {
-            "chest_quantity":[
+            "chest_quantity": [
                 0,
                 0,
                 0
