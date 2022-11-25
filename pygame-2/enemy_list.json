@@ -184,7 +184,8 @@
             "bullet": {
                 "name": "Goblin Club",
                 "path": "\\elements\\goblin_club\\goblin_club",
-                "quantity": 2
+                "quantity": 2,
+                "attack_power": 40
             },
             "animations": {
                 "Attack": {
@@ -224,7 +225,7 @@
                     "quantity": 7
                 },
                 "Special Attack": {
-                    "path": "\\_ATTACK_SPECIAL\\_ATTACK_SPECIAL",
+                    "path": "\\_ATTACK_SPECIAL\\_ATTACK_SPECIAL_",
                     "quantity": 5
                 }
             }

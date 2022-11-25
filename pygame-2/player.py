@@ -30,10 +30,16 @@ class Player(Entity):
         if(not keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT] and not keys[pygame.K_SPACE]):
             super().stay()
         if(keys[pygame.K_LEFT] and keys[pygame.K_RIGHT] and not keys[pygame.K_SPACE]):
-            super().stay()   
+            super().stay()  
+        if not (keys[pygame.K_d]):
+            self.block(False)            
+        if(keys[pygame.K_d] and not (keys[pygame.K_s] or keys[pygame.K_a])):
+            if((self.tiempo_transcurrido - self.tiempo_last_block) > (self.interval_time_block)):
+                self.block()
+                self.tiempo_last_block = self.tiempo_transcurrido
+       
        
         self.attack(False)
-        self.block(False)
         self.shoot(lista_balas,False)
         
         for event in lista_eventos:
@@ -52,8 +58,3 @@ class Player(Entity):
                     if((self.tiempo_transcurrido - self.tiempo_last_attack) > (self.interval_time_attack)):
                         self.attack()
                         self.tiempo_last_attack = self.tiempo_transcurrido
-                        
-                if(keys[pygame.K_d] and not (keys[pygame.K_s] or keys[pygame.K_a])):
-                    if((self.tiempo_transcurrido - self.tiempo_last_block) > (self.interval_time_block)):
-                        self.block()
-                        self.tiempo_last_block = self.tiempo_transcurrido

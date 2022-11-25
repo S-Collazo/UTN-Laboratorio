@@ -7,15 +7,16 @@ from ui_button import Button
 from ui_textbox import TextBox
 
 class WinMain(Form):
-    def __init__(self,player,time,name,master_surface,x,y,w,h,background_color,border_color,active,spawner=False):
+    def __init__(self,player,time,name,master_surface,x,y,w,h,background_color,border_color,active,spawner=False,boss=False):
         super().__init__(name,master_surface,x,y,w,h,background_color,border_color,active)
         self.menu_x = self.w / 3
         self.has_spawner = spawner
+        self.boss_room = boss
         
         self.time = "Tiempo: {0}".format(time)
         self.score = "Puntuación: {0}".format(player.currency)
         self.bonus_value = 1
-        if (self.has_spawner):
+        if (self.has_spawner or self.boss_room):
             self.bonus_modifier = 2
         else:
             self.bonus_modifier = 1

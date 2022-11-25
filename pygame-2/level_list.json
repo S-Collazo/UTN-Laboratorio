@@ -48,9 +48,9 @@
         },
         "boss": {
             "boss_list": "enemy_list.json",
+            "boss_name": "null",
             "p_scale": 1.2,
-            "boss_type_number": 0,
-            "boss_starter_position": "800,650"
+            "boss_starter_position": "0,0"
         },
         "platform": {
             "platform_folder": "\\tileset\\creepy_forest\\Tiles\\",
@@ -164,9 +164,9 @@
         },
         "boss": {
             "boss_list": "enemy_list.json",
+            "boss_name": "null",
             "p_scale": 1.2,
-            "boss_type_number": 0,
-            "boss_starter_position": "800,650"
+            "boss_starter_position": "0,0"
         },
         "platform": {
             "platform_folder": "\\tileset\\creepy_forest\\Tiles\\",
@@ -271,24 +271,23 @@
         },
         "boss": {
             "boss_list": "enemy_list.json",
-            "boss:_name": "Goblin King",
-            "p_scale": 1.2,
-            "boss_starter_position": "800,650"
+            "boss_name": "Goblin King",
+            "p_scale": 0.3,
+            "boss_starter_position": "450,250"
         },
         "platform": {
             "platform_folder": "\\tileset\\castle_bridge\\Tiles\\",
             "floor_state": 0,
             "platform_quantity": [
-                3,
-                3,
-                3
+                2,
+                2,
+                2
             ],
             "p_scale": 0.4,
             "platform_dimensions": "100,100",
             "platform_position_length": [
-                "-25,700,30,13,0",
-                "0,600,3,0,1",
-                "880,600,3,0,1"
+                "800,550,6,0,1",
+                "-25,650,30,13,0"
             ]
         },
         "trap": {

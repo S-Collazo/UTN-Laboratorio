@@ -49,7 +49,7 @@ while True:
             game_state = GAME_RUNNING
         
         level = Level(screen,level_number,level_difficulty)
-        win = Win(screen,level.lista_personajes[0],level.time_final,level.has_spawner)
+        win = Win(screen,level.lista_personajes[0],level.time_final,level.has_spawner,level.boss_room)
                 
         while not (game_state == GAME_MENU or game_state == GAME_RESTART or game_state == GAME_CONTINUE):
             while (game_state == GAME_PAUSE):

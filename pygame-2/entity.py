@@ -71,7 +71,7 @@ class Entity:
             
         self.direction = direction_inicial
                         
-        self.rect_collition = pygame.Rect(x+self.rect.width / 3,y,self.rect.width / 3,self.rect.height)
+        self.rect_collition = pygame.Rect(x+self.rect.width / 4,y,self.rect.width / 3,self.rect.height)
         self.rect_ground_collition = pygame.Rect(self.rect_collition)
         self.rect_ground_collition.height = GROUND_COLLIDE_H
         self.rect_ground_collition.y = y + self.rect.height - GROUND_COLLIDE_H
@@ -230,11 +230,7 @@ class Entity:
             else:
                 self.frame = 0
                                            
-    def update(self,delta_ms,lista_plataformas):
-        if(DEBUG):
-            if(self.hitpoints >= 1000):
-                    print(self.hitpoints)
-            
+    def update(self,delta_ms,lista_plataformas):            
         self.do_animation(delta_ms)
         self.do_movement(delta_ms,lista_plataformas)
     

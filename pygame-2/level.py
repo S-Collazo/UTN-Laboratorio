@@ -9,6 +9,7 @@ from player import Player
 from bullet import Bullet
 from enemy_goblin import *
 from enemy_spawner import Spawner
+from enemy_boss import Boss
 from platforms import Platforms
 from trap import Trap
 from item import Health_Potion
@@ -32,12 +33,14 @@ class Level:
 
         player_info = level_info["player"]
         enemy_info = level_info["enemy"]
+        boss_info = level_info["boss"]
         platform_info = level_info["platform"]
         trap_info = level_info["trap"]
         item_info = level_info["item"]
         chest_info = level_info["chest"]
 
         self.has_spawner = enemy_info["enemy_spawner"]
+        self.boss_room = level_info["boss_room"]
 
         self.background_image = pygame.image.load(PATH_RECURSOS + level_info["background_image"])
         self.background_image = pygame.transform.scale(self.background_image,(ANCHO_VENTANA,ALTO_VENTANA))
@@ -64,13 +67,19 @@ class Level:
                 else:
                     self.lista_enemigos.append(Goblin_Shaman(asset=self.enemy_list,x=enemy_coordinates[0],y=enemy_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,p_scale=enemy_info["p_scale"]))
 
+        if(self.boss_room):
+            self.boss_list = Auxiliar.readJson(boss_info["boss_list"])
+            boss_coordinates = Auxiliar.splitIntoInt(boss_info["boss_starter_position"],",")
+            self.lista_enemigos.append(Boss(asset=self.boss_list,name=boss_info["boss_name"],x=boss_coordinates[0],y=boss_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,p_scale=boss_info["p_scale"]))
+            
+
         self.lista_plataformas = []
-        if (platform_info["floor_state"]):
-            self.lista_plataformas.append(Platforms(path=platform_info["platform_folder"],x=0,y=GROUND_LEVEL,w=ANCHO_VENTANA,h=GROUND_RECT_H,type=1))
         for n in range(platform_info["platform_quantity"][self.difficulty]):
             platform_coordinates = Auxiliar.splitIntoInt(platform_info["platform_position_length"][n],",")
             platform_dimensions = Auxiliar.splitIntoInt(platform_info["platform_dimensions"],",")
             Platforms.create_plaforms(self.lista_plataformas,path=platform_info["platform_folder"],x=platform_coordinates[0],y=platform_coordinates[1],w=platform_dimensions[0],h=platform_dimensions[1],tile_total=platform_coordinates[2],p_scale=platform_info["p_scale"],tile_type=platform_coordinates[3],add_bottom=platform_coordinates[4])
+        if (platform_info["floor_state"]):
+            self.lista_plataformas.append(Platforms(path=platform_info["platform_folder"],x=0,y=GROUND_LEVEL,w=ANCHO_VENTANA,h=GROUND_RECT_H,type=1))
 
         self.lista_trampas = []
         for n in range(trap_info["trap_quantity"][self.difficulty]):
@@ -164,19 +173,19 @@ class Level:
             else:
                 enemy.update(delta_ms,self.lista_plataformas,self.lista_personajes,self.lista_balas,self.lista_items,self.item_list)
                 enemy.draw(self.screen)
-        
+                
         self.time_passed = delta_ms / 1000
-        
+                    
         if (self.has_spawner):
             self.spawner.spawn(time=self.time_passed,lista_enemigos=self.lista_enemigos)
             if (self.spawner.spawned_enemies < 1 and len(self.lista_enemigos) < 1):
                 self.time_final = self.screen_info.timer.final_time()
                 self.game_state = GAME_VICTORY
-        else:                       
+        else:                     
             if (len(self.lista_enemigos) < 1):
-                self.time_final = self.screen_info.timer.final_time()
-                self.game_state = GAME_VICTORY
-                                                
+                    self.time_final = self.screen_info.timer.final_time()
+                    self.game_state = GAME_VICTORY
+                                                    
         self.damage_control.update()
                 
         if(self.screen_info.active):

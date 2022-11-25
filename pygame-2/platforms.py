@@ -39,9 +39,9 @@ class Platforms:
         lista_plataformas.append(Platforms(path=path,x=x + tile_separation,y=y,w=w,h=h,type=type_end,p_scale=scale,collition_enabled=collition_enabled))
 
         if(add_bottom):
-            tile_range = int((ALTO_VENTANA - y) / (h * scale))
+            tile_range = int((ALTO_VENTANA - y) / (h * p_scale))
             tile_bottom = type_end + 1
 
             for n in range(1,tile_range):
-                y_position = y + ((h * n) * scale)
-                Platforms.create_plaforms(lista_plataformas,path=path,x=x,y=y_position,w=w,h=h,tile_total=tile_total,p_scale=scale,tile_type=tile_bottom,collition_enabled=False)
+                y_position = y + ((h * n) * p_scale)
+                Platforms.create_plaforms(lista_plataformas,path=path,x=x,y=y_position,w=w,h=h,tile_total=tile_total,p_scale=p_scale,tile_type=tile_bottom,collition_enabled=False)
