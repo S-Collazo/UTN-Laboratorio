@@ -1,6 +1,5 @@
 import pygame
 from constants import *
-from auxiliar import Auxiliar
 from entity import Entity
 from ammo import Ammo
 

@@ -1,6 +1,5 @@
 import pygame
 import json
-import re
 from constants import *
 
 class Auxiliar:

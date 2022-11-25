@@ -2,7 +2,6 @@ import pygame
 from pygame.locals import *
 from constants import *
 from ui_widget import Widget
-from auxiliar import Auxiliar
 
 class Wallet (Widget):
     def __init__(self,player,master_surface,x=(ANCHO_VENTANA-10),y=10,w=100,h=25,background_color=None,border_color=None,font="Times",font_size=20,font_color=BLACK,bold=True):

@@ -1,6 +1,5 @@
 import pygame
 import random
-import copy
 from item import *
 from constants import *
 from auxiliar import Auxiliar

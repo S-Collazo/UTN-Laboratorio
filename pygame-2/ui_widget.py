@@ -1,7 +1,6 @@
 import pygame
 from pygame.locals import *
 from constants import *
-from auxiliar import Auxiliar
 
 class Widget:
     def __init__ (self,master_surface,x,y,w,h,background_color,border_color,background_image,text,font,font_size,font_color,bold=False):

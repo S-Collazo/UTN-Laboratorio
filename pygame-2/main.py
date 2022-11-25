@@ -1,5 +1,4 @@
 import pygame
-import sys
 from ui_start import Start
 from ui_pause import Pause
 from ui_death import Death

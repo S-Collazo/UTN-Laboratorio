@@ -1,7 +1,6 @@
 import pygame
 from pygame.locals import *
 from constants import *
-from auxiliar import Auxiliar
 from ui_widget import Widget
 
 class Timer(Widget):

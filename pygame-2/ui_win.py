@@ -5,9 +5,9 @@ from constants import *
 from ui_win_main import WinMain
 
 class Win:
-    def __init__ (self,screen,player,time,spawner=False):
+    def __init__ (self,screen,player,time,spawner=False,boss=False):
         self.screen = screen
-        self.win_main = WinMain(player,time,name="win_main",master_surface = screen,x=0,y=0,w=ANCHO_VENTANA,h=ALTO_VENTANA,background_color=GREY,border_color=None,active=True,spawner=spawner)
+        self.win_main = WinMain(player,time,name="win_main",master_surface = screen,x=0,y=0,w=ANCHO_VENTANA,h=ALTO_VENTANA,background_color=GREY,border_color=None,active=True,spawner=spawner,boss=boss)
         
         self.exit = False
         self.next = False
