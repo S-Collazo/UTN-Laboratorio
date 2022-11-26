@@ -66,8 +66,9 @@ class Level:
         else:
             for n in range(enemy_info["enemy_quantity"][self.difficulty]):
                 enemy_type_value = random.randrange(enemy_info["enemy_type_number"][self.difficulty])
+                enemy_coordinates_value = random.randrange(len(enemy_info["enemy_starter_position"]))
                 enemy_type = Auxiliar.splitIntoString(enemy_info["enemy_type"][self.difficulty],"/")
-                enemy_coordinates = Auxiliar.splitIntoInt(enemy_info["enemy_starter_position"][n],",")
+                enemy_coordinates = Auxiliar.splitIntoInt(enemy_info["enemy_starter_position"][enemy_coordinates_value],",")
                 if (enemy_type[enemy_type_value] == "Standard"):
                     self.lista_enemigos.append(Goblin_Standard(asset=self.enemy_list,x=enemy_coordinates[0],y=enemy_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,p_scale=enemy_info["p_scale"]))  
                 elif (enemy_type[enemy_type_value] == "Grunt"):
@@ -184,7 +185,7 @@ class Level:
                 self.lista_enemigos.remove(enemy)
                 break
             else:
-                if (enemy == self.lista_enemigos[0]):
+                if (self.boss_room and enemy == self.lista_enemigos[0]):
                     enemy.update(delta_ms,self.lista_plataformas,self.lista_personajes,self.lista_balas,self.lista_items,self.item_list,self.lista_enemigos,self.spawner)
                 else:
                     enemy.update(delta_ms,self.lista_plataformas,self.lista_personajes,self.lista_balas,self.lista_items,self.item_list)
@@ -192,7 +193,7 @@ class Level:
                 
         self.time_passed = delta_ms / 1000
                     
-        if (self.spawner.active):
+        if (self.has_spawner and self.spawner.active):
             self.spawner.spawn(time=self.time_passed,lista_enemigos=self.lista_enemigos)
             if (self.spawner.spawned_enemies < 1 and len(self.lista_enemigos) < 1):
                 self.time_final = self.screen_info.timer.final_time()

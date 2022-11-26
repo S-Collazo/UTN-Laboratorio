@@ -28,7 +28,7 @@
                 },
                 "Die": {
                     "path": "\\_DIE\\_DIE_",
-                    "quantity": 4
+                    "quantity": 5
                 },
                 "Hurt": {
                     "path": "\\_HURT\\_HURT_",
@@ -196,7 +196,7 @@
             "animations": {
                 "Attack": {
                     "path": "\\_ATTACK\\_ATTACK_",
-                    "quantity": 16
+                    "quantity": 10
                 },
                 "Block": {
                     "path": "\\_BLOCK\\_BLOCK_",
@@ -224,7 +224,7 @@
                 },
                 "Throw": {
                     "path": "\\_THROW\\_THROW_",
-                    "quantity": 5
+                    "quantity": 7
                 },
                 "Walk": {
                     "path": "\\_WALK\\_WALK_",
@@ -232,7 +232,7 @@
                 },
                 "Special Attack": {
                     "path": "\\_ATTACK_SPECIAL\\_ATTACK_SPECIAL_",
-                    "quantity": 5
+                    "quantity": 4
                 }
             }
         }
