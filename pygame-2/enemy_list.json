@@ -175,10 +175,16 @@
             "asset_folder": "\\enemies\\bosses\\Goblin_King",
             "hitpoints": 400,
             "attack_power": 40,
+            "attack_special_value":[
+                1,
+                2,
+                3
+            ],
             "speed_walk_modifier": 200,
             "jump_height_modifier": 10,
             "interval_jump": 10,
             "interval_attack": 20,
+            "interval_attack_special": 300,
             "interval_block": 30,
             "interval_shoot": 100,
             "bullet": {

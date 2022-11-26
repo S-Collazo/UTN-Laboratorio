@@ -53,13 +53,16 @@ class Level:
 
         self.enemy_list = Auxiliar.readJson(enemy_info["enemy_list"])
         self.lista_enemigos = []
+        if (self.has_spawner):
+           self.spawner = Spawner(difficulty=self.difficulty,enemy=enemy_info,enemy_list=self.enemy_list,gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms) 
+        
         if(self.boss_room):
             self.boss_list = Auxiliar.readJson(boss_info["boss_list"])
             boss_coordinates = Auxiliar.splitIntoInt(boss_info["boss_starter_position"],",")
-            self.lista_enemigos.append(Boss(asset=self.boss_list,name=boss_info["boss_name"],x=boss_coordinates[0],y=boss_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,p_scale=boss_info["p_scale"]))
+            self.lista_enemigos.append(Boss(asset=self.boss_list,name=boss_info["boss_name"],x=boss_coordinates[0],y=boss_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,difficulty=self.difficulty,p_scale=boss_info["p_scale"]))
         
-        if (self.has_spawner):
-           self.spawner = Spawner(difficulty=self.difficulty,enemy=enemy_info,enemy_list=self.enemy_list,gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms) 
+            self.spawner.active = False
+        
         else:
             for n in range(enemy_info["enemy_quantity"][self.difficulty]):
                 enemy_type_value = random.randrange(enemy_info["enemy_type_number"][self.difficulty])
@@ -181,12 +184,15 @@ class Level:
                 self.lista_enemigos.remove(enemy)
                 break
             else:
-                enemy.update(delta_ms,self.lista_plataformas,self.lista_personajes,self.lista_balas,self.lista_items,self.item_list)
+                if (enemy == self.lista_enemigos[0]):
+                    enemy.update(delta_ms,self.lista_plataformas,self.lista_personajes,self.lista_balas,self.lista_items,self.item_list,self.lista_enemigos,self.spawner)
+                else:
+                    enemy.update(delta_ms,self.lista_plataformas,self.lista_personajes,self.lista_balas,self.lista_items,self.item_list)
                 enemy.draw(self.screen)
                 
         self.time_passed = delta_ms / 1000
                     
-        if (self.has_spawner):
+        if (self.spawner.active):
             self.spawner.spawn(time=self.time_passed,lista_enemigos=self.lista_enemigos)
             if (self.spawner.spawned_enemies < 1 and len(self.lista_enemigos) < 1):
                 self.time_final = self.screen_info.timer.final_time()

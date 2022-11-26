@@ -37,14 +37,15 @@ class Entity:
         self.tiempo_transcurrido = 0
         self.tiempo_transcurrido_anim = 0
         self.tiempo_transcurrido_move = 0
+        self.interval_time = interval_time
         self.tiempo_last_jump = 0
-        self.interval_time_jump = interval_time * self.asset["interval_jump"]
+        self.interval_time_jump = self.interval_time * self.asset["interval_jump"]
         self.tiempo_last_attack = 0
-        self.interval_time_attack = interval_time * self.asset["interval_attack"]
+        self.interval_time_attack = self.interval_time * self.asset["interval_attack"]
         self.tiempo_last_shoot = 0
-        self.interval_time_shoot = interval_time * self.asset["interval_shoot"]
+        self.interval_time_shoot = self.interval_time * self.asset["interval_shoot"]
         self.tiempo_last_block = 0
-        self.interval_time_block = interval_time * self.asset["interval_block"]
+        self.interval_time_block = self.interval_time * self.asset["interval_block"]
         
         self.frame_rate_ms = frame_rate_ms 
         self.move_rate_ms = move_rate_ms
