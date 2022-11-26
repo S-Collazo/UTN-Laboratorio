@@ -21,10 +21,9 @@ class Door:
         self.rect.y = y
         
         self.rect_collition = pygame.Rect(self.rect)
-        
-        self.game_state = GAME_RUNNING
                 
     def next_level (self,lista_personajes):
+        self.game_state = GAME_RUNNING
         for personaje in lista_personajes:
             if (personaje.rect_body_collition.colliderect(self.rect_collition)):
                 self.game_state = GAME_VICTORY
