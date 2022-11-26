@@ -1,6 +1,4 @@
-import pygame
-
-DEBUG = True
+DEBUG = False
 
 ANCHO_VENTANA = 1000
 ALTO_VENTANA = 800

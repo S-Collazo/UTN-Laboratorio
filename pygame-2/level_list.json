@@ -178,6 +178,12 @@
             "chest_position": [
                 "850,200"
             ]
+        },
+        "door": {
+            "asset_folder": "\\door\\light",
+            "p_scale": 0.2,
+            "door_dimensions": "100,100",
+            "door_position": "950,600"
         }
     },
 
@@ -290,7 +296,7 @@
             ],
             "p_scale": 1,
             "item_position": [
-                "450,535"
+                "450,500"
             ]
         },
         "chest": {
@@ -304,6 +310,12 @@
             "chest_position": [
                 "0,0"
             ]
+        },
+        "door": {
+            "asset_folder": "\\door\\light",
+            "p_scale": 0.2,
+            "door_dimensions": "100,100",
+            "door_position": "950,450"
         }
     },
 
@@ -359,7 +371,7 @@
             "boss_list": "enemy_list.json",
             "boss_name": "Goblin King",
             "p_scale": 0.3,
-            "boss_starter_position": "450,250"
+            "boss_starter_position": "800,350"
         },
         "platform": {
             "platform_folder": "\\tileset\\castle_bridge\\Tiles\\",
@@ -421,6 +433,12 @@
             "chest_position": [
                 "0,0"
             ]
+        },
+        "door": {
+            "asset_folder": "\\door\\light",
+            "p_scale": 0.2,
+            "door_dimensions": "100,100",
+            "door_position": "950,400"
         }
     }
 }

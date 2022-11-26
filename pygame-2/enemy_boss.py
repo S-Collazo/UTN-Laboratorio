@@ -35,7 +35,7 @@ class Boss(Enemy):
             self.block(False)
             self.shoot(lista_balas,False)
 
-            if(abs(self.distance_difference_x) <= 600):
+            if(abs(self.distance_difference_x) <= (ANCHO_VENTANA - 100)):
                 if (abs(self.distance_difference_x) <= 300):
                     if(self.is_shooting == False and ((self.tiempo_transcurrido - self.tiempo_last_shoot) > self.interval_time_shoot)):
                         self.shoot(lista_balas)

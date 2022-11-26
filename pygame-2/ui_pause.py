@@ -23,6 +23,7 @@ class Pause:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     self.pause_main.set_active("ScreenInfo")
+                    self.pause_main.set_active("BossInfo")
                     self.game_state = GAME_RUNNING
                     return self.game_state
                                     

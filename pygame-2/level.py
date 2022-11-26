@@ -12,6 +12,7 @@ from platforms import Platforms
 from trap import Trap
 from item import Health_Potion
 from loot import *
+from door import Door
 from damage_control import *
 from ui_screen_info import *
 from auxiliar import Auxiliar
@@ -36,6 +37,7 @@ class Level:
         trap_info = level_info["trap"]
         item_info = level_info["item"]
         chest_info = level_info["chest"]
+        door_info = level_info["door"]
 
         self.has_spawner = enemy_info["enemy_spawner"]
         self.boss_room = level_info["boss_room"]
@@ -111,13 +113,22 @@ class Level:
         self.screen_info = ScreenInfo(entity=self.lista_personajes[0],name="ScreenInfo",master_surface=self.screen,x=0,y=0,w=ANCHO_VENTANA,h=ALTO_VENTANA,background_color=None,border_color=None,active=True)
 
         if (self.boss_room):
-            self.boss_info = BossInfo(entity=self.lista_enemigos[0],name="BossInfo",master_surface=self.screen,x=0,y=0,w=ANCHO_VENTANA,h=ALTO_VENTANA)
+            self.boss_info = BossInfo(entity=self.lista_enemigos[0],name="BossInfo",master_surface=self.screen,x=0,y=0,w=ANCHO_VENTANA,h=ALTO_VENTANA,active=True)
 
+        door_coordinates = Auxiliar.splitIntoInt(door_info["door_position"],",")
+        door_dimensions = Auxiliar.splitIntoInt(door_info["door_dimensions"],",")
+        self.door = Door(asset=door_info,x=door_coordinates[0],y=door_coordinates[1],w=door_dimensions[0],h=door_dimensions[1],p_scale=door_info["p_scale"])
+            
         self.time_passed = 0
         self.time_final = [0,0]
+        
+        self.level_clear = False
                  
     def run_level (self,delta_ms,lista_eventos,keys):                
         self.game_state = GAME_RUNNING
+        self.screen_info.active = True
+        if(self.boss_room):
+            self.boss_info.active = True
                         
         for event in lista_eventos:
             if event.type == pygame.QUIT:
@@ -179,19 +190,26 @@ class Level:
             self.spawner.spawn(time=self.time_passed,lista_enemigos=self.lista_enemigos)
             if (self.spawner.spawned_enemies < 1 and len(self.lista_enemigos) < 1):
                 self.time_final = self.screen_info.timer.final_time()
-                self.game_state = GAME_VICTORY
+                self.level_clear = True
         else:                     
             if (len(self.lista_enemigos) < 1):
                     self.time_final = self.screen_info.timer.final_time()
-                    self.game_state = GAME_VICTORY
+                    self.level_clear = True
                                                     
         self.damage_control.update()
+        
+        self.door.update(self.level_clear)
+        self.door.draw(self.screen)
+        if (self.level_clear):
+            if (self.boss_room):
+                self.boss_info.active = False
+            self.game_state = self.door.next_level(self.lista_personajes)
                         
         if(self.screen_info.active):
             self.screen_info.update(lista_eventos,self.lista_personajes[0],self.time_passed)
             self.screen_info.draw()
             
-        if(self.boss_info.active):
+        if(self.boss_room and self.boss_info.active):
             self.boss_info.update(lista_eventos,self.lista_enemigos[0],self.time_passed)
             self.boss_info.draw()
                                            
