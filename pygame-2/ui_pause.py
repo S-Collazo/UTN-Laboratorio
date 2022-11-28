@@ -35,9 +35,9 @@ class Pause:
         else:
             if (self.exit):
                 self.game_state = GAME_MENU
-                return self.game_state
+                #return self.game_state
             else:
                 self.game_state = GAME_RUNNING
-                return self.game_state
+                #return self.game_state
                     
         return self.game_state

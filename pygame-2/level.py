@@ -211,7 +211,10 @@ class Level:
         if (self.level_clear):
             if (self.boss_room):
                 self.boss_info.active = False
-            self.game_state = self.door.next_level(self.lista_personajes)
+            self.door_passed = self.door.next_level(self.lista_personajes)
+            if not (self.door_passed == None):
+                self.game_state = self.door_passed
+        
                         
         if(self.screen_info.active):
             self.screen_info.update(lista_eventos,self.lista_personajes[0],self.time_passed)
