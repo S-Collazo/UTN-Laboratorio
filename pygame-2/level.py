@@ -53,17 +53,16 @@ class Level:
 
         self.enemy_list = Auxiliar.readJson(enemy_info["enemy_list"])
         self.lista_enemigos = []
-        if (self.has_spawner):
-           self.spawner = Spawner(difficulty=self.difficulty,enemy=enemy_info,enemy_list=self.enemy_list,gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms) 
-        
-        if(self.boss_room):
-            self.boss_name = boss_info["boss_name"]
-            self.boss_list = Auxiliar.readJson(boss_info["boss_list"])
-            boss_coordinates = Auxiliar.splitIntoInt(boss_info["boss_starter_position"],",")
-            self.lista_enemigos.append(Boss(asset=self.boss_list,name= self.boss_name,x=boss_coordinates[0],y=boss_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,difficulty=self.difficulty,p_scale=boss_info["p_scale"]))
-        
-            self.spawner.active = False
-        
+        if (self.has_spawner or self.boss_room):
+            if (self.has_spawner):
+                self.spawner = Spawner(difficulty=self.difficulty,enemy=enemy_info,enemy_list=self.enemy_list,gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms) 
+            if(self.boss_room):
+                self.boss_name = boss_info["boss_name"]
+                self.boss_list = Auxiliar.readJson(boss_info["boss_list"])
+                boss_coordinates = Auxiliar.splitIntoInt(boss_info["boss_starter_position"],",")
+                self.lista_enemigos.append(Boss(asset=self.boss_list,name= self.boss_name,x=boss_coordinates[0],y=boss_coordinates[1],gravity=lv_gravity,frame_rate_ms=lv_frame_rate_ms,move_rate_ms=lv_move_rate_ms,difficulty=self.difficulty,p_scale=boss_info["p_scale"]))
+            
+                self.spawner.active = False
         else:
             for n in range(enemy_info["enemy_quantity"][self.difficulty]):
                 enemy_type_value = random.randrange(enemy_info["enemy_type_number"][self.difficulty])
@@ -184,6 +183,8 @@ class Level:
             if not (enemy.is_alive):
                 enemy.death(self.lista_items,self.item_list)
                 self.lista_enemigos.remove(enemy)
+                if (self.boss_room and enemy.asset_name == self.boss_name):
+                    self.lista_enemigos.clear()
                 break
             else:
                 if (self.boss_room and enemy.asset_name == self.boss_name):
