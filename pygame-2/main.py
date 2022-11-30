@@ -121,8 +121,4 @@ while True:
                 
                 game_state = highscore.highscore_screen(delta_ms,lista_eventos,score_list)
                                 
-                pygame.display.flip()
-
-
-        
-            
+                pygame.display.flip()      
