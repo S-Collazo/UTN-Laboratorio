@@ -9,7 +9,7 @@ from ui_textbox import TextBox
 class HighscoreMain(Form):
     def __init__(self,name,master_surface,x,y,w,h,background_color,border_color,active):
         super().__init__(name,master_surface,x,y,w,h,background_color,border_color,active)
-        self.menu_x = self.w / 2
+        self.menu_x = self.w / 3
 
         self.lvl1 = 0
         self.lvl2 = 0

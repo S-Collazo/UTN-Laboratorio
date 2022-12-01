@@ -1,5 +1,6 @@
 import pygame
 import sys
+import re
 import random
 from pygame.locals import *
 from constants import *
@@ -11,7 +12,7 @@ from database import Database
 class HighscoreTable(Form):
     def __init__(self,name,master_surface,x,y,w,h,background_color,border_color,active):
         super().__init__(name,master_surface,x,y,w,h,background_color,border_color,active)
-        self.menu_x = self.w / 2
+        self.menu_x = self.w / 4
 
         self.score = 0
         
@@ -20,7 +21,7 @@ class HighscoreTable(Form):
         self.button_register_score = Button(master_surface=self,x=self.menu_x + 50,y=600,w=200,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_L_07.png",on_click=self.on_click_button_register_score,on_click_param=None,text="Registrar puntuación",font="Verdana",font_size=15,font_color=WHITE)
         self.button_exit = Button(master_surface=self,x=self.menu_x + 50,y=660,w=200,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_L_06.png",on_click=self.on_click_button_exit,on_click_param=None,text="Menu Principal",font="Verdana",font_size=20,font_color=WHITE)
               
-        self.txt1 = TextBox(master_surface=self,x=self.menu_x,y=50,w=300,h=150,background_color=None,border_color=None,background_image=None,text="TABLA DE PUNTUACIONES",font="Verdana",font_size=20,font_color=BLACK)
+        self.txt1 = TextBox(master_surface=self,x=self.menu_x + 100,y=50,w=300,h=150,background_color=None,border_color=None,background_image=None,text="TABLA DE PUNTUACIONES",font="Verdana",font_size=20,font_color=BLACK)
         
         self.highscore_name_1 = TextBox(master_surface=self,x=self.menu_x,y=210,w=200,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_M_06.png",text=self.highscore_list[0][1],font="Verdana",font_size=15,font_color=WHITE)
         self.highscore_score_1 = TextBox(master_surface=self,x=self.menu_x + 200,y=210,w=200,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_M_06.png",text=str(self.highscore_list[0][2]),font="Verdana",font_size=15,font_color=WHITE)
@@ -41,8 +42,10 @@ class HighscoreTable(Form):
     def on_click_button_register_score (self,parametro):
         while True:
             nombre = input("Nombre (cuatro letras):")
-            if (len(nombre) == 4):
+            nombre = nombre.upper()
+            if not (re.search("[A-Z]{4}",nombre) == None):
                 break
+            
         old_player = Database.check_registered_highscore(nombre)
         
         if(old_player):
