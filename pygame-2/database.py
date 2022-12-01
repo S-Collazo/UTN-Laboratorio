@@ -42,10 +42,14 @@ class Database:
         with sqlite3.connect("db_highscore.db") as database:
             display = database.execute("SELECT * FROM highscore WHERE nombre=?",(nombre,))
             for player in display:
-                print(player)
+                return player
 
     def display_all_highscore ():
         with sqlite3.connect("db_highscore.db") as database:
+            highscore_list = []
             display = database.execute("SELECT * FROM highscore")
             for player in display:
-                print(player)
+                highscore_list.append(player)
+            return highscore_list
+
+print(type(Database.display_all_highscore()[0][2]))

@@ -9,7 +9,7 @@ from ui_textbox import TextBox
 class LevelSelector(Form):
     def __init__(self,name,master_surface,x,y,w,h,background_color,border_color,active):
         super().__init__(name,master_surface,x,y,w,h,background_color,border_color,active)
-        self.menu_x = self.w / 8
+        self.menu_x = self.w / 5
         
         self.lvl1 = Button(master_surface=self,x=self.menu_x + 25,y=10,w=150,h=100,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_XL_06.png",on_click=self.on_click_lvl1,on_click_param=1,text="Nivel 1",font="Verdana",font_size=30,font_color=WHITE)
         self.lvl2 = Button(master_surface=self,x=self.menu_x + 180,y=10,w=150,h=100,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_XL_06.png",on_click=self.on_click_lvl2,on_click_param=2,text="Nivel 2",font="Verdana",font_size=30,font_color=WHITE)
