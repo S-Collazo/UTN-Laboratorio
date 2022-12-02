@@ -32,7 +32,9 @@ class Entity:
         self.hitpoints_max = self.asset["hitpoints"]
         self.hitpoints = self.asset["hitpoints"]
         self.attack_power = self.asset["attack_power"]
-        self.is_alive = True 
+        self.is_alive = True
+        self.is_hurt = False
+        self.is_dying = False
 
         self.tiempo_transcurrido = 0
         self.tiempo_transcurrido_anim = 0
@@ -154,7 +156,6 @@ class Entity:
         self.is_hurt = on_off
         if(on_off == True and self.is_jump == False and self.is_fall == False):
             if(self.animation != self.hurt_r and self.animation != self.hurt_l):
-                self.frame = 0
                 if(self.direction == DIRECTION_R):
                     self.animation = self.hurt_r
                 else:
@@ -168,7 +169,6 @@ class Entity:
                 self.animation = self.death_l
             self.move_x = 0
             self.move_y = 0
-            self.frame = 0
                                                                         
     def is_on_platform(self,lista_plataformas):
         retorno = False

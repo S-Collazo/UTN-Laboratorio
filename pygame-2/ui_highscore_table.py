@@ -18,7 +18,7 @@ class HighscoreTable(Form):
         
         self.highscore_list = Database.display_all_highscore()
                         
-        self.button_register_score = Button(master_surface=self,x=self.menu_x + 50,y=600,w=200,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_L_07.png",on_click=self.on_click_button_register_score,on_click_param=None,text="Registrar puntuación",font="Verdana",font_size=15,font_color=WHITE)
+        self.button_register_score = Button(master_surface=self,x=self.menu_x + 50,y=600,w=200,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_L_07.png",on_click=self.on_click_button_register_score,on_click_param="highscore_register",text="Registrar puntuación",font="Verdana",font_size=15,font_color=WHITE)
         self.button_exit = Button(master_surface=self,x=self.menu_x + 50,y=660,w=200,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_L_06.png",on_click=self.on_click_button_exit,on_click_param=None,text="Menu Principal",font="Verdana",font_size=20,font_color=WHITE)
               
         self.txt1 = TextBox(master_surface=self,x=self.menu_x + 100,y=50,w=300,h=150,background_color=None,border_color=None,background_image=None,text="TABLA DE PUNTUACIONES",font="Verdana",font_size=20,font_color=BLACK)
@@ -40,31 +40,13 @@ class HighscoreTable(Form):
         self.exit = False
     
     def on_click_button_register_score (self,parametro):
-        while True:
-            nombre = input("Nombre (cuatro letras):")
-            nombre = nombre.upper()
-            if not (re.search("[A-Z]{4}",nombre) == None):
-                break
-            
-        old_player = Database.check_registered_highscore(nombre)
-        
-        if(old_player):
-            higher_score = Database.compare_highscore(nombre,self.score)
-            if (higher_score):
-                Database.update_highscore(nombre,self.score)
-            else:
-                print("Puntuación original es más alta.")
-        else:
-            id_num = random.randrange(1000,9999)
-            Database.add_highscore(id_num,nombre,self.score)
-    
+        self.set_active(parametro)
+                
     def on_click_button_exit (self, parametro):
         self.set_active(parametro)
         self.exit = True
 
-    def update(self, lista_eventos, score):
-        self.score = score
-        
+    def update(self, lista_eventos):
         for aux_widget in self.lista_widget:
             aux_widget.update(lista_eventos)
 

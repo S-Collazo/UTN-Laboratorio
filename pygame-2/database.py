@@ -47,9 +47,7 @@ class Database:
     def display_all_highscore ():
         with sqlite3.connect("db_highscore.db") as database:
             highscore_list = []
-            display = database.execute("SELECT * FROM highscore")
+            display = database.execute("SELECT ID,nombre,puntuacion FROM highscore ORDER BY puntuacion DESC LIMIT 5;")
             for player in display:
                 highscore_list.append(player)
             return highscore_list
-
-print(type(Database.display_all_highscore()[0][2]))
