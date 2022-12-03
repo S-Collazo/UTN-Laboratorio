@@ -8,7 +8,7 @@ GROUND_COLLIDE_H = 8
 FPS = 40
 GLOBAL_SCALE = 0.9
 
-PATH_RECURSOS = r"C:\\Users\\Santiago\\Documents\\UTN\\Laboratorio\\UTN-Laboratorio\\pygame-2\\recursos\\images"
+PATH_RECURSOS = r"C:\\Users\\Santiago\\Documents\\UTN\\Laboratorio\\UTN-Laboratorio\\pygame-2\\recursos"
 DIRECTION_R = 0
 DIRECTION_L = 1
 
@@ -20,8 +20,6 @@ GREEN = (0,255,0)
 BLUE = (0,0,255)
 PURPLE = (150,50,255)
 ORANGE = (255,100,0)
-
-FILTER_PURPLE = (50,30,70,0.2)
 
 M_STATE_HOVER = 0
 M_BRIGHT_HOVER = 0

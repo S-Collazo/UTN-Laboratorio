@@ -47,7 +47,7 @@ class Auxiliar:
     def getSurfaceFromJson(asset,animation,flip=False,p_scale=1):
         asset_folder = asset["asset_folder"]
         asset_anim = asset["animations"]
-        sprite = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\caracters\\" + asset_folder + asset_anim[animation]["path"] + "{:03d}.png",asset_anim[animation]["quantity"],flip=flip,step = 0,scale=p_scale,repeat_frame=1)
+        sprite = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\caracters\\" + asset_folder + asset_anim[animation]["path"] + "{:03d}.png",asset_anim[animation]["quantity"],flip=flip,step = 0,scale=p_scale,repeat_frame=1)
         return sprite
     
     @staticmethod

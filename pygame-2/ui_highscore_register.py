@@ -17,7 +17,7 @@ class HighscoreRegister(Form):
         self.score = 0
                   
         self.txt1 = TextBox(master_surface=self,x=self.menu_x-100,y=100,w=300,h=50,background_color=None,border_color=None,background_image=None,text="Nombre (cuatro letras):",font="Verdana",font_size=15,font_color=WHITE)
-        self.txt2 = TextBox(master_surface=self,x=self.menu_x,y=200,w=200,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_M_08.png",text="",font="Verdana",font_size=15,font_color=BLACK)
+        self.txt2 = TextBox(master_surface=self,x=self.menu_x,y=200,w=200,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/images/gui/set_gui_01/Paper/Buttons/Button_M_08.png",text="",font="Verdana",font_size=15,font_color=BLACK)
         
         self.lista_widget = [self.txt1,self.txt2]
         

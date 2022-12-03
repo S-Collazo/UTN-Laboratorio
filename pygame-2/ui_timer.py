@@ -4,7 +4,7 @@ from constants import *
 from ui_widget import Widget
 
 class Timer(Widget):
-    def __init__ (self,master_surface,x,y,w=100,h=25,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_M_09.png",font="Verdana",font_size=15,font_color=BLACK):
+    def __init__ (self,master_surface,x,y,w=100,h=25,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/images/gui/set_gui_01/Paper/Buttons/Button_M_09.png",font="Verdana",font_size=15,font_color=BLACK):
         self.timer_sec = -3
         self.timer_min = 0
         self.text = "{0}:{1}".format(self.timer_min,self.timer_sec)

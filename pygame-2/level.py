@@ -164,7 +164,6 @@ class Level:
                     
         for player in self.lista_personajes:
             if not (player.is_alive):
-                player.death()
                 self.game_state = GAME_DEATH
 
             player.events(delta_ms,keys,lista_eventos,self.lista_balas)
@@ -181,11 +180,11 @@ class Level:
 
         for enemy in self.lista_enemigos:
             if not (enemy.is_alive):
-                enemy.death(self.lista_items,self.item_list)
-                self.lista_enemigos.remove(enemy)
-                if (self.boss_room and enemy.asset_name == self.boss_name):
-                    self.lista_enemigos.clear()
-                break
+                    enemy.drop_loot(self.lista_items,self.item_list)
+                    self.lista_enemigos.remove(enemy)
+                    if (self.boss_room and enemy.asset_name == self.boss_name):
+                        self.lista_enemigos.clear()
+                    break
             else:
                 if (self.boss_room and enemy.asset_name == self.boss_name):
                     enemy.update(delta_ms,self.lista_plataformas,self.lista_personajes,self.lista_balas,self.lista_items,self.item_list,self.lista_enemigos,self.spawner)
@@ -215,7 +214,6 @@ class Level:
             self.door_passed = self.door.next_level(self.lista_personajes)
             if not (self.door_passed == None):
                 self.game_state = self.door_passed
-        
                         
         if(self.screen_info.active):
             self.screen_info.update(lista_eventos,self.lista_personajes[0],self.time_passed)

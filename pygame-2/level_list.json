@@ -1,8 +1,8 @@
 {
     "Nivel 1": {
-        "background_image": "\\locations\\set_bg_06\\creepy_forest_000.png",
+        "background_image": "\\images\\locations\\set_bg_06\\creepy_forest_000.png",
         "gravity": 10,
-        "frame_rate_ms": 60,
+        "frame_rate_ms": 100,
         "move_rate_ms": 40,
         "boss_room": 0,
         "player": {
@@ -53,7 +53,7 @@
             "boss_starter_position": "0,0"
         },
         "platform": {
-            "platform_folder": "\\tileset\\creepy_forest\\Tiles\\",
+            "platform_folder": "\\images\\tileset\\creepy_forest\\Tiles\\",
             "floor_state": 1,
             "p_scale": 0.4,
             "platform_list": [
@@ -180,7 +180,7 @@
             ]
         },
         "door": {
-            "asset_folder": "\\door\\light",
+            "asset_folder": "\\images\\door\\light",
             "p_scale": 0.2,
             "door_dimensions": "100,100",
             "door_position": "950,600"
@@ -189,9 +189,9 @@
 
     
     "Nivel 2": {
-        "background_image": "\\locations\\set_bg_06\\creepy_forest_001.png",
+        "background_image": "\\images\\locations\\set_bg_06\\creepy_forest_001.png",
         "gravity": 10,
-        "frame_rate_ms": 60,
+        "frame_rate_ms": 100,
         "move_rate_ms": 40,
         "boss_room": 0,
         "player": {
@@ -242,7 +242,7 @@
             "boss_starter_position": "0,0"
         },
         "platform": {
-            "platform_folder": "\\tileset\\creepy_forest\\Tiles\\",
+            "platform_folder": "\\images\\tileset\\creepy_forest\\Tiles\\",
             "floor_state": 1,
             "p_scale": 0.4,
             "platform_list": [
@@ -312,7 +312,7 @@
             ]
         },
         "door": {
-            "asset_folder": "\\door\\light",
+            "asset_folder": "\\images\\door\\light",
             "p_scale": 0.2,
             "door_dimensions": "100,100",
             "door_position": "950,450"
@@ -321,9 +321,9 @@
 
 
     "Nivel 3": {
-        "background_image": "\\locations\\set_bg_06\\castle_bridge.png",
+        "background_image": "\\images\\locations\\set_bg_06\\castle_bridge.png",
         "gravity": 10,
-        "frame_rate_ms": 60,
+        "frame_rate_ms": 100,
         "move_rate_ms": 40,
         "boss_room": 1,
         "player": {
@@ -374,7 +374,7 @@
             "boss_starter_position": "800,350"
         },
         "platform": {
-            "platform_folder": "\\tileset\\castle_bridge\\Tiles\\",
+            "platform_folder": "\\images\\tileset\\castle_bridge\\Tiles\\",
             "floor_state": 0,
             "p_scale": 0.4,
             "platform_list": [
@@ -435,7 +435,7 @@
             ]
         },
         "door": {
-            "asset_folder": "\\door\\light",
+            "asset_folder": "\\images\\door\\light",
             "p_scale": 0.2,
             "door_dimensions": "100,100",
             "door_position": "950,400"

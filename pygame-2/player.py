@@ -37,7 +37,6 @@ class Player(Entity):
                 self.block()
                 self.tiempo_last_block = self.tiempo_transcurrido
        
-       
         self.attack(False)
         self.shoot(lista_balas,False)
         

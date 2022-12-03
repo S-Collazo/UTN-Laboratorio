@@ -20,13 +20,10 @@ class Enemy(Entity):
         self.can_block = False
         self.can_throw = False
                        
-    def death (self,lista_items,item_asset):
-        super().death()
-          
+    def drop_loot (self,lista_items,item_asset):
         gem_reward = Gem(asset=item_asset,name="Basic Gem",x=self.rect.x + (self.rect.w / 2),y=self.rect.y + (self.rect.h / 2),p_scale=1,enemy_drop=True)
         lista_items.append(gem_reward)
-        
-                       
+                     
     def update (self,delta_ms,lista_plataformas,lista_items,item_asset):          
         super().update(delta_ms,lista_plataformas)
         

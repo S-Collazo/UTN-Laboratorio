@@ -3,8 +3,8 @@
         "Iron Knight": {
             "name": "Iron Knight",
             "asset_folder": "\\players\\knight_main",
-            "hitpoints": 1000,
-            "attack_power": 100,
+            "hitpoints": 100,
+            "attack_power": 10,
             "speed_walk_modifier": 100,
             "jump_height_modifier": 14,
             "interval_jump": 1,
@@ -13,7 +13,7 @@
             "interval_shoot": 20,
             "bullet": {
                 "name": "Knight Shield",
-                "path": "\\elements\\knight_shield\\knight_shield",
+                "path": "\\images\\elements\\knight_shield\\knight_shield",
                 "quantity": 2,
                 "attack_power": 20
             },

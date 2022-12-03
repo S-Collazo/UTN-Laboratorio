@@ -10,7 +10,7 @@ class Start:
     def __init__ (self,screen):
         self.screen = screen
         
-        self.background_image = pygame.image.load(PATH_RECURSOS + "\\background.png")
+        self.background_image = pygame.image.load(PATH_RECURSOS + "\\images\\background.png")
         self.background_image = pygame.transform.scale(self.background_image,(ANCHO_VENTANA,ALTO_VENTANA))
         
         self.start_main = StartMain(name="main",master_surface = self.screen,x=100,y=250,w=600,h=300,background_color=None,border_color=None,active=True)

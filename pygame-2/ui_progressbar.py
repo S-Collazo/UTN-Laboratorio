@@ -24,8 +24,8 @@ class ProgressBar(Widget):
         
 class HitpointBar(Widget):
     def __init__(self,entity,master_surface,x=5,y=0,w=200,h=25,background_color=None,border_color=BLACK):
-        self.background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Bars/Bar_Background01.png"
-        self.image_progress=PATH_RECURSOS + "/gui/set_gui_01/Paper/Bars/Bar_Segment01.png"
+        self.background_image=PATH_RECURSOS + "/images/gui/set_gui_01/Paper/Bars/Bar_Background01.png"
+        self.image_progress=PATH_RECURSOS + "/images/gui/set_gui_01/Paper/Bars/Bar_Segment01.png"
         super().__init__(master_surface,x,y,w,h,background_color,border_color,self.background_image,None,None,None,None)
        
         self.value = entity.hitpoints

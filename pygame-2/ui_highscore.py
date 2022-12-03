@@ -10,7 +10,7 @@ class Highscore:
     def __init__ (self,screen):
         self.screen = screen
         
-        self.background_image = pygame.image.load(PATH_RECURSOS + "\\background_end.png")
+        self.background_image = pygame.image.load(PATH_RECURSOS + "\\images\\background_end.png")
         self.background_image = pygame.transform.scale(self.background_image,(ANCHO_VENTANA,ALTO_VENTANA))
         
         self.highscore_main = HighscoreMain(name="highscore_main",master_surface=screen,x=0,y=0,w=ANCHO_VENTANA,h=ALTO_VENTANA,background_color=None,border_color=None,active=True)

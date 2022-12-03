@@ -13,7 +13,7 @@
             "interval_shoot": 0,
             "bullet": {
                 "name": "Skull",
-                "path": "\\elements\\skull\\skull",
+                "path": "\\images\\elements\\skull\\skull",
                 "quantity": 1,
                 "attack_power": 20
             },
@@ -69,7 +69,7 @@
             "interval_shoot": 0,
             "bullet": {
                 "name": "Skull",
-                "path": "\\elements\\skull\\skull",
+                "path": "\\images\\elements\\skull\\skull",
                 "quantity": 1,
                 "attack_power": 20
             },
@@ -125,7 +125,7 @@
             "interval_shoot": 40,
             "bullet": {
                 "name": "Skull",
-                "path": "\\elements\\skull\\skull",
+                "path": "\\images\\elements\\skull\\skull",
                 "quantity": 1,
                 "attack_power": 30
             },
@@ -189,7 +189,7 @@
             "interval_shoot": 100,
             "bullet": {
                 "name": "Goblin Club",
-                "path": "\\elements\\goblin_club\\goblin_club",
+                "path": "\\images\\elements\\goblin_club\\goblin_club",
                 "quantity": 2,
                 "attack_power": 40
             },

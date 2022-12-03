@@ -11,8 +11,8 @@ class DeathMain(Form):
         super().__init__(name,master_surface,x,y,w,h,background_color,border_color,active)
         self.menu_x = self.w / 3
         
-        self.button_restart = Button(master_surface=self,x=self.menu_x + 50,y=350,w=200,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_L_08.png",on_click=self.on_click_button_restart,on_click_param="ScreenInfo",text="Reiniciar Nivel",font="Verdana",font_size=20,font_color=WHITE)
-        self.button_exit = Button(master_surface=self,x=self.menu_x + 50,y=450,w=200,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_L_06.png",on_click=self.on_click_button_exit,on_click_param=None,text="Menu Principal",font="Verdana",font_size=20,font_color=WHITE)
+        self.button_restart = Button(master_surface=self,x=self.menu_x + 50,y=350,w=200,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/images/gui/set_gui_01/Paper/Buttons/Button_L_08.png",on_click=self.on_click_button_restart,on_click_param="ScreenInfo",text="Reiniciar Nivel",font="Verdana",font_size=20,font_color=WHITE)
+        self.button_exit = Button(master_surface=self,x=self.menu_x + 50,y=450,w=200,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/images/gui/set_gui_01/Paper/Buttons/Button_L_06.png",on_click=self.on_click_button_exit,on_click_param=None,text="Menu Principal",font="Verdana",font_size=20,font_color=WHITE)
               
         self.txt1 = TextBox(master_surface=self,x=self.menu_x,y=200,w=300,h=150,background_color=None,border_color=None,background_image=None,text="MUERTO",font="Verdana",font_size=60,font_color=WHITE)
         

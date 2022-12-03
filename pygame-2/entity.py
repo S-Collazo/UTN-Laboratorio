@@ -152,10 +152,10 @@ class Entity:
                     
             Ammo(asset=self.asset,lista_balas=lista_balas,x=self.rect.x,y=self.rect.y,frame_rate_ms=self.frame_rate_ms,move_rate_ms=self.move_rate_ms,direction=self.direction,p_scale=self.p_scale)
      
-    def hurt (self,on_off = True):
-        self.is_hurt = on_off
-        if(on_off == True and self.is_jump == False and self.is_fall == False):
+    def hurt (self):
+        if(self.is_jump == False and self.is_fall == False):
             if(self.animation != self.hurt_r and self.animation != self.hurt_l):
+                self.frame = 0
                 if(self.direction == DIRECTION_R):
                     self.animation = self.hurt_r
                 else:
@@ -163,6 +163,7 @@ class Entity:
             
     def death (self):
         if(self.animation != self.death_r and self.animation != self.death_l):
+            self.frame = 0
             if (self.direction == DIRECTION_R):
                 self.animation = self.death_r
             else:
@@ -225,15 +226,21 @@ class Entity:
         
         if(self.tiempo_transcurrido_anim >= self.frame_rate_ms):
             self.tiempo_transcurrido_anim = 0
-        
+            
             if(self.frame < len(self.animation) - 1):
                 self.frame += 1
             else:
                 self.frame = 0
-                                           
-    def update(self,delta_ms,lista_plataformas):            
-        self.do_animation(delta_ms)
-        self.do_movement(delta_ms,lista_plataformas)
+                if (self.is_dying):
+                    self.is_dying = False
+                    self.is_alive = False
+                    print("----------")
+                if (self.is_hurt):
+                    self.is_hurt = False
+                                                      
+    def update(self,delta_ms,lista_plataformas):
+            self.do_animation(delta_ms)
+            self.do_movement(delta_ms,lista_plataformas)
     
     def draw (self,screen):
         if(DEBUG):
@@ -241,7 +248,7 @@ class Entity:
             pygame.draw.rect(screen,GREEN,self.rect_ground_collition)
             if(self.is_attack or self.is_block):
                 pygame.draw.rect(screen,PURPLE,self.rect_body_collition)
-    
+
         self.image = self.animation[self.frame]
         screen.blit(self.image, self.rect)
 

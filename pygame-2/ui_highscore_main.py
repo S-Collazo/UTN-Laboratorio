@@ -22,8 +22,8 @@ class HighscoreMain(Form):
         self.score_lvl3 = "Puntuación Nivel 3: {0}".format(self.lvl1)
         self.score_final = "Puntuación Final: {0}".format(self.final)
                 
-        self.button_table = Button(master_surface=self,x=self.menu_x + 50,y=600,w=200,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_L_07.png",on_click=self.on_click_button_table,on_click_param="highscore_table",text="Tabla",font="Verdana",font_size=20,font_color=WHITE)
-        self.button_exit = Button(master_surface=self,x=self.menu_x + 50,y=660,w=200,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/gui/set_gui_01/Paper/Buttons/Button_L_06.png",on_click=self.on_click_button_exit,on_click_param=None,text="Menu Principal",font="Verdana",font_size=20,font_color=WHITE)
+        self.button_table = Button(master_surface=self,x=self.menu_x + 50,y=600,w=200,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/images/gui/set_gui_01/Paper/Buttons/Button_L_07.png",on_click=self.on_click_button_table,on_click_param="highscore_table",text="Tabla",font="Verdana",font_size=20,font_color=WHITE)
+        self.button_exit = Button(master_surface=self,x=self.menu_x + 50,y=660,w=200,h=50,background_color=None,border_color=None,background_image=PATH_RECURSOS + "/images/gui/set_gui_01/Paper/Buttons/Button_L_06.png",on_click=self.on_click_button_exit,on_click_param=None,text="Menu Principal",font="Verdana",font_size=20,font_color=WHITE)
               
         self.txt1 = TextBox(master_surface=self,x=self.menu_x,y=100,w=400,h=150,background_color=None,border_color=None,background_image=None,text="FIN DEL JUEGO",font="Verdana",font_size=20,font_color=BLACK)
         self.txt2 = TextBox(master_surface=self,x=self.menu_x,y=350,w=200,h=50,background_color=None,border_color=None,background_image=None,text=self.score_lvl1,font="Verdana",font_size=15,font_color=BLACK)

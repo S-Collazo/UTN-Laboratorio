@@ -10,7 +10,7 @@ class Chest:
         
         self.p_scale = p_scale * GLOBAL_SCALE
                 
-        self.image_list = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\tileset\\creepy_forest\\Objects\\chest_{:03d}.png",2,step=0,flip=False,scale=self.p_scale,w=w,h=h)
+        self.image_list = Auxiliar.getSurfaceFromSeparateFiles(PATH_RECURSOS + "\\images\\tileset\\creepy_forest\\Objects\\chest_{:03d}.png",2,step=0,flip=False,scale=self.p_scale,w=w,h=h)
         self.chest_closed = self.image_list[0]
         self.chest_open = self.image_list[1]
         
